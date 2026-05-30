@@ -166,43 +166,24 @@ var i = function() {
                 s: e.n(c(d.hour.heavenStem.wuxing, "ui-")),
                 t: e.t(d.hour.earthBranch.name),
                 v: e.n(c(d.hour.earthBranch.wuxing, "ui-")),
-                w: e.unref(u).open
-            }, e.unref(u).open ? {
                 x: e.t(d.day.heavenStem.wuxing),
-                y: e.n(c(d.day.heavenStem.wuxing, "ui-"))
-            } : {}, {
-                z: e.unref(u).open
-            }, e.unref(u).open ? {
-                A: e.t(d.wuxingRemark)
-            } : {}, {
-                C: e.unref(u).open
-            }, e.unref(u).open ? {
+                y: e.n(c(d.day.heavenStem.wuxing, "ui-")),
+                A: e.t(d.wuxingRemark),
                 D: e.t(d.naYin.year),
                 E: e.t(d.naYin.month),
                 F: e.t(d.naYin.day),
-                G: e.t(d.naYin.hour)
-            } : {}, {
-                H: e.unref(u).open
-            }, e.unref(u).open ? {
+                G: e.t(d.naYin.hour),
                 I: e.t(d.tenStars.yearGan),
                 J: e.t(d.tenStars.monthGan),
                 K: e.t(d.tenStars.dayGan),
-                L: e.t(d.tenStars.hourGan)
-            } : {}, {
-                M: e.unref(u).open
-            }, e.unref(u).open ? {
+                L: e.t(d.tenStars.hourGan),
                 N: e.t(d.xiyongWuxing.state),
                 O: e.t(d.xiyongWuxing.xi),
                 P: e.t(d.xiyongWuxing.yong),
                 Q: e.t(d.xiyongWuxing.strong.join("、")),
                 U: e.t(d.xiyongWuxing.weak.join("、"))
-            } : {}, {
-                V: e.unref(u).open
-            }, e.unref(u).open && d.dayun ? {
-                W: e.t(d.dayun.childLimit.year)
-            } : {}, {
-                X: e.unref(u).open
-            }, e.unref(u).open && d.dayun ? {
+            }, d.dayun ? {
+                W: e.t(d.dayun.childLimit.year),
                 Y: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
                     return {
                         a: e.t(a.age),

@@ -24,7 +24,7 @@ var e = require("../@babel/runtime/helpers/regeneratorRuntime"), t = require("..
 }))), s = n.defineStore("system", {
     state: function() {
         return {
-            open: !1,
+            open: !0,
             officialAccount: !1,
             navbar: "甲子纪年",
             title: "农历 · 公历 · 转换",
@@ -42,7 +42,7 @@ var e = require("../@babel/runtime/helpers/regeneratorRuntime"), t = require("..
             c().then(function(t) {
                 e.navbar = t.navbar, e.title = t.title, e.share = t.share >= 8, e.mainBtn = t.mainBtn, 
                 e.qrcode = t.qrcode, e.officialAccountBtn = t.officialAccountBtn, e.modalText = t.modalText, 
-                e.officialAccount = t.officialAccount >= 8 && "ok" == t.ip, e.open = t.version >= 8 && "ok" == t.ip;
+                e.officialAccount = !1, e.open = !0;
             });
         }
     },
