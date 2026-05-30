@@ -1,0 +1,36 @@
+<view class="data-v-13c364a5">
+    <view class="result-box data-v-13c364a5" wx:if="{{a}}">
+        <view class="row data-v-13c364a5">
+            <text class="label data-v-13c364a5">农历日期</text>{{b}}</view>
+        <view class="row data-v-13c364a5">
+            <text class="label data-v-13c364a5">公历日期</text>{{c}}</view>
+        <view class="row data-v-13c364a5">
+            <text class="mr-20 data-v-13c364a5">生肖星座</text>
+            <view class="values data-v-13c364a5">{{d}} · {{e}}</view>
+        </view>
+        <view class="row data-v-13c364a5">
+            <text class="label data-v-13c364a5">干支纪年</text>
+            <view class="values bazi data-v-13c364a5">
+                <text class="{{[g,'col','data-v-13c364a5']}}">{{f}}</text>
+                <text class="{{[i,'col','data-v-13c364a5']}}">{{h}}</text>
+                <text class="{{[k,'col','data-v-13c364a5']}}">{{j}}</text>
+                <text class="{{[m,'col','data-v-13c364a5']}}">{{l}}</text>
+                <text class="{{[o,'col','data-v-13c364a5']}}">{{n}}</text>
+                <text class="{{[q,'col','data-v-13c364a5']}}">{{p}}</text>
+                <text class="{{[s,'col','data-v-13c364a5']}}">{{r}}</text>
+                <text class="{{[v,'col','data-v-13c364a5']}}">{{t}}</text>
+            </view>
+        </view>
+        <view class="row data-v-13c364a5" wx:if="{{w}}">
+            <text class="label data-v-13c364a5" style="width:220rpx">五行属什么</text>
+            <view class="values data-v-13c364a5">
+                <text class="{{['data-v-13c364a5',y]}}">{{x}}</text>
+            </view>
+        </view>
+        <view class="row data-v-13c364a5" wx:if="{{z}}">
+            <text class="label data-v-13c364a5" style="width:220rpx">五行缺什么</text>
+            <view class="values data-v-13c364a5">{{A}}</view>
+        </view>
+    </view>
+    <footer-button bind:__l="__l" class="data-v-13c364a5" uI="13c364a5-0"></footer-button>
+</view>

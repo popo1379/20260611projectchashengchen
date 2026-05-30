@@ -1,0 +1,15 @@
+<view class="{{['uv-popup','data-v-8476b35e',q,r]}}" style="{{s}}" wx:if="{{a}}">
+    <view bindtouchstart="{{p}}" class="data-v-8476b35e">
+        <uv-overlay bind:__l="__l" bindclick="{{c}}" class="data-v-8476b35e" key="1" uI="8476b35e-0" uP="{{d}}" wx:if="{{b}}"></uv-overlay>
+        <uv-transition bind:__l="__l" bindclick="{{n}}" class="data-v-8476b35e" key="2" uI="8476b35e-1" uP="{{o}}" uS="{{['d']}}" wx:if="{{o}}">
+            <view bindtap="{{m}}" class="{{['uv-popup__content','data-v-8476b35e',l]}}" style="{{k}}">
+                <uv-status-bar bind:__l="__l" class="data-v-8476b35e" uI="8476b35e-2,8476b35e-1" wx:if="{{e}}"></uv-status-bar>
+                <slot></slot>
+                <uv-safe-bottom bind:__l="__l" class="data-v-8476b35e" uI="8476b35e-3,8476b35e-1" wx:if="{{f}}"></uv-safe-bottom>
+                <view catchtap="{{i}}" class="{{['uv-popup__content__close','data-v-8476b35e',j]}}" hoverClass="uv-popup__content__close--hover" hoverStayTime="150" wx:if="{{g}}">
+                    <uv-icon bind:__l="__l" class="data-v-8476b35e" uI="8476b35e-4,8476b35e-1" uP="{{h}}" wx:if="{{h}}"></uv-icon>
+                </view>
+            </view>
+        </uv-transition>
+    </view>
+</view>

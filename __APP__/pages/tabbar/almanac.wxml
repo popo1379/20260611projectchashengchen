@@ -1,0 +1,155 @@
+<view class="page data-v-286e3247">
+    <uv-navbar bind:__l="__l" class="data-v-286e3247" uI="286e3247-0" uP="{{a}}" uS="{{['center']}}" wx:if="{{a}}">
+        <text class="nav-bar data-v-286e3247" slot="center">华夏 · 老黄历</text>
+    </uv-navbar>
+    <view class="calendar section data-v-286e3247">
+        <date-tabs bind:__l="__l" bindselect="{{b}}" class="data-v-286e3247" uI="286e3247-1" uP="{{c}}" wx:if="{{c}}"></date-tabs>
+    </view>
+    <view class="main data-v-286e3247">
+        <scroll-view class="data-v-286e3247" scrollY="{{true}}" style="height:100%">
+            <view class="data-v-286e3247" style="height:1px"></view>
+            <view class="header section data-v-286e3247">
+                <view class="row-1 data-v-286e3247">{{d}}{{e}} · {{f}}</view>
+                <view class="row-2 data-v-286e3247">{{g}} · {{h}} · {{i}} · {{j}}月{{k}}日 · {{l}}</view>
+            </view>
+            <view class="si-zhu section data-v-286e3247" wx:if="{{m}}">
+                <view class="item data-v-286e3247">
+                    <view class="name data-v-286e3247">年柱</view>
+                    <view class="value data-v-286e3247">
+                        <text class="{{['data-v-286e3247',o]}}">{{n}}</text>
+                        <text class="{{['data-v-286e3247',q]}}">{{p}}</text>
+                    </view>
+                </view>
+                <view class="item data-v-286e3247">
+                    <view class="name data-v-286e3247">月柱</view>
+                    <view class="value data-v-286e3247">
+                        <text class="{{['data-v-286e3247',s]}}">{{r}}</text>
+                        <text class="{{['data-v-286e3247',v]}}">{{t}}</text>
+                    </view>
+                </view>
+                <view class="item data-v-286e3247">
+                    <view class="name data-v-286e3247">日柱</view>
+                    <view class="value data-v-286e3247">
+                        <text class="{{['data-v-286e3247',x]}}">{{w}}</text>
+                        <text class="{{['data-v-286e3247',z]}}">{{y}}</text>
+                    </view>
+                </view>
+                <view class="item data-v-286e3247">
+                    <view class="name data-v-286e3247">时柱</view>
+                    <view class="value data-v-286e3247">
+                        <text class="{{['data-v-286e3247',B]}}">{{A}}</text>
+                        <text class="{{['data-v-286e3247',D]}}">{{C}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="yi-ji section data-v-286e3247">
+                <view class="item data-v-286e3247">
+                    <view class="icon data-v-286e3247">宜</view>
+                    <view class="info data-v-286e3247" wx:if="{{E}}">
+                        <text class="data-v-286e3247" wx:for="{{F}}" wx:for-item="val" wx:key="b">{{val.a}}</text>
+                    </view>
+                    <view class="info data-v-286e3247" wx:else>
+                        <text class="data-v-286e3247">无</text>
+                    </view>
+                </view>
+                <view class="item data-v-286e3247">
+                    <view class="icon data-v-286e3247">忌</view>
+                    <view class="info data-v-286e3247" wx:if="{{G}}">
+                        <text class="data-v-286e3247" wx:for="{{H}}" wx:for-item="val" wx:key="b">{{val.a}}</text>
+                    </view>
+                    <view class="info data-v-286e3247" wx:else>
+                        <text class="data-v-286e3247">无</text>
+                    </view>
+                </view>
+            </view>
+            <view class="ri-pan section data-v-286e3247" wx:if="{{I}}">
+                <view class="row row-1 data-v-286e3247">
+                    <view class="item data-v-286e3247">
+                        <text class="name name-mr data-v-286e3247">五行</text>{{J}}</view>
+                    <view class="item data-v-286e3247">
+                        <text class="name name-mr data-v-286e3247">冲煞</text>冲{{K}} 煞{{L}}</view>
+                    <view class="item data-v-286e3247">
+                        <text class="name name-mr data-v-286e3247">值神</text>{{M}} ·<text class="{{['data-v-286e3247',O]}}" style="margin-left:5rpx">{{N}}</text>
+                    </view>
+                </view>
+                <view class="row row-2 data-v-286e3247">
+                    <view class="item data-v-286e3247">
+                        <view class="name data-v-286e3247">财神位</view>{{P}}</view>
+                    <view class="item data-v-286e3247">
+                        <view class="name data-v-286e3247">福神位</view>{{Q}}</view>
+                    <view class="item data-v-286e3247">
+                        <view class="name data-v-286e3247">喜神位</view>{{R}}</view>
+                    <view class="item data-v-286e3247">
+                        <view class="name data-v-286e3247">贵人位</view>{{S}}</view>
+                </view>
+                <view class="row row-3 data-v-286e3247">
+                    <view class="left-right data-v-286e3247">
+                        <view class="name data-v-286e3247">建 除 十 二 神</view>
+                        <view class="value data-v-286e3247">{{T}} 日</view>
+                    </view>
+                    <view class="center data-v-286e3247">
+                        <view class="top data-v-286e3247">
+                            <view class="item data-v-286e3247">
+                                <view class="name data-v-286e3247">吉神宜趋</view>
+                                <text class="data-v-286e3247" wx:for="{{U}}" wx:for-item="v" wx:key="b">{{v.a}}</text>
+                            </view>
+                            <view class="item data-v-286e3247">
+                                <view class="name data-v-286e3247">今日胎神</view>
+                                <view class=" data-v-286e3247">{{V}}</view>
+                                <view class=" data-v-286e3247">{{W}}</view>
+                            </view>
+                            <view class="item data-v-286e3247">
+                                <view class="name data-v-286e3247">凶神宜忌</view>
+                                <text class="data-v-286e3247" wx:for="{{X}}" wx:for-item="v" wx:key="b">{{v.a}}</text>
+                            </view>
+                        </view>
+                        <view class="bottom data-v-286e3247">
+                            <view class="name data-v-286e3247">彭祖百忌</view>
+                            <view class="value data-v-286e3247">{{Y}} {{Z}}</view>
+                        </view>
+                    </view>
+                    <view class="left-right data-v-286e3247">
+                        <view class="value data-v-286e3247">{{aa}} {{ab}} {{ac}} ·<text class="{{['data-v-286e3247',ae]}}" style="margin-top:5rpx">{{ad}}</text>
+                        </view>
+                        <view class="name data-v-286e3247">二 十 八 星 宿</view>
+                    </view>
+                </view>
+            </view>
+            <view class="hour-yi-ji section data-v-286e3247" wx:if="{{false}}">
+                <view class="head data-v-286e3247">
+                    <view class="title data-v-286e3247">时辰宜忌</view>
+                </view>
+                <view class="hour-list data-v-286e3247">
+                    <view catchtap="{{item.i}}" class="{{[item.h&&'active','hour-item','data-v-286e3247']}}" wx:for="{{af}}" wx:key="g">
+                        <view class="hour data-v-286e3247">{{item.a}}<text class="colon data-v-286e3247">:</text>00<text class="border data-v-286e3247"></text>{{item.b}}<text class="colon data-v-286e3247">:</text>59</view>
+                        <view class="jiazi data-v-286e3247">
+                            <text class="value data-v-286e3247">{{item.c}} {{item.d}}</text>
+                            <text class="{{['data-v-286e3247',item.f&&'state']}}">{{item.e}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class="yi-ji data-v-286e3247">
+                    <view class="item data-v-286e3247">
+                        <view class="icon data-v-286e3247">宜</view>
+                        <view class="info data-v-286e3247" wx:if="{{ag}}">
+                            <text class="data-v-286e3247" wx:for="{{ah}}" wx:for-item="val" wx:key="b">{{val.a}}</text>
+                        </view>
+                        <view class="info data-v-286e3247" wx:else>
+                            <text class="data-v-286e3247">无</text>
+                        </view>
+                    </view>
+                    <view class="item data-v-286e3247">
+                        <view class="icon data-v-286e3247">忌</view>
+                        <view class="info data-v-286e3247" wx:if="{{ai}}">
+                            <text class="data-v-286e3247" wx:for="{{aj}}" wx:for-item="val" wx:key="b">{{val.a}}</text>
+                        </view>
+                        <view class="info data-v-286e3247" wx:else>
+                            <text class="data-v-286e3247">无</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="data-v-286e3247" style="height:100rpx"></view>
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,88 @@
+scroll-view.data-v-3c8f05d4,swiper-item.data-v-3c8f05d4,view.data-v-3c8f05d4 {
+    align-content: flex-start;
+    align-items: stretch;
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.uv-subsection.data-v-3c8f05d4 {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.uv-subsection--button.data-v-3c8f05d4 {
+    align-items: stretch;
+    background-color: #eeeeef;
+    border-radius: 3px;
+    height: 32px;
+    padding: 3px;
+}
+
+.uv-subsection--button__bar.data-v-3c8f05d4 {
+    background-color: #fff;
+}
+
+.uv-subsection--subsection.data-v-3c8f05d4 {
+    height: 30px;
+}
+
+.uv-subsection__bar.data-v-3c8f05d4 {
+    position: absolute;
+    transition-duration: .3s;
+    transition-property: color,-webkit-transform;
+    transition-property: transform,color;
+    transition-property: transform,color,-webkit-transform;
+    transition-timing-function: ease-in-out;
+}
+
+.uv-subsection__bar--first.data-v-3c8f05d4 {
+    border-radius: 3px 0 0 3px/3px 0 0 3px;
+}
+
+.uv-subsection__bar--center.data-v-3c8f05d4 {
+    border-radius: 0/0;
+}
+
+.uv-subsection__bar--last.data-v-3c8f05d4 {
+    border-radius: 0 3px 3px 0/0 3px 3px 0;
+}
+
+.uv-subsection__item.data-v-3c8f05d4 {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    position: relative;
+}
+
+.uv-subsection__item--no-border-right.data-v-3c8f05d4 {
+    border-right-width: 0!important;
+}
+
+.uv-subsection__item--first.data-v-3c8f05d4 {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.uv-subsection__item--last.data-v-3c8f05d4 {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.uv-subsection__item__text.data-v-3c8f05d4 {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    line-height: 12px;
+    transition-duration: .3s;
+    transition-property: color;
+}

@@ -1,0 +1,5 @@
+<view bindtap="{{s}}" class="{{['uv-icon','data-v-553bbf60',t]}}">
+    <image class="uv-icon__img data-v-553bbf60" mode="{{c}}" src="{{b}}" style="{{d+';'+e}}" wx:if="{{a}}"></image>
+    <text class="{{['uv-icon__icon','data-v-553bbf60',g]}}" hoverClass="{{j}}" style="{{h+';'+i}}" wx:else>{{f}}</text>
+    <text class="uv-icon__label data-v-553bbf60" style="{{'color:'+m+';'+'font-size:'+n+';'+'margin-left:'+o+';'+'margin-top:'+p+';'+'margin-right:'+q+';'+'margin-bottom:'+r}}" wx:if="{{k}}">{{l}}</text>
+</view>

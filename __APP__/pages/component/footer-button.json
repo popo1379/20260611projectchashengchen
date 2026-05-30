@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "concat-modal": "./concat-modal"
+    }
+}

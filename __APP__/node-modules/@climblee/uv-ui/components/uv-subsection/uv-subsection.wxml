@@ -1,0 +1,6 @@
+<view class="{{['uv-subsection','data-v-3c8f05d4',g]}}" ref="uv-subsection" style="{{h+';'+i}}">
+    <view class="{{['uv-subsection__bar','data-v-3c8f05d4',b,c,d,e]}}" ref="uv-subsection__bar" style="{{a}}"></view>
+    <view bindtap="{{item.i}}" class="{{['uv-subsection__item','data-v-3c8f05d4',item.c,item.d,item.e,item.f]}}" ref="{{item.g}}" style="{{item.h}}" wx:for="{{f}}" wx:key="j">
+        <text class="uv-subsection__item__text data-v-3c8f05d4" style="{{item.b}}">{{item.a}}</text>
+    </view>
+</view>

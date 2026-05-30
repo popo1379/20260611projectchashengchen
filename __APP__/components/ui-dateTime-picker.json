@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+        "uv-subsection": "../node-modules/@climblee/uv-ui/components/uv-subsection/uv-subsection",
+        "uv-popup": "../node-modules/@climblee/uv-ui/components/uv-popup/uv-popup"
+    }
+}

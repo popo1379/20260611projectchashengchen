@@ -1,0 +1,110 @@
+.date-tabs.data-v-d45b5536 {
+    overflow: hidden;
+}
+
+.tabs-header.data-v-d45b5536 {
+    align-items: center;
+    display: flex;
+    font-size: 32rpx;
+    font-weight: 600;
+    justify-content: center;
+    padding: 20rpx 0 10rpx;
+    text-align: center;
+}
+
+.date-table-title.data-v-d45b5536 {
+    display: flex;
+    padding-top: 10rpx;
+    width: 100%;
+}
+
+.date-table-title .week-item.data-v-d45b5536 {
+    box-sizing: border-box;
+    color: #212121;
+    flex: 1;
+    font-size: 28rpx;
+    font-size: 34rpx;
+    font-weight: 700;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0rpx 0 5rpx;
+    text-align: center;
+}
+
+.week-item-active.data-v-d45b5536 {
+    color: #f3d49b!important;
+}
+
+.date-tabs-main.data-v-d45b5536 {
+    position: relative;
+}
+
+.date-tabs-week.data-v-d45b5536 {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+}
+
+.date-tabs-week-swiper.data-v-d45b5536 {
+    height: 110rpx;
+}
+
+.date-tabs-month.data-v-d45b5536 {
+    height: 669rpx;
+}
+
+.date-tabs-month-swiper.data-v-d45b5536 {
+    height: 100%;
+}
+
+.date-tabs-week-show.data-v-d45b5536 {
+    height: 110rpx;
+}
+
+.date-tabs-day-list.data-v-d45b5536 {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.date-tabs-day-list .day-item.data-v-d45b5536 {
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 16rpx;
+    box-sizing: border-box;
+    color: #333;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-size: 30rpx;
+    font-weight: 400;
+    height: 108rpx;
+    justify-content: center;
+    min-width: 13%;
+    position: relative;
+    text-align: center;
+}
+
+.date-tabs-day-list .day-item .day.data-v-d45b5536 {
+    border-radius: 10rpx;
+    font-size: 36rpx;
+    font-weight: 700;
+    height: 50rpx;
+    line-height: 50rpx;
+    text-align: center;
+    width: 50rpx;
+}
+
+.date-tabs-day-list .day-item .tag.data-v-d45b5536 {
+    border-radius: 5rpx;
+    font-size: 22rpx;
+}
+
+.date-tabs-day-list .day-item .mark.data-v-d45b5536 {
+    font-size: 20rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 10rpx;
+}

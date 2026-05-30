@@ -1,0 +1,25 @@
+<view class="uv-navbar data-v-44b38cd3">
+    <view class="uv-navbar__placeholder data-v-44b38cd3" style="{{'height:'+b}}" wx:if="{{a}}"></view>
+    <view class="{{['data-v-44b38cd3',A]}}">
+        <image class="uv-navbar--bgimg data-v-44b38cd3" mode="{{e}}" src="{{d}}" style="{{f}}" wx:if="{{c}}"></image>
+        <uv-status-bar bind:__l="__l" class="data-v-44b38cd3" uI="44b38cd3-0" uP="{{h}}" wx:if="{{g}}"></uv-status-bar>
+        <view class="{{['uv-navbar__content','data-v-44b38cd3',x]}}" style="{{y+';'+z}}">
+            <view bindtap="{{n}}" class="uv-navbar__content__left data-v-44b38cd3" hoverClass="uv-navbar__content__left--hover" hoverStartTime="150">
+                <slot name="left" wx:if="{{$slots.left}}"></slot>
+                <block wx:else>
+                    <uv-icon bind:__l="__l" class="data-v-44b38cd3" uI="44b38cd3-1" uP="{{j}}" wx:if="{{i}}"></uv-icon>
+                    <text class="uv-navbar__content__left__text data-v-44b38cd3" style="{{'color:'+m}}" wx:if="{{k}}">{{l}}</text>
+                </block>
+            </view>
+            <slot name="center" wx:if="{{$slots.center}}"></slot>
+            <text class="uv-line-1 uv-navbar__content__title data-v-44b38cd3" style="{{p+';'+q}}" wx:else>{{o}}</text>
+            <view bindtap="{{w}}" class="uv-navbar__content__right data-v-44b38cd3">
+                <slot name="right" wx:if="{{$slots.right}}"></slot>
+                <block wx:else>
+                    <uv-icon bind:__l="__l" class="data-v-44b38cd3" uI="44b38cd3-2" uP="{{s}}" wx:if="{{r}}"></uv-icon>
+                    <text class="uv-navbar__content__right__text data-v-44b38cd3" wx:if="{{t}}">{{v}}</text>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>

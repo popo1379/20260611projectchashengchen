@@ -1,0 +1,9 @@
+{
+    "disableScroll": true,
+    "navigationBarTitleText": "老黄历",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "uv-navbar": "../../node-modules/@climblee/uv-ui/components/uv-navbar/uv-navbar",
+        "date-tabs": "../../components/date-tabs"
+    }
+}

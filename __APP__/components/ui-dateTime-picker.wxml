@@ -1,0 +1,33 @@
+<view class=" data-v-c8f83219">
+    <uv-popup bind:__l="__l" bindchange="{{t}}" class="r data-v-c8f83219" uI="c8f83219-0" uP="{{v}}" uR="refPopup" uS="{{['d']}}" wx:if="{{v}}">
+        <view class="picker-select data-v-c8f83219">
+            <view class="title data-v-c8f83219">{{a}}</view>
+            <view class="tabs data-v-c8f83219">
+                <uv-subsection bind:__l="__l" bindchange="{{c}}" class="data-v-c8f83219" uI="c8f83219-1,c8f83219-0" uP="{{d}}" wx:if="{{b}}"></uv-subsection>
+            </view>
+            <view class="picker data-v-c8f83219">
+                <picker-view bindchange="{{q}}" class="picker-view data-v-c8f83219" immediateChange="{{true}}" indicatorClass="indicator" maskClass="mask" value="{{p}}" wx:if="{{e}}">
+                    <picker-view-column class="data-v-c8f83219" wx:if="{{f}}">
+                        <view class="picker-view-item data-v-c8f83219" wx:for="{{g}}" wx:key="b">{{item.a}}</view>
+                    </picker-view-column>
+                    <picker-view-column class="data-v-c8f83219" wx:if="{{h}}">
+                        <view class="picker-view-item data-v-c8f83219" wx:for="{{i}}" wx:key="b">{{item.a}}</view>
+                    </picker-view-column>
+                    <picker-view-column class="data-v-c8f83219" wx:if="{{j}}">
+                        <view class="picker-view-item data-v-c8f83219" wx:for="{{k}}" wx:key="b">{{item.a}}</view>
+                    </picker-view-column>
+                    <picker-view-column class="data-v-c8f83219" wx:if="{{l}}">
+                        <view class="picker-view-item data-v-c8f83219" wx:for="{{m}}" wx:key="b">{{item.a}}</view>
+                    </picker-view-column>
+                    <picker-view-column class="data-v-c8f83219" wx:if="{{n}}">
+                        <view class="picker-view-item data-v-c8f83219" wx:for="{{o}}" wx:key="b">{{item.a}}</view>
+                    </picker-view-column>
+                </picker-view>
+                <view class="checked-row data-v-c8f83219"></view>
+            </view>
+            <view class="button data-v-c8f83219">
+                <view bindtap="{{r}}" class="btn data-v-c8f83219" hoverClass="ui-click-hover" hoverStayTime="50">确认</view>
+            </view>
+        </view>
+    </uv-popup>
+</view>

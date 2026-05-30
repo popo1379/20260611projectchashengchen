@@ -1,0 +1,23 @@
+<view class="page data-v-47582f5c">
+    <uv-navbar bind:__l="__l" class="data-v-47582f5c" uI="47582f5c-0" uP="{{b}}" uS="{{['left']}}" wx:if="{{b}}">
+        <view class="uv-nav-slot data-v-47582f5c" slot="left">{{a}}</view>
+    </uv-navbar>
+    <view class="data-v-47582f5c" style="height:10rpx"></view>
+    <view class="main data-v-47582f5c">
+        <scroll-view class="data-v-47582f5c" scrollY="{{true}}" style="height:100%">
+            <view class="data-v-47582f5c" style="height:1rpx"></view>
+            <view class="title data-v-47582f5c">{{c}}</view>
+            <view bindtap="{{e}}" class="data-v-47582f5c">
+                <input disabled class="data-v-47582f5c" placeholder="请选择出生日期时辰" placeholderClass="placeholder" style="pointer-events:none" value="{{d}}"></input>
+            </view>
+            <view bindtap="{{g}}" class="button data-v-47582f5c" hoverClass="ui-click-hover" hoverStayTime="50">{{f}}</view>
+            <view class="data-v-47582f5c" wx:if="{{h}}">
+                <view class="title data-v-47582f5c"></view>
+                <find-result bind:__l="__l" class="data-v-47582f5c" uI="47582f5c-1" uP="{{i}}" wx:if="{{i}}"></find-result>
+            </view>
+        </scroll-view>
+    </view>
+    <ui-date-time-picker bind:__l="__l" bindselect="{{k}}" class="r data-v-47582f5c" uI="47582f5c-2" uP="{{l}}" uR="refSelectBirthday" wx:if="{{l}}"></ui-date-time-picker>
+    <view class="share-btn data-v-47582f5c" wx:if="{{m}}">一键分享<button class="data-v-47582f5c" openType="share"></button>
+    </view>
+</view>

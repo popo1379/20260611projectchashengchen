@@ -1,0 +1,32 @@
+# 微信小程序编译产物
+__APP__/@babel
+__APP__/common/vendor.js
+__APP__/node_modules
+__APP__/static/images/attr
+__APP__/static/images/icons
+__APP__/static/images/tabbar
+
+# Web 应用构建产物
+web-app/dist
+web-app/node_modules
+web-app/package-lock.json
+
+# 测试文件
+web-app/test-*.cjs
+web-app/test-*.mjs
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.log
+
+# 开发工具
+.vscode
+.idea
+
+# 微信开发者工具
+.wechatide
+
+# 临时文件
+*.tmp
+*.bak

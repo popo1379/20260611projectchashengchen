@@ -1,0 +1,9 @@
+<view class="data-v-7bb1f820">
+    <view class="footer data-v-7bb1f820" wx:if="{{a}}">
+        <view class="inner-footer data-v-7bb1f820">
+            <view bindtap="{{c}}" class="button data-v-7bb1f820">{{b}}</view>
+        </view>
+        <view class="{{['data-v-7bb1f820',d]}}"></view>
+    </view>
+    <concat-modal bind:__l="__l" class="r data-v-7bb1f820" uI="7bb1f820-0" uR="refConcatModal"></concat-modal>
+</view>

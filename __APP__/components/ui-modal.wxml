@@ -1,0 +1,5 @@
+<uv-popup bind:__l="__l" bindchange="{{b}}" class="r data-v-ba0f4990" uI="ba0f4990-0" uP="{{c}}" uR="refPopup" uS="{{['d']}}" wx:if="{{c}}">
+    <view class="popup-main data-v-ba0f4990">
+        <slot></slot>
+    </view>
+</uv-popup>

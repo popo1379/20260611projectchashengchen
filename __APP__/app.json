@@ -1,0 +1,39 @@
+{
+    "pages": [
+        "pages/tabbar/bazi",
+        "pages/tabbar/calendar",
+        "pages/tabbar/almanac"
+    ],
+    "window": {
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "查询",
+        "navigationBarBackgroundColor": "#F8F8F8",
+        "backgroundColor": "#F8F8F8"
+    },
+    "tabBar": {
+        "color": "#cdcdcd",
+        "selectedColor": "#f7c261",
+        "borderStyle": "white",
+        "backgroundColor": "#ffffff",
+        "list": [
+            {
+                "pagePath": "pages/tabbar/bazi",
+                "text": "查干支",
+                "iconPath": "static/images/tabbar/bazi.png",
+                "selectedIconPath": "static/images/tabbar/bazi-active.png"
+            },
+            {
+                "pagePath": "pages/tabbar/calendar",
+                "text": "万年历",
+                "iconPath": "static/images/tabbar/calendar.png",
+                "selectedIconPath": "static/images/tabbar/calendar-active.png"
+            },
+            {
+                "pagePath": "pages/tabbar/almanac",
+                "text": "老黄历",
+                "iconPath": "static/images/tabbar/almanac.png",
+                "selectedIconPath": "static/images/tabbar/almanac-active.png"
+            }
+        ]
+    }
+}

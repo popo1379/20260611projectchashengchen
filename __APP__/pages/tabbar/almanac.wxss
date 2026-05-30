@@ -1,0 +1,324 @@
+.page.data-v-286e3247 {
+    background-color: #f8f7f4;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page .nav-bar.data-v-286e3247 {
+    font-weight: 600;
+}
+
+.section.data-v-286e3247 {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx 10rpx;
+}
+
+.calendar.data-v-286e3247 {
+    background-color: #fff;
+    margin-bottom: 0;
+    padding: 0 20rpx 20rpx;
+    position: relative;
+    z-index: 2;
+}
+
+.main.data-v-286e3247 {
+    flex: 1;
+    overflow: hidden;
+}
+
+.header.data-v-286e3247 {
+    background-color: #fff;
+    padding: 20rpx 0;
+    text-align: center;
+}
+
+.header .row-1.data-v-286e3247 {
+    color: #f3d49b;
+    font-size: 64rpx;
+    font-weight: 550;
+    line-height: 64rpx;
+    margin: 8rpx 0;
+    white-space: nowrap;
+}
+
+.header .row-2.data-v-286e3247 {
+    margin-top: 20rpx;
+}
+
+.yi-ji.data-v-286e3247 {
+    padding: 20rpx 30rpx;
+}
+
+.yi-ji .item.data-v-286e3247 {
+    align-items: center;
+    display: flex;
+    font-size: 28rpx;
+    padding: 30rpx 0;
+}
+
+.yi-ji .item:nth-child(1) .icon.data-v-286e3247 {
+    border: 1px solid #bf242a;
+    color: #bf242a;
+}
+
+.yi-ji .item:nth-child(2) .icon.data-v-286e3247 {
+    border: 1px solid #ff8017;
+    color: #ff8017;
+}
+
+.yi-ji .item .icon.data-v-286e3247 {
+    border-radius: 10rpx;
+    flex: none;
+    font-size: 34rpx;
+    font-weight: 800;
+    height: 64rpx;
+    line-height: 64rpx;
+    text-align: center;
+    width: 64rpx;
+}
+
+.yi-ji .item .info.data-v-286e3247 {
+    margin-left: 24rpx;
+}
+
+.yi-ji .item .info text.data-v-286e3247 {
+    margin-right: 10rpx;
+}
+
+.si-zhu.data-v-286e3247 {
+    display: flex;
+    padding: 30rpx;
+}
+
+.si-zhu .item.data-v-286e3247 {
+    flex: 1;
+    text-align: center;
+}
+
+.si-zhu .item .name.data-v-286e3247 {
+    color: #a3a3a3;
+    font-size: 28rpx;
+}
+
+.si-zhu .item .value.data-v-286e3247 {
+    display: flex;
+    margin-top: 16rpx;
+}
+
+.si-zhu .item .value text.data-v-286e3247 {
+    border: 1px solid #f0f0f0;
+    font-size: 30rpx;
+    font-weight: 400;
+    height: 64rpx;
+    line-height: 64rpx;
+    margin-left: -1px;
+    position: relative;
+    right: -2rpx;
+    text-align: center;
+    width: 64rpx;
+}
+
+.ri-pan.data-v-286e3247 {
+    padding: 30rpx;
+}
+
+.ri-pan .row.data-v-286e3247 {
+    display: flex;
+    font-size: 26rpx;
+    text-align: center;
+}
+
+.ri-pan .row .name.data-v-286e3247 {
+    color: #bf242a;
+}
+
+.ri-pan .row .name-mr.data-v-286e3247 {
+    margin-right: 5rpx;
+}
+
+.ri-pan .row-1 .item.data-v-286e3247 {
+    border: 1px solid #f0f0f0;
+    flex: 1;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin-left: -1px;
+}
+
+.ri-pan .row-1 .item.data-v-286e3247:nth-child(1) {
+    margin-left: 0rpx;
+}
+
+.ri-pan .row-2 .item.data-v-286e3247 {
+    border: 1px solid #f0f0f0;
+    box-sizing: border-box;
+    flex: 1;
+    height: 120rpx;
+    line-height: 40rpx;
+    margin-left: -1px;
+    margin-top: -1px;
+    padding: 23rpx 0 20rpx;
+}
+
+.ri-pan .row-2 .item.data-v-286e3247:nth-child(1) {
+    margin-left: 0rpx;
+}
+
+.ri-pan .row-3.data-v-286e3247 {
+    display: flex;
+    margin-top: -1px;
+}
+
+.ri-pan .row-3 .left-right.data-v-286e3247 {
+    align-items: center;
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex: none;
+    justify-content: center;
+    padding: 0 10rpx;
+}
+
+.ri-pan .row-3 .left-right .name.data-v-286e3247,.ri-pan .row-3 .left-right .value.data-v-286e3247 {
+    writing-mode: vertical-rl;
+}
+
+.ri-pan .row-3 .center .top.data-v-286e3247 {
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+}
+
+.ri-pan .row-3 .center .top .item.data-v-286e3247 {
+    flex: 1;
+    padding: 20rpx 0rpx;
+}
+
+.ri-pan .row-3 .center .top .item.data-v-286e3247:nth-child(2) {
+    border-left: 1px solid #f0f0f0;
+    border-right: 1px solid #f0f0f0;
+}
+
+.ri-pan .row-3 .center .top .item text.data-v-286e3247 {
+    margin: 0 5rpx;
+}
+
+.ri-pan .row-3 .center .bottom.data-v-286e3247 {
+    border-bottom: 1px solid #f0f0f0;
+    padding: 30rpx 10rpx;
+}
+
+.ri-pan .row-3 .center .bottom .name.data-v-286e3247 {
+    margin-bottom: 5rpx;
+}
+
+.hour-yi-ji.data-v-286e3247 {
+    padding: 30rpx 20rpx 10rpx;
+}
+
+.hour-yi-ji .head.data-v-286e3247 {
+    display: flex;
+    justify-content: center;
+}
+
+.hour-yi-ji .title.data-v-286e3247 {
+    color: #bf242a;
+    font-size: 30rpx;
+    font-weight: 700;
+    line-height: 64rpx;
+    text-align: center;
+}
+
+.hour-yi-ji .hour-list.data-v-286e3247 {
+    color: #212121;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30rpx;
+}
+
+.hour-yi-ji .hour-list .hour-item.data-v-286e3247 {
+    border: 1px solid #f0f0f0;
+    border-radius: 10rpx;
+    font-size: 26rpx;
+    padding: 20rpx 0;
+    transition: all .2s;
+    width: 48rpx;
+}
+
+.hour-yi-ji .hour-list .hour-item .hour.data-v-286e3247 {
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20rpx;
+}
+
+.hour-yi-ji .hour-list .hour-item .hour .colon.data-v-286e3247 {
+    left: 2rpx;
+    padding: 5rpx 0;
+    position: relative;
+    writing-mode: vertical-rl;
+}
+
+.hour-yi-ji .hour-list .hour-item .hour .border.data-v-286e3247 {
+    background-color: #212121;
+    height: 30rpx;
+    margin: 10rpx 0;
+    width: 1px;
+}
+
+.hour-yi-ji .hour-list .hour-item .jiazi.data-v-286e3247 {
+    line-height: 48rpx;
+    padding-top: 20rpx;
+    text-align: center;
+    width: 100%;
+    writing-mode: vertical-rl;
+}
+
+.hour-yi-ji .hour-list .hour-item .jiazi .value.data-v-286e3247 {
+    margin-bottom: 10rpx;
+}
+
+.hour-yi-ji .hour-list .hour-item .jiazi .state.data-v-286e3247 {
+    color: #bf242a;
+}
+
+.hour-yi-ji .hour-list .active.data-v-286e3247 {
+    border-color: #bf242a;
+}
+
+.hour-yi-ji .hour-list .active .hour.data-v-286e3247 {
+    border-bottom: 1px solid #bf242a;
+    color: #bf242a;
+}
+
+.hour-yi-ji .hour-list .active .hour .border.data-v-286e3247 {
+    background-color: #bf242a;
+}
+
+.hour-yi-ji .hour-list .active .value.data-v-286e3247 {
+    color: #bf242a;
+}
+
+.hour-yi-ji .yi-ji.data-v-286e3247 {
+    padding: 20rpx 10rpx 0;
+}
+
+.ui-jin.data-v-286e3247 {
+    color: #ffcd05!important;
+}
+
+.ui-mu.data-v-286e3247 {
+    color: #10c757!important;
+}
+
+.ui-shui.data-v-286e3247 {
+    color: #73d4fd!important;
+}
+
+.ui-huo.data-v-286e3247 {
+    color: #bf242a!important;
+}
+
+.ui-tu.data-v-286e3247 {
+    color: #be6200!important;
+}

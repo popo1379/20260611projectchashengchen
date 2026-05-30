@@ -1,0 +1,50 @@
+.result-box.data-v-13c364a5 {
+    padding: 0 20rpx;
+}
+
+.row.data-v-13c364a5 {
+    color: #5a6066;
+    display: flex;
+    justify-content: space-between;
+    padding: 15rpx 20rpx 20rpx;
+}
+
+.row.data-v-13c364a5:nth-child(odd) {
+    background-color: #f7f7f7;
+}
+
+.row .label.data-v-13c364a5 {
+    width: 150rpx;
+}
+
+.row .values.data-v-13c364a5 {
+    text-align: right;
+}
+
+.row .bazi text.data-v-13c364a5:nth-child(odd) {
+    margin-left: 20rpx;
+}
+
+.mr-20.data-v-13c364a5 {
+    margin-right: 80rpx;
+}
+
+.wuxing-color .ui-jin.data-v-13c364a5 {
+    color: #ffcd05!important;
+}
+
+.wuxing-color .ui-mu.data-v-13c364a5 {
+    color: #10c757!important;
+}
+
+.wuxing-color .ui-shui.data-v-13c364a5 {
+    color: #73d4fd!important;
+}
+
+.wuxing-color .ui-huo.data-v-13c364a5 {
+    color: #bf242a!important;
+}
+
+.wuxing-color .ui-tu.data-v-13c364a5 {
+    color: #be6200!important;
+}

@@ -1,0 +1,82 @@
+.picker-select.data-v-c8f83219 {
+    background-color: #fff;
+    border-radius: 30rpx 30rpx 0 0;
+    display: flex;
+    flex-direction: column;
+    height: 909rpx;
+}
+
+.title.data-v-c8f83219 {
+    color: #191919;
+    font-size: 34rpx;
+    font-weight: 700;
+    height: 50rpx;
+    line-height: 50rpx;
+    padding: 26rpx 44rpx;
+    text-align: center;
+}
+
+.tabs.data-v-c8f83219 {
+    margin: auto;
+    padding-bottom: 40rpx;
+    width: 400rpx;
+}
+
+.picker.data-v-c8f83219 {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.picker .picker-view.data-v-c8f83219 {
+    height: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.picker .checked-row.data-v-c8f83219 {
+    background: #f7f7f7;
+    border-radius: 19rpx;
+    height: 50px;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 96%;
+    z-index: 1;
+}
+
+.picker.data-v-c8f83219 .picker-view-item {
+    font-size: 28rpx;
+    height: 50px;
+    line-height: 100rpx;
+    text-align: center;
+}
+
+.picker.data-v-c8f83219 .indicator {
+    height: 50px;
+}
+
+.picker.data-v-c8f83219 .indicator:after,.picker.data-v-c8f83219 .indicator:before {
+    display: none;
+}
+
+.button.data-v-c8f83219 {
+    background: #fff;
+    box-sizing: border-box;
+    height: 154rpx;
+    padding-top: 1rpx;
+}
+
+.button .btn.data-v-c8f83219 {
+    background: #0e0f08;
+    border-radius: 60rpx;
+    color: #f3d49b;
+    font-size: 32rpx;
+    font-weight: 700;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: 29rpx auto 0;
+    text-align: center;
+    width: 618rpx;
+}

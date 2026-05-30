@@ -1,0 +1,13 @@
+<view class="data-v-45bc23f3">
+    <ui-modal bind:__l="__l" class="r data-v-45bc23f3" uI="45bc23f3-0" uR="refModal" uS="{{['d']}}">
+        <view class="concat data-v-45bc23f3">
+            <view class="title data-v-45bc23f3">{{a}}</view>
+            <view class="text data-v-45bc23f3">
+                <text class="data-v-45bc23f3">长按识别二维码</text>可{{b}}</view>
+            <view class="qrcode data-v-45bc23f3">
+                <image class="data-v-45bc23f3" mode="" showMenuByLongpress="{{true}}" src="{{c}}"></image>
+            </view>
+            <view bindtap="{{d}}" class="button data-v-45bc23f3">知道啦</view>
+        </view>
+    </ui-modal>
+</view>

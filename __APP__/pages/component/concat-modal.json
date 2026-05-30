@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "ui-modal": "../../components/ui-modal"
+    }
+}

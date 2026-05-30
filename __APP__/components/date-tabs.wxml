@@ -1,0 +1,18 @@
+<view class="date-tabs data-v-d45b5536">
+    <view class="date-table-title data-v-d45b5536">
+        <text class="{{['week-item','data-v-d45b5536',item.b&&'week-item-active']}}" wx:for="{{a}}" wx:key="c">{{item.a}}</text>
+    </view>
+    <view class="date-tabs-main data-v-d45b5536">
+        <view class="{{[e&&'date-tabs-week-show','date-tabs-month','data-v-d45b5536']}}">
+            <swiper bindchange="{{c}}" circular="{{true}}" class="date-tabs-month-swiper data-v-d45b5536" current="{{d}}" duration="{{200}}">
+                <swiper-item class="date-tabs-day-list data-v-d45b5536" wx:for="{{b}}" wx:key="b">
+                    <view bindtap="{{value.h}}" class="day-item data-v-d45b5536" style="{{value.j+';'+value.k}}" wx:for="{{item.a}}" wx:for-item="value" wx:key="i">
+                        <view class="day data-v-d45b5536">{{value.a}}</view>
+                        <view class="tag data-v-d45b5536" style="{{value.d}}" wx:if="{{value.b}}">{{value.c}}</view>
+                        <view class="mark data-v-d45b5536" style="{{value.g}}" wx:if="{{value.e}}">{{value.f}}</view>
+                    </view>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>

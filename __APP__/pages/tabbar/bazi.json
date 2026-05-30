@@ -1,0 +1,10 @@
+{
+    "disableScroll": true,
+    "navigationBarTitleText": "查询",
+    "navigationStyle": "custom",
+    "usingComponents": {
+        "uv-navbar": "../../node-modules/@climblee/uv-ui/components/uv-navbar/uv-navbar",
+        "ui-date-time-picker": "../../components/ui-dateTime-picker",
+        "find-result": "../component/find-result"
+    }
+}

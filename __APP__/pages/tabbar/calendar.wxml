@@ -1,0 +1,25 @@
+<view class="page data-v-aea32c90">
+    <uv-navbar bind:__l="__l" class="data-v-aea32c90" uI="aea32c90-0" uP="{{a}}" uS="{{['center']}}" wx:if="{{a}}">
+        <text class="nav-bar data-v-aea32c90" slot="center">中华万年历</text>
+    </uv-navbar>
+    <view class="main data-v-aea32c90">
+        <scroll-view class="data-v-aea32c90" scrollY="{{true}}" style="height:100%">
+            <view class="header data-v-aea32c90">
+                <view class="row-1 data-v-aea32c90">{{b}}年{{c}}月{{d}}日 · {{e}}</view>
+                <view class="row-3 data-v-aea32c90">{{f}} · {{g}} · {{h}} · {{i}}{{j}} · {{k}}</view>
+            </view>
+            <view class="calendar data-v-aea32c90">
+                <view bindtap="{{m}}" class="today data-v-aea32c90" wx:if="{{l}}">回到今天</view>
+                <date-tabs bind:__l="__l" bindselect="{{n}}" class="data-v-aea32c90" uI="aea32c90-1" uP="{{o}}" wx:if="{{o}}"></date-tabs>
+            </view>
+            <view class="festival data-v-aea32c90">
+                <view class="item data-v-aea32c90" wx:for="{{p}}" wx:key="e">
+                    <view class="left data-v-aea32c90">{{item.a}}<text class="data-v-aea32c90">· {{item.b}}月{{item.c}}</text>
+                    </view>
+                    <view class="right data-v-aea32c90">距离<text class="data-v-aea32c90">{{item.d}}</text>天</view>
+                </view>
+            </view>
+            <view class="data-v-aea32c90" style="height:100rpx"></view>
+        </scroll-view>
+    </view>
+</view>

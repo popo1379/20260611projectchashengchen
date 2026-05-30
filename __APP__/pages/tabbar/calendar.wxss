@@ -1,0 +1,102 @@
+.page.data-v-aea32c90 {
+    background-color: #f8f7f4;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.page .nav-bar.data-v-aea32c90 {
+    font-weight: 600;
+}
+
+.main.data-v-aea32c90 {
+    flex: 1;
+    overflow: hidden;
+}
+
+.header.data-v-aea32c90 {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx;
+    padding: 25rpx 20rpx;
+    text-align: center;
+}
+
+.header .row-1.data-v-aea32c90 {
+    color: #242122;
+    font-size: 50rpx;
+    font-weight: 550;
+    line-height: 64rpx;
+    margin: 8rpx 0;
+    white-space: nowrap;
+}
+
+.header .row-1 text.data-v-aea32c90 {
+    margin-right: 8rpx;
+}
+
+.header .row-1.data-v-aea32c90 {
+    margin-top: 20rpx;
+}
+
+.calendar.data-v-aea32c90 {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx;
+    padding: 10rpx 20rpx;
+    position: relative;
+    z-index: 2;
+}
+
+.calendar .today.data-v-aea32c90 {
+    background-color: #fff;
+    border-radius: 10rpx;
+    color: #0e0f08;
+    font-size: 24rpx;
+    padding: 5rpx;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    transform: translateY(-30%);
+    width: 120rpx;
+}
+
+.festival.data-v-aea32c90 {
+    background-color: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx;
+    padding: 20rpx 30rpx 30rpx;
+}
+
+.festival .title.data-v-aea32c90 {
+    padding-bottom: 10rpx;
+    text-align: center;
+}
+
+.festival .title text.data-v-aea32c90 {
+    font-weight: 600;
+}
+
+.festival .item.data-v-aea32c90 {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 25rpx 20rpx 25rpx 0;
+}
+
+.festival .item .left .icon.data-v-aea32c90 {
+    height: 20rpx;
+    margin-right: 10rpx;
+    width: 20rpx;
+}
+
+.festival .item .left text.data-v-aea32c90 {
+    color: #999;
+}
+
+.festival .item .right text.data-v-aea32c90 {
+    color: #f3d49b;
+    font-weight: 600;
+    margin: 0 8rpx;
+}

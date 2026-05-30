@@ -1,0 +1,3 @@
+<view animation="{{b}}" bindtap="{{e}}" class="{{c}}" ref="ani" style="{{d}}" wx:if="{{a}}">
+    <slot></slot>
+</view>
