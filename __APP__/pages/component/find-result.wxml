@@ -21,15 +21,104 @@
                 <text class="{{[v,'col','data-v-13c364a5']}}">{{t}}</text>
             </view>
         </view>
+        
+        <!-- 五行属什么 -->
         <view class="row data-v-13c364a5" wx:if="{{w}}">
             <text class="label data-v-13c364a5" style="width:220rpx">五行属什么</text>
             <view class="values data-v-13c364a5">
                 <text class="{{['data-v-13c364a5',y]}}">{{x}}</text>
             </view>
         </view>
+        
+        <!-- 五行缺什么 -->
         <view class="row data-v-13c364a5" wx:if="{{z}}">
             <text class="label data-v-13c364a5" style="width:220rpx">五行缺什么</text>
             <view class="values data-v-13c364a5">{{A}}</view>
+        </view>
+        
+        <!-- 纳音五行 -->
+        <view class="section-title data-v-13c364a5" wx:if="{{C}}">纳音五行</view>
+        <view class="nayin-grid data-v-13c364a5" wx:if="{{C}}">
+            <view class="nayin-item data-v-13c364a5">
+                <text class="data-v-13c364a5">年柱</text>
+                <text class="data-v-13c364a5 nayin-value">{{D}}</text>
+            </view>
+            <view class="nayin-item data-v-13c364a5">
+                <text class="data-v-13c364a5">月柱</text>
+                <text class="data-v-13c364a5 nayin-value">{{E}}</text>
+            </view>
+            <view class="nayin-item data-v-13c364a5">
+                <text class="data-v-13c364a5">日柱</text>
+                <text class="data-v-13c364a5 nayin-value">{{F}}</text>
+            </view>
+            <view class="nayin-item data-v-13c364a5">
+                <text class="data-v-13c364a5">时柱</text>
+                <text class="data-v-13c364a5 nayin-value">{{G}}</text>
+            </view>
+        </view>
+        
+        <!-- 十神分析 -->
+        <view class="section-title data-v-13c364a5" wx:if="{{H}}">十神分析</view>
+        <view class="tenstar-grid data-v-13c364a5" wx:if="{{H}}">
+            <view class="tenstar-item data-v-13c364a5">
+                <text class="data-v-13c364a5">年干</text>
+                <text class="data-v-13c364a5 tenstar-value">{{I}}</text>
+            </view>
+            <view class="tenstar-item data-v-13c364a5">
+                <text class="data-v-13c364a5">月干</text>
+                <text class="data-v-13c364a5 tenstar-value">{{J}}</text>
+            </view>
+            <view class="tenstar-item data-v-13c364a5">
+                <text class="data-v-13c364a5">日干</text>
+                <text class="data-v-13c364a5 tenstar-value">{{K}}</text>
+            </view>
+            <view class="tenstar-item data-v-13c364a5">
+                <text class="data-v-13c364a5">时干</text>
+                <text class="data-v-13c364a5 tenstar-value">{{L}}</text>
+            </view>
+        </view>
+        
+        <!-- 喜用神分析 -->
+        <view class="section-title data-v-13c364a5" wx:if="{{M}}">喜用神分析</view>
+        <view class="xiyong-box data-v-13c364a5" wx:if="{{M}}">
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">身强身弱</text>
+                <text class="data-v-13c364a5 value">{{N}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">喜用神</text>
+                <view class="data-v-13c364a5">
+                    <text class="data-v-13c364a5 xi-color">喜{{O}}</text>
+                    <text class="data-v-13c364a5 yong-color">用{{P}}</text>
+                </view>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">最强五行</text>
+                <text class="data-v-13c364a5 value">{{Q}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">最弱五行</text>
+                <text class="data-v-13c364a5 value">{{U}}</text>
+            </view>
+        </view>
+        
+        <!-- 大运走势 -->
+        <view class="section-title data-v-13c364a5" wx:if="{{V}}">大运走势</view>
+        <view class="dayun-box data-v-13c364a5" wx:if="{{V}}">
+            <view class="dayun-start data-v-13c364a5" wx:if="{{W}}">起运: {{W}}岁</view>
+            <view class="dayun-scroll data-v-13c364a5" wx:if="{{Y.length > 0}}">
+                <scroll-view scroll-x="true" style="white-space:nowrap;">
+                    <view class="dayun-list data-v-13c364a5">
+                        <block wx:for="{{Y}}" wx:key="index">
+                            <view class="dayun-item data-v-13c364a5">
+                                <text class="data-v-13c364a5 dayun-age">{{item.a}}岁</text>
+                                <text class="data-v-13c364a5 dayun-ganzhi">{{item.b}}</text>
+                                <text class="data-v-13c364a5 dayun-year">{{item.c}}年</text>
+                            </view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </view>
         </view>
     </view>
     <footer-button bind:__l="__l" class="data-v-13c364a5" uI="13c364a5-0"></footer-button>

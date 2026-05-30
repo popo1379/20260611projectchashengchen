@@ -4,13 +4,13 @@ var a = require("../../@babel/runtime/helpers/toConsumableArray"), n = require("
 
 require("../../config/router/index.js");
 
-var r = require("../../lunar/index.js"), t = require("../../pinia/system.js");
+var r = require("../../lunar/index.js"), t = require("../../pinia/system.js"), o = require("../../lunar/data.js");
 
 Math || i();
 
 var i = function() {
     return "./footer-button.js";
-}, o = {
+}, u = {
     __name: "find-result",
     props: {
         birthday: {
@@ -21,9 +21,9 @@ var i = function() {
         }
     },
     setup: function(i) {
-        var o = t.useSystemStore();
-        o.getSystemConfig();
-        var u = i, h = e.reactive({
+        var u = t.useSystemStore();
+        u.getSystemConfig();
+        var h = i, f = e.reactive({
             lunarBirthday: {
                 year: "",
                 month: "",
@@ -40,7 +40,7 @@ var i = function() {
             zodiac: "",
             constellation: "",
             arrowDownOpen: !1
-        }), y = e.reactive({
+        }), d = e.reactive({
             year: {},
             month: {},
             day: {},
@@ -51,68 +51,88 @@ var i = function() {
             detalBreath: {},
             xiyongWuxing: {},
             wuxingRatio: [],
-            wuxingRemark: ""
-        }), m = e.ref({}), c = function() {
-            var e = u.birthday.split("-"), t = n(e, 4), i = t[0], o = t[1], c = t[2], d = t[3], l = "未知" == (d = d && decodeURI(d)) ? 12 : d || 12;
-            if (u.birthday || (i = 2006, o = "06", c = "06", d = 12, u.calendar = 0), 1 == u.calendar) {
-                h.solarBirthday = {
+            wuxingRemark: "",
+            tenStars: {},
+            naYin: {},
+            riZhuInfo: {},
+            dayun: {}
+        }), y = e.ref({}), s = function() {
+            var e = h.birthday.split("-"), t = n(e, 4), i = t[0], s = t[1], u = t[2], c = t[3], l = "未知" == (c = c && decodeURI(c)) ? 12 : c || 12;
+            if (h.birthday || (i = 2006, s = "06", u = "06", c = 12, h.calendar = 0), 1 == h.calendar) {
+                f.solarBirthday = {
                     year: i,
-                    month: o,
-                    day: c,
-                    hour: d
+                    month: s,
+                    day: u,
+                    hour: c
                 };
-                var g = new r.lunar.LunarDays(i, o, c, l);
-                h.lunarBirthday = {
+                var g = new r.lunar.LunarDays(i, s, u, l);
+                f.lunarBirthday = {
                     year: g.year,
                     month: g.month,
                     day: g.day,
-                    hour: d,
-                    value: "".concat(g.year, "年").concat(g.monthName).concat(g.dayName, " ").concat("未知" == d ? "未知点" : g.hourName)
+                    hour: c,
+                    value: "".concat(g.year, "年").concat(g.monthName).concat(g.dayName, " ").concat("未知" == c ? "未知点" : g.hourName)
                 };
             } else {
-                var x = r.lunar.getLunarDays(i, o, c, l);
-                h.lunarBirthday = {
+                var m = r.lunar.getLunarDays(i, s, u, l);
+                f.lunarBirthday = {
+                    year: m.year,
+                    month: m.month,
+                    day: m.day,
+                    hour: c,
+                    value: "".concat(m.year, "年").concat(m.monthName).concat(m.dayName, " ").concat("未知" == c ? "未知点" : m.hourName)
+                };
+                var x = r.lunar.solarDay(i, s, u);
+                f.solarBirthday = {
                     year: x.year,
                     month: x.month,
                     day: x.day,
-                    hour: d,
-                    value: "".concat(x.year, "年").concat(x.monthName).concat(x.dayName, " ").concat("未知" == d ? "未知点" : x.hourName)
-                };
-                var s = r.lunar.solarDay(i, o, c);
-                h.solarBirthday = {
-                    year: s.year,
-                    month: s.month,
-                    day: s.day,
-                    hour: d
+                    hour: c
                 };
             }
-            h.constellation = r.lunar.getConstellation(h.solarBirthday.year, h.solarBirthday.month, h.solarBirthday.day), 
-            h.zodiac = r.lunar.getZodiac(h.lunarBirthday.year);
-            var v = r.lunar.bazi(h.lunarBirthday.year, h.lunarBirthday.month, h.lunarBirthday.day, l);
-            y.year = v.year, y.month = v.month, y.day = v.day, y.hour = v.hour, y.ownSign = v.ownSign, 
-            y.bodySign = v.bodySign, y.fetalOrigin = v.fetalOrigin, y.detalBreath = v.detalBreath, 
-            y.xiyongWuxing = v.xiyongWuxing;
+            f.constellation = r.lunar.getConstellation(f.solarBirthday.year, f.solarBirthday.month, f.solarBirthday.day), 
+            f.zodiac = r.lunar.getZodiac(f.lunarBirthday.year);
+            var v = r.lunar.bazi(f.lunarBirthday.year, f.lunarBirthday.month, f.lunarBirthday.day, l);
+            d.year = v.year, d.month = v.month, d.day = v.day, d.hour = v.hour, d.ownSign = v.ownSign, 
+            d.bodySign = v.bodySign, d.fetalOrigin = v.fetalOrigin, d.detalBreath = v.detalBreath, 
+            d.xiyongWuxing = v.xiyongWuxing;
             var w = Math.max.apply(Math, a(Object.values(v.xiyongWuxing.wuxingRatio)));
-            w += 1, y.wuxingRatio = [ v.xiyongWuxing.wuxingRatio["木"] / w * 100, v.xiyongWuxing.wuxingRatio["火"] / w * 100, v.xiyongWuxing.wuxingRatio["土"] / w * 100, v.xiyongWuxing.wuxingRatio["金"] / w * 100, v.xiyongWuxing.wuxingRatio["水"] / w * 100 ];
-            var f = Object.entries(v.xiyongWuxing.wuxingRatio);
-            y.wuxingRemark = "";
-            for (var B = 0, b = f; B < b.length; B++) {
-                var S = b[B];
-                S[1] <= 0 && (y.wuxingRemark = y.wuxingRemark ? "".concat(y.wuxingRemark, "，").concat(S[0]) : S[0]);
+            w += 1, d.wuxingRatio = [ v.xiyongWuxing.wuxingRatio["木"] / w * 100, v.xiyongWuxing.wuxingRatio["火"] / w * 100, v.xiyongWuxing.wuxingRatio["土"] / w * 100, v.xiyongWuxing.wuxingRatio["金"] / w * 100, v.xiyongWuxing.wuxingRatio["水"] / w * 100 ];
+            var S = Object.entries(v.xiyongWuxing.wuxingRatio);
+            d.wuxingRemark = "";
+            for (var B = 0, b = S; B < b.length; B++) {
+                var T = b[B];
+                T[1] <= 0 && (d.wuxingRemark = d.wuxingRemark ? "".concat(d.wuxingRemark, "，").concat(T[0]) : T[0]);
             }
-            y.wuxingRemark ? y.wuxingRemark = "五行缺".concat(y.wuxingRemark) : y.wuxingRemark = "五行俱全", 
-            m.value = new r.lunar.LunarInfo(i, o, c);
+            d.wuxingRemark ? d.wuxingRemark = "五行缺".concat(d.wuxingRemark) : d.wuxingRemark = "五行俱全", 
+            d.tenStars = {
+                yearGan: v.year.heavenStemTenStar,
+                monthGan: v.month.heavenStemTenStar,
+                dayGan: "元",
+                hourGan: v.hour.heavenStemTenStar
+            }, d.naYin = {
+                year: v.year.sound,
+                month: v.month.sound,
+                day: v.day.sound,
+                hour: v.hour.sound
+            }, d.riZhuInfo = o.heavenStemInfo[d.day.heavenStem.name], 
+            y.value = new r.lunar.LunarInfo(i, s, u);
+            try {
+                d.dayun = r.lunar.getDecadeFortune(f.lunarBirthday.year, f.lunarBirthday.month, f.lunarBirthday.day, l, 1);
+            } catch (e) {
+                console.log("大运计算失败", e);
+            }
         };
         e.watch(function() {
-            return u.birthday;
-        }, c, {
+            return h.birthday;
+        }, s, {
             immediate: !0
         }), e.watch(function() {
-            return u.calendar;
-        }, c, {
+            return h.calendar;
+        }, s, {
             immediate: !0
         });
-        var d = function(a) {
+        var c = function(a) {
             var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "";
             return {
                 "金": n + "jin",
@@ -124,40 +144,76 @@ var i = function() {
         };
         return function(a, n) {
             return e.e({
-                a: y.year.heavenStem
-            }, y.year.heavenStem ? e.e({
-                b: e.t(h.lunarBirthday.value),
-                c: e.t((r = h.solarBirthday, "".concat(r.year, "年").concat(r.month, "月").concat(r.day, "日 ").concat(r.hourName ? r.hourName : "".concat(r.hour, "点")))),
-                d: e.t(h.zodiac),
-                e: e.t(h.constellation),
-                f: e.t(y.year.heavenStem.name),
-                g: e.n(d(y.year.heavenStem.wuxing, "ui-")),
-                h: e.t(y.year.earthBranch.name),
-                i: e.n(d(y.year.earthBranch.wuxing, "ui-")),
-                j: e.t(y.month.heavenStem.name),
-                k: e.n(d(y.month.heavenStem.wuxing, "ui-")),
-                l: e.t(y.month.earthBranch.name),
-                m: e.n(d(y.month.earthBranch.wuxing, "ui-")),
-                n: e.t(y.day.heavenStem.name),
-                o: e.n(d(y.day.heavenStem.wuxing, "ui-")),
-                p: e.t(y.day.earthBranch.name),
-                q: e.n(d(y.day.earthBranch.wuxing, "ui-")),
-                r: e.t(y.hour.heavenStem.name),
-                s: e.n(d(y.hour.heavenStem.wuxing, "ui-")),
-                t: e.t(y.hour.earthBranch.name),
-                v: e.n(d(y.hour.earthBranch.wuxing, "ui-")),
-                w: e.unref(o).open
-            }, e.unref(o).open ? {
-                x: e.t(y.day.heavenStem.wuxing),
-                y: e.n(d(y.day.heavenStem.wuxing, "ui-"))
+                a: d.year.heavenStem
+            }, d.year.heavenStem ? e.e({
+                b: e.t(f.lunarBirthday.value),
+                c: e.t((R = f.solarBirthday, "".concat(R.year, "年").concat(R.month, "月").concat(R.day, "日 ").concat(R.hourName ? R.hourName : "".concat(R.hour, "点")))),
+                d: e.t(f.zodiac),
+                e: e.t(f.constellation),
+                f: e.t(d.year.heavenStem.name),
+                g: e.n(c(d.year.heavenStem.wuxing, "ui-")),
+                h: e.t(d.year.earthBranch.name),
+                i: e.n(c(d.year.earthBranch.wuxing, "ui-")),
+                j: e.t(d.month.heavenStem.name),
+                k: e.n(c(d.month.heavenStem.wuxing, "ui-")),
+                l: e.t(d.month.earthBranch.name),
+                m: e.n(c(d.month.earthBranch.wuxing, "ui-")),
+                n: e.t(d.day.heavenStem.name),
+                o: e.n(c(d.day.heavenStem.wuxing, "ui-")),
+                p: e.t(d.day.earthBranch.name),
+                q: e.n(c(d.day.earthBranch.wuxing, "ui-")),
+                r: e.t(d.hour.heavenStem.name),
+                s: e.n(c(d.hour.heavenStem.wuxing, "ui-")),
+                t: e.t(d.hour.earthBranch.name),
+                v: e.n(c(d.hour.earthBranch.wuxing, "ui-")),
+                w: e.unref(u).open
+            }, e.unref(u).open ? {
+                x: e.t(d.day.heavenStem.wuxing),
+                y: e.n(c(d.day.heavenStem.wuxing, "ui-"))
             } : {}, {
-                z: e.unref(o).open
-            }, e.unref(o).open ? {
-                A: e.t(y.wuxingRemark)
+                z: e.unref(u).open
+            }, e.unref(u).open ? {
+                A: e.t(d.wuxingRemark)
+            } : {}, {
+                C: e.unref(u).open
+            }, e.unref(u).open ? {
+                D: e.t(d.naYin.year),
+                E: e.t(d.naYin.month),
+                F: e.t(d.naYin.day),
+                G: e.t(d.naYin.hour)
+            } : {}, {
+                H: e.unref(u).open
+            }, e.unref(u).open ? {
+                I: e.t(d.tenStars.yearGan),
+                J: e.t(d.tenStars.monthGan),
+                K: e.t(d.tenStars.dayGan),
+                L: e.t(d.tenStars.hourGan)
+            } : {}, {
+                M: e.unref(u).open
+            }, e.unref(u).open ? {
+                N: e.t(d.xiyongWuxing.state),
+                O: e.t(d.xiyongWuxing.xi),
+                P: e.t(d.xiyongWuxing.yong),
+                Q: e.t(d.xiyongWuxing.strong.join("、")),
+                U: e.t(d.xiyongWuxing.weak.join("、"))
+            } : {}, {
+                V: e.unref(u).open
+            }, e.unref(u).open && d.dayun ? {
+                W: e.t(d.dayun.childLimit.year)
+            } : {}, {
+                X: e.unref(u).open
+            }, e.unref(u).open && d.dayun ? {
+                Y: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
+                    return {
+                        a: e.t(a.age),
+                        b: e.t(a.sixtyCycle),
+                        c: e.t(a.year)
+                    };
+                })
             } : {}) : {});
-            var r;
+            var R;
         };
     }
-}, u = e._export_sfc(o, [ [ "__scopeId", "data-v-13c364a5" ] ]);
+}, h = e._export_sfc(u, [ [ "__scopeId", "data-v-13c364a5" ] ]);
 
-wx.createComponent(u);
+wx.createComponent(h);

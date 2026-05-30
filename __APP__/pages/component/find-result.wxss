@@ -1,50 +1,229 @@
-.result-box.data-v-13c364a5 {
-    padding: 0 20rpx;
+.result-box {
+    background: #fff;
+    border-radius: 20rpx;
+    margin: 20rpx auto;
+    padding: 30rpx;
+    width: 90%;
 }
 
-.row.data-v-13c364a5 {
-    color: #5a6066;
+.row {
+    display: flex;
+    align-items: center;
+    padding: 16rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+    font-size: 28rpx;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.label {
+    color: #666;
+    min-width: 160rpx;
+    font-size: 26rpx;
+}
+
+.mr-20 {
+    color: #666;
+    margin-right: 20rpx;
+}
+
+.values {
+    color: #333;
+    flex: 1;
+}
+
+.values.bazi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10rpx;
+}
+
+.values.bazi .col {
+    padding: 8rpx 16rpx;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.section-title {
+    font-size: 32rpx;
+    font-weight: bold;
+    color: #333;
+    margin: 30rpx 0 20rpx;
+    padding-bottom: 16rpx;
+    border-bottom: 2rpx solid #f7c261;
+}
+
+.nayin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20rpx;
+    margin-top: 20rpx;
+}
+
+.nayin-item {
+    background: #f9f9f9;
+    border-radius: 12rpx;
+    padding: 20rpx;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+}
+
+.nayin-item text:first-child {
+    color: #999;
+    font-size: 24rpx;
+}
+
+.nayin-value {
+    color: #f7c261;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.tenstar-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16rpx;
+    margin-top: 20rpx;
+}
+
+.tenstar-item {
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-radius: 12rpx;
+    padding: 20rpx 10rpx;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+}
+
+.tenstar-item text:first-child {
+    color: #666;
+    font-size: 22rpx;
+}
+
+.tenstar-value {
+    color: #e65100;
+    font-size: 26rpx;
+    font-weight: bold;
+}
+
+.xiyong-box {
+    background: #f9f9f9;
+    border-radius: 12rpx;
+    padding: 24rpx;
+    margin-top: 20rpx;
+}
+
+.xiyong-row {
     display: flex;
     justify-content: space-between;
-    padding: 15rpx 20rpx 20rpx;
+    align-items: center;
+    padding: 12rpx 0;
+    border-bottom: 1rpx solid #eee;
 }
 
-.row.data-v-13c364a5:nth-child(odd) {
-    background-color: #f7f7f7;
+.xiyong-row:last-child {
+    border-bottom: none;
 }
 
-.row .label.data-v-13c364a5 {
-    width: 150rpx;
+.xiyong-row .label {
+    color: #666;
+    font-size: 26rpx;
 }
 
-.row .values.data-v-13c364a5 {
-    text-align: right;
+.xiyong-row .value {
+    color: #333;
+    font-size: 26rpx;
+    font-weight: 500;
 }
 
-.row .bazi text.data-v-13c364a5:nth-child(odd) {
-    margin-left: 20rpx;
+.xi-color {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 20rpx;
 }
 
-.mr-20.data-v-13c364a5 {
-    margin-right: 80rpx;
+.yong-color {
+    color: #2196F3;
+    font-weight: bold;
 }
 
-.wuxing-color .ui-jin.data-v-13c364a5 {
-    color: #ffcd05!important;
+.dayun-box {
+    margin-top: 20rpx;
 }
 
-.wuxing-color .ui-mu.data-v-13c364a5 {
-    color: #10c757!important;
+.dayun-start {
+    color: #666;
+    font-size: 26rpx;
+    margin-bottom: 16rpx;
 }
 
-.wuxing-color .ui-shui.data-v-13c364a5 {
-    color: #73d4fd!important;
+.dayun-scroll {
+    width: 100%;
 }
 
-.wuxing-color .ui-huo.data-v-13c364a5 {
-    color: #bf242a!important;
+.dayun-list {
+    display: flex;
+    gap: 20rpx;
+    padding: 10rpx 0;
 }
 
-.wuxing-color .ui-tu.data-v-13c364a5 {
-    color: #be6200!important;
+.dayun-item {
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border: 2rpx solid #f7c261;
+    border-radius: 12rpx;
+    padding: 20rpx 24rpx;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 8rpx;
+    min-width: 140rpx;
+}
+
+.dayun-age {
+    color: #f7c261;
+    font-size: 28rpx;
+    font-weight: bold;
+}
+
+.dayun-ganzhi {
+    color: #333;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+
+.dayun-year {
+    color: #999;
+    font-size: 22rpx;
+}
+
+.ui-jin {
+    background: #f0f0f0;
+    color: #c0c0c0;
+}
+
+.ui-mu {
+    background: #e8f5e9;
+    color: #4CAF50;
+}
+
+.ui-shui {
+    background: #e3f2fd;
+    color: #2196F3;
+}
+
+.ui-huo {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.ui-tu {
+    background: #fff8e1;
+    color: #FFC107;
 }
