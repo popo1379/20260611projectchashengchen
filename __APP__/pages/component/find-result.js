@@ -39,7 +39,8 @@ var i = function() {
             },
             zodiac: "",
             constellation: "",
-            arrowDownOpen: !1
+            arrowDownOpen: !1,
+            showInterpretation: !1
         }), d = e.reactive({
             year: {},
             month: {},
@@ -55,7 +56,8 @@ var i = function() {
             tenStars: {},
             naYin: {},
             riZhuInfo: {},
-            dayun: {}
+            dayun: {},
+            interpretation: {}
         }), y = e.ref({}), s = function() {
             var e = h.birthday.split("-"), t = n(e, 4), i = t[0], s = t[1], u = t[2], c = t[3], l = "未知" == (c = c && decodeURI(c)) ? 12 : c || 12;
             if (h.birthday || (i = 2006, s = "06", u = "06", c = 12, h.calendar = 0), 1 == h.calendar) {
@@ -115,7 +117,24 @@ var i = function() {
                 month: v.month.sound,
                 day: v.day.sound,
                 hour: v.hour.sound
-            }, d.riZhuInfo = o.heavenStemInfo[d.day.heavenStem.name], 
+            }, d.riZhuInfo = o.heavenStemInfo[d.day.heavenStem.name];
+            
+            var riGanName = d.riZhuInfo.name;
+            d.interpretation.riGan = o.riGanInterpretation[riGanName] || {};
+            
+            var strongestWuxing = v.xiyongWuxing.strong[0];
+            var weakestWuxing = v.xiyongWuxing.weak[0];
+            d.interpretation.wuxing = {
+                strongest: o.wuxingInterpretation[strongestWuxing] || o.wuxingInterpretation["木"],
+                weakest: o.wuxingInterpretation[weakestWuxing] || o.wuxingInterpretation["木"]
+            };
+            
+            var xiWuxing = v.xiyongWuxing.xi;
+            d.interpretation.career = o.xiYongShenApplication[xiWuxing] || o.xiYongShenApplication["木"];
+            d.interpretation.health = o.healthGuide[xiWuxing] || o.healthGuide["木"];
+            d.interpretation.love = o.loveGuide[xiWuxing] || o.loveGuide["木"];
+            d.interpretation.lucky = o.xiYongShenApplication[xiWuxing] || o.xiYongShenApplication["木"];
+            
             y.value = new r.lunar.LunarInfo(i, s, u);
             try {
                 d.dayun = r.lunar.getDecadeFortune(f.lunarBirthday.year, f.lunarBirthday.month, f.lunarBirthday.day, l, 1);
@@ -141,6 +160,10 @@ var i = function() {
                 "火": n + "huo",
                 "土": n + "tu"
             }[a];
+        }, l = function() {
+            f.showInterpretation = !0;
+        }, g = function() {
+            f.showInterpretation = !1;
         };
         return function(a, n) {
             return e.e({
@@ -166,6 +189,7 @@ var i = function() {
                 s: e.n(c(d.hour.heavenStem.wuxing, "ui-")),
                 t: e.t(d.hour.earthBranch.name),
                 v: e.n(c(d.hour.earthBranch.wuxing, "ui-")),
+                w: e.unref(u).open,
                 x: e.t(d.day.heavenStem.wuxing),
                 y: e.n(c(d.day.heavenStem.wuxing, "ui-")),
                 A: e.t(d.wuxingRemark),
@@ -181,10 +205,30 @@ var i = function() {
                 O: e.t(d.xiyongWuxing.xi),
                 P: e.t(d.xiyongWuxing.yong),
                 Q: e.t(d.xiyongWuxing.strong.join("、")),
-                U: e.t(d.xiyongWuxing.weak.join("、"))
+                U: e.t(d.xiyongWuxing.weak.join("、")),
+                z: f.showInterpretation,
+                C: d.interpretation.riGan.summary,
+                H: d.interpretation.riGan.keywords ? d.interpretation.riGan.keywords.join("、") : "",
+                M: d.interpretation.riGan.advantages,
+                V: d.interpretation.riGan.notes,
+                W: d.interpretation.wuxing.strongest.strong,
+                Y: d.interpretation.wuxing.weakest.weak,
+                aa: d.interpretation.wuxing.strongest.tips,
+                bb: d.interpretation.career.career.join("、"),
+                cc: d.interpretation.health.organs,
+                dd: d.interpretation.health.notes,
+                ee: d.interpretation.health.tips,
+                ff: d.interpretation.love.trait,
+                gg: d.interpretation.love.suitable.join("、"),
+                hh: d.interpretation.love.tips,
+                ii: d.interpretation.lucky.luckyColor,
+                jj: d.interpretation.lucky.luckyNumber,
+                kk: d.interpretation.lucky.luckyDirection,
+                ll: e.o(l),
+                mm: e.o(g)
             }, d.dayun ? {
-                W: e.t(d.dayun.childLimit.year),
-                Y: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
+                nn: e.t(d.dayun.childLimit.year),
+                oo: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
                     return {
                         a: e.t(a.age),
                         b: e.t(a.sixtyCycle),

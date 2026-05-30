@@ -101,739 +101,939 @@
       </div>
 
       <!-- 五行统计 -->
-      <div class="info-card" v-if="baziResult">
+      <div class="info-card">
         <div class="card-title">五行统计</div>
-        <div class="wuxing-stats">
-          <div class="wuxing-item" v-for="(count, wuxing) in wuxingCount" :key="wuxing">
-            <div class="wuxing-bar" :style="wuxingBarStyle(wuxing, count)">
-              <div class="wuxing-fill" :style="wuxingFillStyle(wuxing)"></div>
+        <div class="wuxing-container">
+          <div 
+            v-for="(count, wuxing) in wuxingCount" 
+            :key="wuxing" 
+            class="wuxing-bar"
+          >
+            <div class="wuxing-label">{{ wuxing }}</div>
+            <div class="wuxing-bar-bg">
+              <div 
+                class="wuxing-bar-fill" 
+                :style="wuxingBarStyle(wuxing)"
+              ></div>
             </div>
-            <div class="wuxing-label">{{ wuxingInfo[wuxing].name }}: {{ count }}</div>
+            <div class="wuxing-count">{{ count }}</div>
           </div>
         </div>
-        <div class="wuxing-summary">
-          <div class="summary-row">
-            <span class="label">身强身弱：</span>
-            <span class="value">{{ baziResult.xiyongWuxing?.state || '-' }}</span>
+        
+        <div class="wuxing-analyze">
+          <div class="wuxing-item">
+            <span class="label">身强身弱</span>
+            <span class="value">{{ eightChar.xiyongWuxing?.state || '' }}</span>
           </div>
-          <div class="summary-row">
-            <span class="label">喜用神：</span>
-            <span class="value xi">喜{{ baziResult.xiyongWuxing?.xi || '-' }}</span>
-            <span class="value yong">用{{ baziResult.xiyongWuxing?.yong || '-' }}</span>
+          <div class="wuxing-item">
+            <span class="label">喜用神</span>
+            <span class="value">
+              <span class="xi">喜{{ eightChar.xiyongWuxing?.xi || '' }}</span>
+              <span class="yong">用{{ eightChar.xiyongWuxing?.yong || '' }}</span>
+            </span>
           </div>
-          <div class="summary-row">
-            <span class="label">最强五行：</span>
-            <span class="value">{{ baziResult.xiyongWuxing?.strong?.join('、') || '-' }}</span>
+          <div class="wuxing-item">
+            <span class="label">最强五行</span>
+            <span class="value">{{ eightChar.xiyongWuxing?.strong?.join('·') || '' }}</span>
           </div>
-          <div class="summary-row">
-            <span class="label">最弱五行：</span>
-            <span class="value">{{ baziResult.xiyongWuxing?.weak?.join('、') || '-' }}</span>
+          <div class="wuxing-item">
+            <span class="label">最弱五行</span>
+            <span class="value">{{ eightChar.xiyongWuxing?.weak?.join('·') || '' }}</span>
           </div>
         </div>
       </div>
-
-      <!-- 日主性格 -->
-      <div class="info-card" v-if="riGanInfo">
+      
+      <!-- 日主分析 -->
+      <div class="info-card">
         <div class="card-title">日主性格</div>
-        <div class="rigan-info">
-          <div class="rigan-name">{{ riGanInfo.name }}</div>
-          <div class="rigan-nature">{{ riGanInfo.nature }}</div>
-          <div class="rigan-detail">
-            <div class="rigan-section">
-              <div class="section-title positive">优点</div>
-              <div class="section-content">{{ riGanGeXing[riGanInfo.name].positive }}</div>
+        <div class="personality-box">
+          <div class="personality-header">
+            <div class="personality-name">{{ riGanInfo?.name || '' }}日主</div>
+            <div class="personality-wuxing" :style="wuxingColor(riGanInfo?.wuxing)">
+              {{ riGanInfo?.wuxing || '' }}
             </div>
-            <div class="rigan-section">
-              <div class="section-title negative">缺点</div>
-              <div class="section-content">{{ riGanGeXing[riGanInfo.name].negative }}</div>
+          </div>
+          <div class="personality-content">
+            <div class="personality-positive">
+              <div class="personality-title">优点</div>
+              <div class="personality-text">{{ riGanGeXingInfo?.positive || '' }}</div>
             </div>
-            <div class="rigan-section">
-              <div class="section-title profession">适合行业</div>
-              <div class="section-content">{{ riGanGeXing[riGanInfo.name].profession }}</div>
+            <div class="personality-negative">
+              <div class="personality-title">缺点</div>
+              <div class="personality-text">{{ riGanGeXingInfo?.negative || '' }}</div>
+            </div>
+            <div class="personality-career">
+              <div class="personality-title">适合职业</div>
+              <div class="personality-text">{{ riGanGeXingInfo?.profession || '' }}</div>
             </div>
           </div>
         </div>
       </div>
-
+      
       <!-- 十神分析 -->
       <div class="info-card">
         <div class="card-title">十神分析</div>
         <div class="shishen-grid">
-          <div class="shishen-item" v-for="shiShen in shiShenList" :key="shiShen.position">
-            <div class="shishen-position">{{ shiShen.position }}</div>
-            <div class="shishen-name">{{ shiShen.name }}</div>
-            <div class="shishen-desc">{{ shiShenInfo[shiShen.name]?.desc || '-' }}</div>
+          <div class="shishen-item">
+            <div class="shishen-label">年干</div>
+            <div class="shishen-value">{{ eightChar.year.heavenStemTenStar || '' }}</div>
+          </div>
+          <div class="shishen-item">
+            <div class="shishen-label">月干</div>
+            <div class="shishen-value">{{ eightChar.month.heavenStemTenStar || '' }}</div>
+          </div>
+          <div class="shishen-item">
+            <div class="shishen-label">日干</div>
+            <div class="shishen-value">元</div>
+          </div>
+          <div class="shishen-item">
+            <div class="shishen-label">时干</div>
+            <div class="shishen-value">{{ eightChar.hour.heavenStemTenStar || '' }}</div>
           </div>
         </div>
       </div>
-
-      <!-- 大运分析 -->
-      <div class="info-card" v-if="daYun">
+      
+      <!-- 大运 -->
+      <div class="info-card" v-if="dayunList.length > 0">
         <div class="card-title">大运走势</div>
-        <div class="dayun-start">起运: {{ daYun.childLimit?.year }}岁</div>
-        <div class="dayun-grid">
-          <div class="dayun-item" v-for="(yun, index) in daYun.dayun" :key="index">
-            <div class="dayun-age">{{ yun.age }}岁</div>
-            <div class="dayun-ganzhi">{{ yun.sixtyCycle }}</div>
-            <div class="dayun-year">{{ yun.year }}年起</div>
+        <div class="dayun-start">起运：{{ dayunList[0]?.age || '' }}岁</div>
+        <div class="dayun-scroll">
+          <div class="dayun-list">
+            <div v-for="(item, index) in dayunList.slice(0, 5)" :key="index" class="dayun-item">
+              <div class="dayun-age">{{ item.age }}岁</div>
+              <div class="dayun-ganzhi">{{ item.sixtyCycle }}</div>
+              <div class="dayun-year">{{ item.year }}年</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 查看详细解读按钮 -->
+      <div class="interpret-btn-box">
+        <button class="interpret-btn" @click="showInterpretModal = true">查看详细解读</button>
+      </div>
+    </div>
+    
+    <!-- 解读弹窗 -->
+    <div v-if="showInterpretModal" class="interpret-modal-mask" @click="showInterpretModal = false"></div>
+    <div v-if="showInterpretModal" class="interpret-modal">
+      <div class="interpret-header">
+        <div class="interpret-title">生辰命理解读</div>
+        <div class="interpret-close" @click="showInterpretModal = false">×</div>
+      </div>
+      <div class="interpret-content">
+        <div class="interpret-section">
+          <div class="interpret-section-title">日主解读</div>
+          <div class="interpret-summary">{{ interpretation.riGan?.summary || '' }}</div>
+          <div class="interpret-keywords">关键词：{{ interpretation.riGan?.keywords?.join(' · ') || '' }}</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">核心优势</div>
+            <div class="interpret-detail-text">{{ interpretation.riGan?.advantages || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">注意事项</div>
+            <div class="interpret-detail-text">{{ interpretation.riGan?.notes || '' }}</div>
+          </div>
+        </div>
+        
+        <div class="interpret-section">
+          <div class="interpret-section-title">五行分析</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">最强五行</div>
+            <div class="interpret-detail-text">{{ interpretation.wuxing?.strongest?.strong || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">最弱五行</div>
+            <div class="interpret-detail-text">{{ interpretation.wuxing?.weakest?.weak || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">调节建议</div>
+            <div class="interpret-detail-text">{{ interpretation.wuxing?.strongest?.tips || '' }}</div>
+          </div>
+        </div>
+        
+        <div class="interpret-section">
+          <div class="interpret-section-title">事业学业</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">适合行业</div>
+            <div class="interpret-detail-text">{{ interpretation.career?.career?.join('、') || '' }}</div>
+          </div>
+        </div>
+        
+        <div class="interpret-section">
+          <div class="interpret-section-title">感情婚恋</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">感情特质</div>
+            <div class="interpret-detail-text">{{ interpretation.love?.trait || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">适合伴侣</div>
+            <div class="interpret-detail-text">生肖：{{ interpretation.love?.suitable?.join('、') || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">相处建议</div>
+            <div class="interpret-detail-text">{{ interpretation.love?.tips || '' }}</div>
+          </div>
+        </div>
+        
+        <div class="interpret-section">
+          <div class="interpret-section-title">健康养生</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">对应器官</div>
+            <div class="interpret-detail-text">{{ interpretation.health?.organs || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">注意事项</div>
+            <div class="interpret-detail-text">{{ interpretation.health?.notes || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">养生建议</div>
+            <div class="interpret-detail-text">{{ interpretation.health?.tips || '' }}</div>
+          </div>
+        </div>
+        
+        <div class="interpret-section">
+          <div class="interpret-section-title">开运建议</div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">幸运颜色</div>
+            <div class="interpret-detail-text">{{ interpretation.lucky?.luckyColor || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">幸运数字</div>
+            <div class="interpret-detail-text">{{ interpretation.lucky?.luckyNumber || '' }}</div>
+          </div>
+          <div class="interpret-detail">
+            <div class="interpret-detail-title">幸运方位</div>
+            <div class="interpret-detail-text">{{ interpretation.lucky?.luckyDirection || '' }}</div>
           </div>
         </div>
       </div>
     </div>
     
-    <!-- 日期选择弹窗 -->
-    <div v-if="showPicker" class="picker-modal">
-      <div class="picker-overlay" @click="showPicker = false"></div>
-      <div class="picker-content">
-        <div class="picker-header">
-          <span class="picker-cancel" @click="showPicker = false">取消</span>
-          <span class="picker-title">选择日期时辰</span>
-          <span class="picker-confirm" @click="confirmPicker">确认</span>
-        </div>
-        <div class="picker-body">
-          <div class="calendar-tabs">
-            <button 
-              :class="{ active: calendarType === 0 }" 
-              @click="calendarType = 0"
-            >农历</button>
-            <button 
-              :class="{ active: calendarType === 1 }" 
-              @click="calendarType = 1"
-            >公历</button>
-          </div>
-          <div class="date-pickers">
-            <div class="picker-item">
-              <select v-model="selectYear">
-                <option v-for="y in years" :key="y" :value="y">{{ y }}年</option>
-              </select>
-            </div>
-            <div class="picker-item">
-              <select v-model="selectMonth">
-                <option v-for="m in 12" :key="m" :value="m">{{ m }}月</option>
-              </select>
-            </div>
-            <div class="picker-item">
-              <select v-model="selectDay">
-                <option v-for="d in daysInMonth" :key="d" :value="d">{{ d }}日</option>
-              </select>
-            </div>
-            <div class="picker-item">
-              <select v-model="selectHour">
-                <option v-for="(h, i) in hours" :key="i" :value="i">{{ h }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- 日期选择器 -->
+    <DateTimePicker 
+      v-if="showPicker" 
+      v-model:date="birthday"
+      @confirm="handlePickerConfirm"
+      @close="showPicker = false"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted, reactive } from 'vue'
 import { useSystemStore } from '@/stores/system'
-import lunar from '@/api/lunar'
-import * as data from '@/data/baziData.js'
+import { useRouter } from 'vue-router'
+import lunar from '@/lunar'
+import DateTimePicker from '@/components/DateTimePicker.vue'
+import { heavenStemInfo, earthBranchInfo, riGanGeXing, naYinInfo, riGanInterpretation, wuxingInterpretation, xiYongShenApplication, healthGuide, loveGuide } from '@/data/baziData'
 
 const systemStore = useSystemStore()
-systemStore.getSystemConfig()
+const router = useRouter()
 
-const birthday = ref('')
-const calendarType = ref(0)
+const birthday = ref(new Date())
 const showPicker = ref(false)
 const showResult = ref(false)
-
-// 选择的数据
-const selectYear = ref(2000)
-const selectMonth = ref(1)
-const selectDay = ref(1)
-const selectHour = ref(0)
-
-// 数据
-const zodiac = ref('')
-const constellation = ref('')
-const eightChar = ref({})
-const lunarInfo = ref({})
-const baziResult = ref(null)
-const daYun = ref(null)
-
-// 数据引用
-const heavenStemInfo = data.heavenStemInfo
-const earthBranchInfo = data.earthBranchInfo
-const shiShenInfo = data.shiShenInfo
-const naYinInfo = data.naYinInfo
-const wuxingInfo = data.wuxingInfo
-const riGanGeXing = data.riGanGeXing
-
-// 计算属性
-const years = computed(() => {
-  const y = []
-  for (let i = 1900; i <= 2100; i++) y.push(i)
-  return y
+const showInterpretModal = ref(false)
+const lunarInfo = reactive({
+  yearName: '',
+  monthName: '',
+  dayName: '',
+  hourName: ''
 })
 
-const daysInMonth = computed(() => {
-  if (calendarType.value === 1) {
-    return new Date(selectYear.value, selectMonth.value, 0).getDate()
-  } else {
-    return lunar.lunarLastDay(selectYear.value, selectMonth.value)
-  }
+const eightChar = reactive({
+  year: {},
+  month: {},
+  day: {},
+  hour: {},
+  ownSign: {},
+  bodySign: {},
+  fetalOrigin: {},
+  detalBreath: {},
+  xiyongWuxing: {}
 })
-
-const hours = ['子时', '丑时', '寅时', '卯时', '辰时', '巳时', '午时', '未时', '申时', '酉时', '戌时', '亥时']
+const dayunList = ref([])
+const interpretation = reactive({
+  riGan: {},
+  wuxing: {},
+  career: {},
+  health: {},
+  love: {},
+  lucky: {}
+})
 
 const birthdayText = computed(() => {
-  if (!birthday.value) return ''
-  return birthday.value
+  const date = birthday.value
+  if (!date) return ''
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hour = String(date.getHours()).padStart(2, '0')
+  return `${year}年${month}月${day}日 ${hour}时`
 })
 
 const formatedDate = computed(() => {
-  if (!lunarInfo.value.year) return ''
-  return `${lunarInfo.value.year}年${lunarInfo.value.month}月${lunarInfo.value.day}日`
+  const date = birthday.value
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hour = date.getHours()
+  return `${year}年${month}月${day}日 ${hour}时`
 })
 
-// 五行统计
-const wuxingCount = computed(() => {
-  const count = { '金': 0, '木': 0, '水': 0, '火': 0, '土': 0 }
-  if (!eightChar.value.year) return count
-  
-  count[eightChar.value.year.heavenStem.wuxing]++
-  count[eightChar.value.month.heavenStem.wuxing]++
-  count[eightChar.value.day.heavenStem.wuxing]++
-  count[eightChar.value.hour.heavenStem.wuxing]++
-  
-  count[eightChar.value.year.earthBranch.wuxing]++
-  count[eightChar.value.month.earthBranch.wuxing]++
-  count[eightChar.value.day.earthBranch.wuxing]++
-  count[eightChar.value.hour.earthBranch.wuxing]++
-  
-  return count
+const zodiac = computed(() => {
+  if (!lunarInfo.yearName) return ''
+  const zodiacs = ['鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪']
+  const year = parseInt(lunarInfo.yearName)
+  const index = (year - 4) % 12
+  return zodiacs[index]
 })
 
-// 十神列表
-const shiShenList = computed(() => {
-  if (!eightChar.value.year) return []
-  return [
-    { position: '年干', name: eightChar.value.year.heavenStemTenStar || '' },
-    { position: '月干', name: eightChar.value.month.heavenStemTenStar || '' },
-    { position: '日干', name: '元' },
-    { position: '时干', name: eightChar.value.hour.heavenStemTenStar || '' },
+const constellation = computed(() => {
+  const date = birthday.value
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const constellations = [
+    '摩羯座', '水瓶座', '双鱼座', '白羊座', '金牛座', '双子座',
+    '巨蟹座', '狮子座', '处女座', '天秤座', '天蝎座', '射手座'
   ]
+  const lastDay = [20, 19, 21, 20, 21, 22, 23, 23, 23, 23, 22, 22]
+  let index = month - 1
+  if (day > lastDay[index]) index += 1
+  if (index >= 12) index = 0
+  return constellations[index]
 })
 
-// 日主信息
 const riGanInfo = computed(() => {
-  if (!eightChar.value.day) return null
-  return heavenStemInfo[eightChar.value.day.heavenStem.name]
+  if (!eightChar.day?.heavenStem?.name) return null
+  return heavenStemInfo[eightChar.day.heavenStem.name]
 })
 
-// 五行颜色
-const wuxingColors = {
-  '金': '#c0c0c0',
-  '木': '#4CAF50',
-  '水': '#2196F3',
-  '火': '#f44336',
-  '土': '#FFC107'
-}
-
-const wuxingBgColors = {
-  '金': '#f0f0f0',
-  '木': '#e8f5e9',
-  '水': '#e3f2fd',
-  '火': '#ffebee',
-  '土': '#fff8e1'
-}
-
-function heavenColor(wuxing) {
-  return {
-    backgroundColor: wuxingBgColors[wuxing],
-    color: wuxingColors[wuxing]
-  }
-}
-
-function earthColor(wuxing) {
-  return {
-    backgroundColor: wuxingBgColors[wuxing],
-    color: wuxingColors[wuxing]
-  }
-}
-
-function wuxingBarStyle(wuxing, count) {
-  const maxCount = Math.max(...Object.values(wuxingCount.value), 1)
-  const width = (count / maxCount) * 100
-  return {
-    backgroundColor: '#f0f0f0',
-    borderRadius: '4px',
-    height: '24px',
-    overflow: 'hidden'
-  }
-}
-
-function wuxingFillStyle(wuxing) {
-  const count = wuxingCount.value[wuxing]
-  const maxCount = Math.max(...Object.values(wuxingCount.value), 1)
-  const width = (count / maxCount) * 100
-  return {
-    backgroundColor: wuxingColors[wuxing],
-    height: '100%',
-    width: `${width}%`,
-    transition: 'width 0.3s'
-  }
-}
-
-// 监听月份变化
-watch(selectMonth, () => {
-  if (selectDay.value > daysInMonth.value) {
-    selectDay.value = daysInMonth.value
-  }
+const riGanGeXingInfo = computed(() => {
+  if (!riGanInfo.value?.name) return null
+  return riGanGeXing[riGanInfo.value.name]
 })
 
-function confirmPicker() {
-  const year = selectYear.value
-  const month = selectMonth.value
-  const day = selectDay.value
-  const hour = selectHour.value
-  
-  birthday.value = `${year}-${month}-${day}-${hour}`
+const wuxingCount = computed(() => {
+  const counts = { '金': 0, '木': 0, '水': 0, '火': 0, '土': 0 }
+  if (eightChar.year?.heavenStem?.wuxing) counts[eightChar.year.heavenStem.wuxing]++
+  if (eightChar.year?.earthBranch?.wuxing) counts[eightChar.year.earthBranch.wuxing]++
+  if (eightChar.month?.heavenStem?.wuxing) counts[eightChar.month.heavenStem.wuxing]++
+  if (eightChar.month?.earthBranch?.wuxing) counts[eightChar.month.earthBranch.wuxing]++
+  if (eightChar.day?.heavenStem?.wuxing) counts[eightChar.day.heavenStem.wuxing]++
+  if (eightChar.day?.earthBranch?.wuxing) counts[eightChar.day.earthBranch.wuxing]++
+  if (eightChar.hour?.heavenStem?.wuxing) counts[eightChar.hour.heavenStem.wuxing]++
+  if (eightChar.hour?.earthBranch?.wuxing) counts[eightChar.hour.earthBranch.wuxing]++
+  return counts
+})
+
+const wuxingColorMap = {
+  '金': { bg: '#f0f0f0', color: '#FFD700' },
+  '木': { bg: '#e8f5e9', color: '#4CAF50' },
+  '水': { bg: '#e3f2fd', color: '#2196F3' },
+  '火': { bg: '#ffebee', color: '#f44336' },
+  '土': { bg: '#fff8e1', color: '#FFC107' }
+}
+
+const heavenColor = (wuxing) => {
+  const color = wuxingColorMap[wuxing] || { bg: '#fff', color: '#333' }
+  return { backgroundColor: color.bg, color: color.color, border: `2px solid ${color.color}` }
+}
+
+const earthColor = (wuxing) => {
+  const color = wuxingColorMap[wuxing] || { bg: '#fff', color: '#333' }
+  return { backgroundColor: color.bg, color: color.color, border: `2px solid ${color.color}` }
+}
+
+const wuxingColor = (wuxing) => {
+  const color = wuxingColorMap[wuxing] || { color: '#333' }
+  return { color: color.color }
+}
+
+const wuxingBarStyle = (wuxing) => {
+  const color = wuxingColorMap[wuxing] || { color: '#333' }
+  const maxCount = Math.max(...Object.values(wuxingCount.value))
+  const width = maxCount > 0 ? (wuxingCount.value[wuxing] / maxCount * 100) : 0
+  return {
+    backgroundColor: color.color,
+    width: `${width}%`
+  }
+}
+
+const handlePickerConfirm = () => {
   showPicker.value = false
-  showResult.value = false
 }
 
-function handleQuery() {
-  if (!birthday.value) {
-    alert('请选择日期时辰')
-    return
-  }
+const handleQuery = () => {
+  const date = birthday.value
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
   
-  const [year, month, day, hour] = birthday.value.split('-').map(Number)
-  
-  // 获取农历信息
-  lunarInfo.value = new lunar.LunarInfo(year, month, day, hour)
-  
-  // 获取生肖和星座
-  const solar = lunar.solarDay(year, month, day)
-  zodiac.value = lunarInfo.value.zodiac || lunar.getZodiac(solar.year)
-  constellation.value = lunar.getConstellation(solar.year, solar.month, solar.day)
-  
-  // 获取完整八字分析
-  baziResult.value = lunar.bazi(year, month, day, hour)
-  
-  // 获取八字基础信息
-  eightChar.value = lunar.getEightChar(year, month, day, hour)
-  
-  // 获取大运
   try {
-    daYun.value = lunar.getDecadeFortune(year, month, day, hour, 1)
-  } catch (e) {
-    console.log('大运计算失败', e)
+    const lunarDays = new lunar.LunarDays(year, month, day, hour)
+    lunarInfo.yearName = lunarDays.year
+    lunarInfo.monthName = lunarDays.monthName
+    lunarInfo.dayName = lunarDays.dayName
+    lunarInfo.hourName = lunarDays.hourName
+    
+    const baziResult = lunar.bazi(lunarDays.year, lunarDays.month, lunarDays.day, hour)
+    eightChar.year = baziResult.year
+    eightChar.month = baziResult.month
+    eightChar.day = baziResult.day
+    eightChar.hour = baziResult.hour
+    eightChar.ownSign = baziResult.ownSign
+    eightChar.bodySign = baziResult.bodySign
+    eightChar.fetalOrigin = baziResult.fetalOrigin
+    eightChar.detalBreath = baziResult.detalBreath
+    eightChar.xiyongWuxing = baziResult.xiyongWuxing
+    
+    try {
+      const dayun = lunar.getDecadeFortune(lunarDays.year, lunarDays.month, lunarDays.day, hour, 1)
+      dayunList.value = dayun.dayun || []
+    } catch (e) {
+      console.log('Dayun error:', e)
+    }
+    
+    const riGanName = riGanInfo.value?.name
+    const strongestWuxing = eightChar.xiyongWuxing?.strong?.[0] || '木'
+    const weakestWuxing = eightChar.xiyongWuxing?.weak?.[0] || '木'
+    const xiWuxing = eightChar.xiyongWuxing?.xi || '木'
+    
+    interpretation.riGan = riGanInterpretation[riGanName] || {}
+    interpretation.wuxing = {
+      strongest: wuxingInterpretation[strongestWuxing] || wuxingInterpretation['木'],
+      weakest: wuxingInterpretation[weakestWuxing] || wuxingInterpretation['木']
+    }
+    interpretation.career = xiYongShenApplication[xiWuxing] || xiYongShenApplication['木']
+    interpretation.health = healthGuide[xiWuxing] || healthGuide['木']
+    interpretation.love = loveGuide[xiWuxing] || loveGuide['木']
+    interpretation.lucky = xiYongShenApplication[xiWuxing] || xiYongShenApplication['木']
+    
+    showResult.value = true
+  } catch (error) {
+    console.error('Error:', error)
   }
-  
-  showResult.value = true
 }
+
+onMounted(() => {
+  systemStore.getSystemConfig()
+})
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .page {
-  padding: 20px;
-  max-width: 800px;
+  background: linear-gradient(180deg, #fff5e6 0%, #fff 50%, #fff 100%);
+  min-height: 100vh;
+  padding: 30px 20px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .title {
-  font-size: 24px;
-  font-weight: bold;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 32px;
+  font-weight: bold;
+  color: #f7c261;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .input-wrapper {
+  background: white;
+  border-radius: 15px;
+  padding: 15px 20px;
   margin-bottom: 20px;
-  .placeholder-input {
-    pointer-events: none;
-    color: #666;
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-    background: #f9f9f9;
-  }
+  box-shadow: 0 4px 12px rgba(247, 194, 97, 0.2);
+}
+
+.placeholder-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #333;
+  background: transparent;
+}
+
+.placeholder-input::placeholder {
+  color: #999;
 }
 
 .btn {
   width: 100%;
-  padding: 14px;
   background: linear-gradient(135deg, #f7c261 0%, #f5a623 100%);
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 8px;
-  font-size: 16px;
+  padding: 15px;
+  border-radius: 15px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  
-  &:active {
-    transform: scale(0.98);
-  }
-  
-  &:hover {
-    box-shadow: 0 4px 12px rgba(247, 194, 97, 0.4);
-  }
+  box-shadow: 0 6px 20px rgba(247, 194, 97, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(247, 194, 97, 0.5);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .result-container {
-  margin-top: 24px;
+  margin-top: 30px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .info-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .card-title {
   font-size: 18px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f7c261;
 }
 
 .info-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+  gap: 15px;
 }
 
 .info-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  
-  .label {
-    font-size: 13px;
-    color: #999;
-  }
-  
-  .value {
-    font-size: 16px;
-    color: #333;
-    font-weight: 500;
-  }
+  gap: 5px;
+}
+
+.info-item .label {
+  color: #999;
+  font-size: 13px;
+}
+
+.info-item .value {
+  color: #333;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .bazi-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 15px;
 }
 
 .bazi-pillar {
   text-align: center;
-  padding: 12px 8px;
   background: #f9f9f9;
-  border-radius: 8px;
-  
-  &.highlight {
-    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
-    border: 2px solid #f7c261;
-  }
-  
-  .pillar-title {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 8px;
-  }
-  
-  .pillar-heaven,
-  .pillar-earth {
-    font-size: 24px;
-    font-weight: bold;
-    padding: 8px 0;
-    border-radius: 4px;
-    margin: 4px 0;
-  }
-  
-  .pillar-naYin {
-    font-size: 12px;
-    color: #666;
-    margin-top: 4px;
-  }
-  
-  .pillar-cangGan {
-    font-size: 11px;
-    color: #999;
-    margin-top: 4px;
-    line-height: 1.4;
-  }
+  border-radius: 12px;
+  padding: 15px 10px;
+  border: 2px solid #eee;
+  transition: all 0.3s ease;
 }
 
-.wuxing-stats {
-  margin-bottom: 16px;
+.bazi-pillar:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
-.wuxing-item {
-  margin-bottom: 12px;
+.bazi-pillar.highlight {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border-color: #f7c261;
+  box-shadow: 0 4px 12px rgba(247, 194, 97, 0.3);
+}
+
+.pillar-title {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+.pillar-heaven,
+.pillar-earth {
+  width: 50px;
+  height: 50px;
+  margin: 5px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.pillar-naYin {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #f7c261;
+  font-weight: 500;
+}
+
+.pillar-cangGan {
+  margin-top: 5px;
+  font-size: 11px;
+  color: #999;
+  line-height: 1.4;
+}
+
+.wuxing-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.wuxing-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .wuxing-label {
-  font-size: 14px;
-  margin-top: 4px;
+  width: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+.wuxing-bar-bg {
+  flex: 1;
+  height: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.wuxing-bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.8s ease;
+}
+
+.wuxing-count {
+  width: 30px;
+  text-align: right;
   color: #666;
+  font-weight: 500;
 }
 
-.wuxing-summary {
-  .summary-row {
-    display: flex;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #f0f0f0;
-    
-    &:last-child {
-      border-bottom: none;
-    }
-    
-    .label {
-      font-size: 14px;
-      color: #666;
-      min-width: 80px;
-    }
-    
-    .value {
-      font-size: 14px;
-      color: #333;
-      font-weight: 500;
-      
-      &.xi {
-        color: #4CAF50;
-        margin-right: 12px;
-      }
-      
-      &.yong {
-        color: #2196F3;
-      }
-    }
-  }
+.wuxing-analyze {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 15px;
 }
 
-.rigan-info {
-  .rigan-name {
-    font-size: 20px;
-    font-weight: bold;
-    color: #f7c261;
-    margin-bottom: 8px;
-  }
-  
-  .rigan-nature {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 16px;
-    line-height: 1.6;
-  }
-  
-  .rigan-detail {
-    .rigan-section {
-      margin-bottom: 12px;
-      
-      .section-title {
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 6px;
-        
-        &.positive {
-          color: #4CAF50;
-        }
-        
-        &.negative {
-          color: #f44336;
-        }
-        
-        &.profession {
-          color: #2196F3;
-        }
-      }
-      
-      .section-content {
-        font-size: 14px;
-        color: #666;
-        line-height: 1.6;
-      }
-    }
-  }
+.wuxing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.wuxing-item:last-child {
+  border-bottom: none;
+}
+
+.wuxing-item .label {
+  color: #666;
+  font-size: 14px;
+}
+
+.wuxing-item .value {
+  color: #333;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.wuxing-item .xi {
+  color: #4CAF50;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.wuxing-item .yong {
+  color: #2196F3;
+  font-weight: bold;
+}
+
+.personality-box {
+  margin-top: 10px;
+}
+
+.personality-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.personality-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.personality-wuxing {
+  font-size: 14px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.personality-content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.personality-positive,
+.personality-negative,
+.personality-career {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.personality-positive {
+  border-left: 4px solid #4CAF50;
+}
+
+.personality-negative {
+  border-left: 4px solid #f44336;
+}
+
+.personality-career {
+  border-left: 4px solid #2196F3;
+}
+
+.personality-title {
+  font-size: 14px;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.personality-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
 }
 
 .shishen-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
 .shishen-item {
-  padding: 12px;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border-radius: 10px;
+  padding: 15px 10px;
   text-align: center;
-  
-  .shishen-position {
-    font-size: 12px;
-    color: #999;
-    margin-bottom: 4px;
-  }
-  
-  .shishen-name {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 6px;
-  }
-  
-  .shishen-desc {
-    font-size: 12px;
-    color: #666;
-    line-height: 1.4;
-  }
+  border: 2px solid #f7c261;
+}
+
+.shishen-label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.shishen-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e65100;
 }
 
 .dayun-start {
   font-size: 14px;
   color: #666;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
-.dayun-grid {
+.dayun-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.dayun-list {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px;
+  padding: 5px 0;
 }
 
 .dayun-item {
-  flex: 1;
-  min-width: 80px;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+  border: 2px solid #f7c261;
+  border-radius: 10px;
+  padding: 15px 20px;
   text-align: center;
-  padding: 12px 8px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  
-  .dayun-age {
-    font-size: 14px;
-    font-weight: bold;
-    color: #f7c261;
-    margin-bottom: 4px;
-  }
-  
-  .dayun-ganzhi {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 4px;
-  }
-  
-  .dayun-year {
-    font-size: 12px;
-    color: #999;
-  }
+  min-width: 100px;
 }
 
-.picker-modal {
+.dayun-age {
+  font-size: 16px;
+  color: #f7c261;
+  font-weight: bold;
+}
+
+.dayun-ganzhi {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin: 5px 0;
+}
+
+.dayun-year {
+  font-size: 12px;
+  color: #999;
+}
+
+.interpret-btn-box {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.interpret-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #f7c261 0%, #f5a623 100%);
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(247, 194, 97, 0.4);
+  transition: all 0.3s ease;
+}
+
+.interpret-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(247, 194, 97, 0.5);
+}
+
+.interpret-modal-mask {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.interpret-modal {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 30px 30px 0 0;
   z-index: 1000;
-  
-  .picker-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .picker-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-radius: 16px 16px 0 0;
-    max-height: 70vh;
-  }
-  
-  .picker-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #eee;
-    
-    .picker-title {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    
-    .picker-cancel {
-      color: #999;
-      font-size: 14px;
-      cursor: pointer;
-    }
-    
-    .picker-confirm {
-      color: #f7c261;
-      font-size: 14px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-  }
-  
-  .picker-body {
-    padding: 20px;
-  }
-  
-  .calendar-tabs {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    
-    button {
-      flex: 1;
-      padding: 10px;
-      border: 1px solid #ddd;
-      background: #fff;
-      border-radius: 8px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      
-      &.active {
-        background: #f7c261;
-        color: #fff;
-        border-color: #f7c261;
-      }
-    }
-  }
-  
-  .date-pickers {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    
-    .picker-item {
-      select {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-        background: #fff;
-      }
-    }
-  }
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.interpret-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  border-bottom: 1px solid #eee;
+  background: #fff;
+}
+
+.interpret-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.interpret-close {
+  font-size: 40px;
+  color: #999;
+  line-height: 1;
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.interpret-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.interpret-section {
+  margin-bottom: 40px;
+}
+
+.interpret-section-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #f7c261;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  border-left: 4px solid #f7c261;
+}
+
+.interpret-summary {
+  background: #fff8e1;
+  border-radius: 12px;
+  padding: 20px;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.interpret-keywords {
+  color: #999;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.interpret-detail {
+  margin-bottom: 20px;
+}
+
+.interpret-detail-title {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.interpret-detail-text {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: 12px;
+  border-left: 2px solid #f7c261;
 }
 </style>

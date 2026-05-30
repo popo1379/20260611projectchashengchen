@@ -11,32 +11,29 @@
         <view class="row data-v-13c364a5">
             <text class="label data-v-13c364a5">干支纪年</text>
             <view class="values bazi data-v-13c364a5">
-                <text class="{{[g,'col','data-v-13c364a5']}}">{{f}}</text>
-                <text class="{{[i,'col','data-v-13c364a5']}}">{{h}}</text>
-                <text class="{{[k,'col','data-v-13c364a5']}}">{{j}}</text>
-                <text class="{{[m,'col','data-v-13c364a5']}}">{{l}}</text>
-                <text class="{{[o,'col','data-v-13c364a5']}}">{{n}}</text>
-                <text class="{{[q,'col','data-v-13c364a5']}}">{{p}}</text>
-                <text class="{{[s,'col','data-v-13c364a5']}}">{{r}}</text>
-                <text class="{{[v,'col','data-v-13c364a5']}}">{{t}}</text>
+                <text class="{{[g, 'col', 'data-v-13c364a5']}}">{{f}}</text>
+                <text class="{{[i, 'col', 'data-v-13c364a5']}}">{{h}}</text>
+                <text class="{{[k, 'col', 'data-v-13c364a5']}}">{{j}}</text>
+                <text class="{{[m, 'col', 'data-v-13c364a5']}}">{{l}}</text>
+                <text class="{{[o, 'col', 'data-v-13c364a5']}}">{{n}}</text>
+                <text class="{{[q, 'col', 'data-v-13c364a5']}}">{{p}}</text>
+                <text class="{{[s, 'col', 'data-v-13c364a5']}}">{{r}}</text>
+                <text class="{{[v, 'col', 'data-v-13c364a5']}}">{{t}}</text>
             </view>
         </view>
         
-        <!-- 五行属什么 -->
         <view class="row data-v-13c364a5" wx:if="{{w}}">
             <text class="label data-v-13c364a5" style="width:220rpx">五行属什么</text>
             <view class="values data-v-13c364a5">
-                <text class="{{['data-v-13c364a5',y]}}">{{x}}</text>
+                <text class="{{['data-v-13c364a5', y]}}">{{x}}</text>
             </view>
         </view>
         
-        <!-- 五行缺什么 -->
-        <view class="row data-v-13c364a5" wx:if="{{z}}">
+        <view class="row data-v-13c364a5">
             <text class="label data-v-13c364a5" style="width:220rpx">五行缺什么</text>
             <view class="values data-v-13c364a5">{{A}}</view>
         </view>
         
-        <!-- 纳音五行 -->
         <view class="section-title data-v-13c364a5">纳音五行</view>
         <view class="nayin-grid data-v-13c364a5">
             <view class="nayin-item data-v-13c364a5">
@@ -57,7 +54,6 @@
             </view>
         </view>
         
-        <!-- 十神分析 -->
         <view class="section-title data-v-13c364a5">十神分析</view>
         <view class="tenstar-grid data-v-13c364a5">
             <view class="tenstar-item data-v-13c364a5">
@@ -78,7 +74,6 @@
             </view>
         </view>
         
-        <!-- 喜用神分析 -->
         <view class="section-title data-v-13c364a5">喜用神分析</view>
         <view class="xiyong-box data-v-13c364a5">
             <view class="xiyong-row data-v-13c364a5">
@@ -102,14 +97,13 @@
             </view>
         </view>
         
-        <!-- 大运走势 -->
-        <view class="section-title data-v-13c364a5">大运走势</view>
-        <view class="dayun-box data-v-13c364a5">
-            <view class="dayun-start data-v-13c364a5" wx:if="{{W}}">起运: {{W}}岁</view>
-            <view class="dayun-scroll data-v-13c364a5" wx:if="{{Y.length > 0}}">
-                <scroll-view scroll-x="true" style="white-space:nowrap;">
+        <view class="section-title data-v-13c364a5" wx:if="{{nn}}">大运走势</view>
+        <view class="dayun-box data-v-13c364a5" wx:if="{{nn}}">
+            <view class="dayun-start data-v-13c364a5">起运: {{nn}}岁</view>
+            <view class="dayun-scroll data-v-13c364a5" wx:if="{{oo.length > 0}}">
+                <scroll-view scroll-x="true" style="white-space:nowrap">
                     <view class="dayun-list data-v-13c364a5">
-                        <block wx:for="{{Y}}" wx:key="index">
+                        <block wx:for="{{oo}}" wx:key="index">
                             <view class="dayun-item data-v-13c364a5">
                                 <text class="data-v-13c364a5 dayun-age">{{item.a}}岁</text>
                                 <text class="data-v-13c364a5 dayun-ganzhi">{{item.b}}</text>
@@ -120,6 +114,106 @@
                 </scroll-view>
             </view>
         </view>
+        
+        <view class="interpret-btn-box data-v-13c364a5" bindtap="{{ll}}">
+            <view class="interpret-btn data-v-13c364a5">查看详细解读</view>
+        </view>
     </view>
+    
+    <view class="interpret-modal-mask data-v-13c364a5" wx:if="{{z}}" bindtap="{{mm}}"></view>
+    <view class="interpret-modal data-v-13c364a5" wx:if="{{z}}">
+        <view class="interpret-header data-v-13c364a5">
+            <view class="interpret-title data-v-13c364a5">生辰命理解读</view>
+            <view class="interpret-close data-v-13c364a5" bindtap="{{mm}}">×</view>
+        </view>
+        <scroll-view class="interpret-content data-v-13c364a5" scroll-y="true">
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">日主解读</view>
+                <view class="interpret-summary data-v-13c364a5">{{C}}</view>
+                <view class="interpret-keywords data-v-13c364a5">关键词：{{H}}</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">核心优势</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{M}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">注意事项</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{V}}</view>
+                </view>
+            </view>
+            
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">五行分析</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">最强五行</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{W}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">最弱五行</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{Y}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">调节建议</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{aa}}</view>
+                </view>
+            </view>
+            
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">事业学业</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">适合行业</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{bb}}</view>
+                </view>
+            </view>
+            
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">感情婚恋</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">感情特质</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{ff}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">适合伴侣</view>
+                    <view class="interpret-detail-text data-v-13c364a5">生肖：{{gg}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">相处建议</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{hh}}</view>
+                </view>
+            </view>
+            
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">健康养生</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">对应器官</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{cc}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">注意事项</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{dd}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">养生建议</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{ee}}</view>
+                </view>
+            </view>
+            
+            <view class="interpret-section data-v-13c364a5">
+                <view class="interpret-section-title data-v-13c364a5">开运建议</view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">幸运颜色</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{ii}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">幸运数字</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{jj}}</view>
+                </view>
+                <view class="interpret-detail data-v-13c364a5">
+                    <view class="interpret-detail-title data-v-13c364a5">幸运方位</view>
+                    <view class="interpret-detail-text data-v-13c364a5">{{kk}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+    
     <footer-button bind:__l="__l" class="data-v-13c364a5" uI="13c364a5-0"></footer-button>
 </view>
