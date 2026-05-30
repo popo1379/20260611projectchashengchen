@@ -37,8 +37,8 @@
         </view>
         
         <!-- 纳音五行 -->
-        <view class="section-title data-v-13c364a5" wx:if="{{C}}">纳音五行</view>
-        <view class="nayin-grid data-v-13c364a5" wx:if="{{C}}">
+        <view class="section-title data-v-13c364a5">纳音五行</view>
+        <view class="nayin-grid data-v-13c364a5">
             <view class="nayin-item data-v-13c364a5">
                 <text class="data-v-13c364a5">年柱</text>
                 <text class="data-v-13c364a5 nayin-value">{{D}}</text>
@@ -58,8 +58,8 @@
         </view>
         
         <!-- 十神分析 -->
-        <view class="section-title data-v-13c364a5" wx:if="{{H}}">十神分析</view>
-        <view class="tenstar-grid data-v-13c364a5" wx:if="{{H}}">
+        <view class="section-title data-v-13c364a5">十神分析</view>
+        <view class="tenstar-grid data-v-13c364a5">
             <view class="tenstar-item data-v-13c364a5">
                 <text class="data-v-13c364a5">年干</text>
                 <text class="data-v-13c364a5 tenstar-value">{{I}}</text>
@@ -79,8 +79,8 @@
         </view>
         
         <!-- 喜用神分析 -->
-        <view class="section-title data-v-13c364a5" wx:if="{{M}}">喜用神分析</view>
-        <view class="xiyong-box data-v-13c364a5" wx:if="{{M}}">
+        <view class="section-title data-v-13c364a5">喜用神分析</view>
+        <view class="xiyong-box data-v-13c364a5">
             <view class="xiyong-row data-v-13c364a5">
                 <text class="data-v-13c364a5 label">身强身弱</text>
                 <text class="data-v-13c364a5 value">{{N}}</text>
@@ -103,8 +103,8 @@
         </view>
         
         <!-- 大运走势 -->
-        <view class="section-title data-v-13c364a5" wx:if="{{V}}">大运走势</view>
-        <view class="dayun-box data-v-13c364a5" wx:if="{{V}}">
+        <view class="section-title data-v-13c364a5">大运走势</view>
+        <view class="dayun-box data-v-13c364a5">
             <view class="dayun-start data-v-13c364a5" wx:if="{{W}}">起运: {{W}}岁</view>
             <view class="dayun-scroll data-v-13c364a5" wx:if="{{Y.length > 0}}">
                 <scroll-view scroll-x="true" style="white-space:nowrap;">
