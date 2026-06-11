@@ -2,7 +2,9 @@
     "pages": [
         "pages/tabbar/bazi",
         "pages/tabbar/calendar",
-        "pages/tabbar/almanac"
+        "pages/tabbar/almanac",
+        "pages/draw/draw",
+        "pages/draw/detail"
     ],
     "window": {
         "navigationBarTextStyle": "black",
@@ -18,7 +20,7 @@
         "list": [
             {
                 "pagePath": "pages/tabbar/bazi",
-                "text": "查干支",
+                "text": "查命理",
                 "iconPath": "static/images/tabbar/bazi.png",
                 "selectedIconPath": "static/images/tabbar/bazi-active.png"
             },

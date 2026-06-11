@@ -15,9 +15,28 @@
                 <view class="title data-v-47582f5c"></view>
                 <find-result bind:__l="__l" class="data-v-47582f5c" uI="47582f5c-1" uP="{{i}}" wx:if="{{i}}"></find-result>
             </view>
+            <view class="draw-section data-v-47582f5c">
+                <view class="draw-title data-v-47582f5c">每日抽一签</view>
+                <view class="draw-grid data-v-47582f5c">
+                    <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="career">
+                        <view class="draw-icon data-v-47582f5c">💼</view>
+                        <view class="draw-name data-v-47582f5c">事业破局</view>
+                    </view>
+                    <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="people">
+                        <view class="draw-icon data-v-47582f5c">👥</view>
+                        <view class="draw-name data-v-47582f5c">人际解惑</view>
+                    </view>
+                    <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="health">
+                        <view class="draw-icon data-v-47582f5c">🌿</view>
+                        <view class="draw-name data-v-47582f5c">健康静心</view>
+                    </view>
+                    <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="fortune">
+                        <view class="draw-icon data-v-47582f5c">☀️</view>
+                        <view class="draw-name data-v-47582f5c">今日运势</view>
+                    </view>
+                </view>
+            </view>
         </scroll-view>
     </view>
     <ui-date-time-picker bind:__l="__l" bindselect="{{k}}" class="r data-v-47582f5c" uI="47582f5c-2" uP="{{l}}" uR="refSelectBirthday" wx:if="{{l}}"></ui-date-time-picker>
-    <view class="share-btn data-v-47582f5c" wx:if="{{m}}">一键分享<button class="data-v-47582f5c" openType="share"></button>
-    </view>
 </view>

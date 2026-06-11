@@ -33,6 +33,28 @@ var a = function() {
             d.value = !0;
         };
         return function(e, n) {
+            var drawItemClick = function(e) {
+                var scene = e.currentTarget.dataset.scene;
+                if (!scene) {
+                    wx.showToast({
+                        title: '场景参数错误',
+                        icon: 'none'
+                    });
+                    return;
+                }
+                // 保存场景到 globalData
+                getApp().globalData.drawScene = scene;
+                wx.navigateTo({
+                    url: '/pages/draw/draw',
+                    fail: function(err) {
+                        wx.showToast({
+                            title: '页面跳转失败',
+                            icon: 'none'
+                        });
+                    }
+                });
+            };
+            
             return r.e({
                 a: r.t(r.unref(c).navbar),
                 b: r.p({
@@ -61,8 +83,8 @@ var a = function() {
                     safeAreaInsetBottom: !1,
                     title: "选择日期时辰"
                 }),
-                m: r.unref(c).share
-            }, (r.unref(c).share, {}));
+                m: r.o(drawItemClick)
+            });
         };
     }
 }, i = r._export_sfc(o, [ [ "__scopeId", "data-v-47582f5c" ] ]);

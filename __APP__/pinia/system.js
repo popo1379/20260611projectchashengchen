@@ -26,9 +26,9 @@ var e = require("../@babel/runtime/helpers/regeneratorRuntime"), t = require("..
         return {
             open: !0,
             officialAccount: !1,
-            navbar: "甲子纪年",
-            title: "农历 · 公历 · 转换",
-            mainBtn: "开始转换",
+            navbar: "查生辰命理",
+            title: "农历 · 公历 · 命理",
+            mainBtn: "开始查询",
             share: !1,
             qrcode: "",
             officialAccountBtn: "查看详细信息",

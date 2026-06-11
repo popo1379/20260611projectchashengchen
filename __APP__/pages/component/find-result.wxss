@@ -204,8 +204,8 @@
 }
 
 .ui-jin {
-    background: #f0f0f0;
-    color: #c0c0c0;
+    background: #50616d;
+    color: #Cfb53b;
 }
 
 .ui-mu {

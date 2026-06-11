@@ -1,0 +1,43 @@
+<view class="page">
+    <view class="qian-header" style="background: linear-gradient(135deg, {{qian.levelBg}} 0%, #fff 100%);">
+        <view class="level-badge" style="background-color: {{qian.levelColor}}; color: #fff;">
+            <text class="level-text">{{qian.level}}</text>
+        </view>
+        <view class="scene-tag">
+            <text class="scene-text">{{sceneName}}</text>
+        </view>
+    </view>
+
+    <view class="qian-body">
+        <view class="qian-title-section">
+            <text class="qian-title">{{qian.title}}</text>
+        </view>
+
+        <view class="qian-poem-section">
+            <view class="poem-container">
+                <view class="poem-bg"></view>
+                <view class="poem-content">
+                    <text class="poem-text">{{qian.poem}}</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="qian-interpretation-section">
+            <view class="section-title">
+                <text class="title-text">签文释义</text>
+            </view>
+            <view class="interpretation-content">
+                <text class="interpretation-text">{{qian.interpretation}}</text>
+            </view>
+        </view>
+
+        <view class="action-section">
+            <button class="action-btn primary" bindtap="drawAgain" style="background-color: #242122; color: #f3d49b;">
+                再抽一签
+            </button>
+            <button class="action-btn secondary" bindtap="goBackHome" style="border: 2rpx solid #242122; color: #242122;">
+                返回首页
+            </button>
+        </view>
+    </view>
+</view>
