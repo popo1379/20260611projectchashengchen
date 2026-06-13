@@ -41,10 +41,11 @@
         </view>
     </view>
 
-    <!-- 抽签结果预览 -->
-    <view class="result-preview" wx:if="{{showResult}}">
-        <view class="preview-card" style="border: 4rpx solid {{qian.levelColor}}; background: {{qian.levelBg}};">
-            <view class="preview-level">
+    <!-- 抽签结果预览（半遮罩弹窗） -->
+    <view class="result-preview" wx:if="{{showResult}}" bindtap="closeResult">
+        <view class="preview-card" style="border-top: 4rpx solid {{qian.levelColor}};" catchtap="stopPropagation">
+            <view class="preview-handle"></view>
+            <view class="preview-level" style="background: {{qian.levelBg}};">
                 <text class="level" style="color: {{qian.levelColor}};">{{qian.level}}</text>
             </view>
             <view class="preview-title">
@@ -52,6 +53,9 @@
             </view>
             <view class="preview-poem">
                 <text class="poem">{{qian.poem}}</text>
+            </view>
+            <view class="preview-tip">
+                <text class="tip">心诚则灵，请明日再来一签</text>
             </view>
             <button class="detail-btn" bindtap="goToDetail" style="background-color: #242122; color: #f3d49b;">
                 查看完整签文释义

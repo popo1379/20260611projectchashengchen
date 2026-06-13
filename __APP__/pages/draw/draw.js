@@ -98,6 +98,12 @@ Page({
       isDrawing: true
     });
 
+    // 点击抽签按钮震动
+    wx.vibrateShort({
+      type: 'medium',
+      success: function() {}
+    });
+
     // 创建签筒摇晃动画
     var animation = wx.createAnimation({
       duration: 300,
@@ -107,16 +113,57 @@ Page({
     // 摇晃动画
     var that = this;
     animation.rotate(-15).step();
-    animation.rotate(15).step();
-    animation.rotate(-10).step();
-    animation.rotate(10).step();
-    animation.rotate(-5).step();
-    animation.rotate(5).step();
-    animation.rotate(0).step();
-
     this.setData({
       tubeAnimation: animation.export()
     });
+    
+    // 摇晃过程中震动
+    setTimeout(function() {
+      wx.vibrateShort({ type: 'light' });
+      animation.rotate(15).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 300);
+
+    setTimeout(function() {
+      wx.vibrateShort({ type: 'light' });
+      animation.rotate(-10).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 600);
+
+    setTimeout(function() {
+      wx.vibrateShort({ type: 'light' });
+      animation.rotate(10).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 900);
+
+    setTimeout(function() {
+      wx.vibrateShort({ type: 'light' });
+      animation.rotate(-5).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 1200);
+
+    setTimeout(function() {
+      wx.vibrateShort({ type: 'light' });
+      animation.rotate(5).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 1500);
+
+    setTimeout(function() {
+      animation.rotate(0).step();
+      that.setData({
+        tubeAnimation: animation.export()
+      });
+    }, 1800);
 
     // 2秒后执行抽签
     setTimeout(function() {
@@ -128,6 +175,12 @@ Page({
   performDraw: function() {
     var scene = this.data.scene;
     var qian = this.weightedRandomDraw(scene);
+
+    // 出签震动
+    wx.vibrateShort({
+      type: 'heavy',
+      success: function() {}
+    });
 
     // 保存抽签记录
     this.saveDrawRecord(scene, qian.id);
@@ -208,5 +261,18 @@ Page({
     wx.navigateTo({
       url: '/pages/draw/detail?qian=' + qianStr + '&scene=' + scene
     });
+  },
+
+  // 关闭半遮罩弹窗
+  closeResult: function() {
+    this.setData({
+      showResult: false,
+      hasDrawn: true
+    });
+  },
+
+  // 阻止事件冒泡
+  stopPropagation: function() {
+    // 空方法，用于 catchtap 阻止冒泡
   }
 });

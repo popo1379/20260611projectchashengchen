@@ -74,58 +74,58 @@
     width: 606rpx;
 }
 
-/* 每日抽签四宫格样式 */
+/* 每日抽签横向排列样式 */
 .draw-section.data-v-47582f5c {
-    margin-top: 50rpx;
-    padding: 0 20rpx;
+    margin-top: 80rpx;
+    padding: 0 30rpx;
 }
 
 .draw-title.data-v-47582f5c {
     text-align: center;
-    color: #242122;
-    font-size: 32rpx;
-    font-weight: bold;
-    margin-bottom: 30rpx;
+    color: #666;
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-bottom: 20rpx;
 }
 
-.draw-grid.data-v-47582f5c {
+.draw-row.data-v-47582f5c {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
     background-color: #fff;
-    border-radius: 20rpx;
-    padding: 30rpx 20rpx;
-    box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+    border-radius: 16rpx;
+    padding: 24rpx 16rpx;
+    box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
 }
 
 .draw-item.data-v-47582f5c {
-    width: 48%;
-    background: linear-gradient(135deg, #faf9f6 0%, #f5f4f0 100%);
-    border-radius: 16rpx;
-    padding: 30rpx 20rpx;
-    margin-bottom: 20rpx;
-    text-align: center;
-    transition: all 0.3s;
-    border: 2rpx solid #ebe9e4;
-}
-
-.draw-item.data-v-47582f5c:nth-child(3),
-.draw-item.data-v-47582f5c:nth-child(4) {
-    margin-bottom: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10rpx 8rpx;
 }
 
 .draw-item.data-v-47582f5c:active {
-    transform: scale(0.95);
-    opacity: 0.8;
+    opacity: 0.6;
+}
+
+.draw-divider.data-v-47582f5c {
+    width: 1rpx;
+    height: 60rpx;
+    background-color: #eee;
 }
 
 .draw-icon.data-v-47582f5c {
-    font-size: 60rpx;
-    margin-bottom: 15rpx;
+    font-size: 40rpx;
+    margin-bottom: 10rpx;
 }
 
 .draw-name.data-v-47582f5c {
     color: #242122;
-    font-size: 28rpx;
-    font-weight: 600;
+    font-size: 24rpx;
+    font-weight: 500;
+    text-align: center;
 }

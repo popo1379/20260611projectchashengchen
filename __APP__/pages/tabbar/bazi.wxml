@@ -17,21 +17,24 @@
             </view>
             <view class="draw-section data-v-47582f5c">
                 <view class="draw-title data-v-47582f5c">每日抽一签</view>
-                <view class="draw-grid data-v-47582f5c">
+                <view class="draw-row data-v-47582f5c">
                     <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="career">
-                        <view class="draw-icon data-v-47582f5c">💼</view>
+                        <view class="draw-icon data-v-47582f5c">📿</view>
                         <view class="draw-name data-v-47582f5c">事业破局</view>
                     </view>
+                    <view class="draw-divider data-v-47582f5c"></view>
                     <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="people">
-                        <view class="draw-icon data-v-47582f5c">👥</view>
+                        <view class="draw-icon data-v-47582f5c">🔮</view>
                         <view class="draw-name data-v-47582f5c">人际解惑</view>
                     </view>
+                    <view class="draw-divider data-v-47582f5c"></view>
                     <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="health">
                         <view class="draw-icon data-v-47582f5c">🌿</view>
                         <view class="draw-name data-v-47582f5c">健康静心</view>
                     </view>
+                    <view class="draw-divider data-v-47582f5c"></view>
                     <view class="draw-item data-v-47582f5c" bindtap="{{m}}" data-scene="fortune">
-                        <view class="draw-icon data-v-47582f5c">☀️</view>
+                        <view class="draw-icon data-v-47582f5c">⭐</view>
                         <view class="draw-name data-v-47582f5c">今日运势</view>
                     </view>
                 </view>

@@ -47,6 +47,89 @@
     font-weight: bold;
 }
 
+/* 四柱网格样式 */
+.bazi-grid {
+    background: linear-gradient(135deg, #fef9f3 0%, #fff8f0 100%);
+    border-radius: 16rpx;
+    padding: 20rpx;
+    margin: 20rpx 0;
+    border: 2rpx solid #f0e6d8;
+}
+
+.bazi-header-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 16rpx;
+}
+
+.bazi-header-cell {
+    flex: 1;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999;
+    font-weight: 500;
+}
+
+.bazi-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 8rpx;
+}
+
+.bazi-cell {
+    flex: 1;
+    text-align: center;
+    padding: 16rpx 8rpx;
+}
+
+.bazi-ganzhi {
+    font-size: 36rpx;
+    font-weight: bold;
+    padding: 12rpx 20rpx;
+    border-radius: 12rpx;
+    display: inline-block;
+}
+
+.bazi-cell-sub {
+    flex: 1;
+    text-align: center;
+    padding: 8rpx 0;
+}
+
+.bazi-wuxing {
+    font-size: 22rpx;
+    padding: 6rpx 12rpx;
+    border-radius: 8rpx;
+    display: inline-block;
+    margin: 2rpx 0;
+}
+
+.bazi-wuxing-rizhu {
+    font-size: 22rpx;
+    padding: 6rpx 12rpx;
+    border-radius: 8rpx;
+    display: inline-block;
+    margin: 2rpx 0;
+    background: transparent;
+    color: #333;
+}
+
+.bazi-label-row {
+    display: flex;
+    justify-content: center;
+    padding: 4rpx 0;
+    margin: 8rpx 0 4rpx;
+}
+
+.bazi-label {
+    font-size: 22rpx;
+    color: #666;
+    background: #f5f0e8;
+    padding: 4rpx 24rpx;
+    border-radius: 20rpx;
+    font-weight: 500;
+}
+
 .section-title {
     font-size: 32rpx;
     font-weight: bold;

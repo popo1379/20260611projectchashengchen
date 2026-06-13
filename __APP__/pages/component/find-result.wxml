@@ -5,36 +5,100 @@
         <view class="row data-v-13c364a5">
             <text class="label data-v-13c364a5">公历日期</text>{{c}}</view>
         <view class="row data-v-13c364a5">
-            <text class="mr-20 data-v-13c364a5">生肖星座</text>
+            <text class="label data-v-13c364a5">生肖星座</text>
             <view class="values data-v-13c364a5">{{d}} · {{e}}</view>
         </view>
-        <view class="row data-v-13c364a5">
-            <text class="label data-v-13c364a5">干支纪年</text>
-            <view class="values bazi data-v-13c364a5">
-                <text class="{{[g, 'col', 'data-v-13c364a5']}}">{{f}}</text>
-                <text class="{{[i, 'col', 'data-v-13c364a5']}}">{{h}}</text>
-                <text class="{{[k, 'col', 'data-v-13c364a5']}}">{{j}}</text>
-                <text class="{{[m, 'col', 'data-v-13c364a5']}}">{{l}}</text>
-                <text class="{{[o, 'col', 'data-v-13c364a5']}}">{{n}}</text>
-                <text class="{{[q, 'col', 'data-v-13c364a5']}}">{{p}}</text>
-                <text class="{{[s, 'col', 'data-v-13c364a5']}}">{{r}}</text>
-                <text class="{{[v, 'col', 'data-v-13c364a5']}}">{{t}}</text>
+        
+        <view class="section-title data-v-13c364a5">八字四柱</view>
+        <view class="bazi-grid data-v-13c364a5">
+            <view class="bazi-header-row data-v-13c364a5">
+                <text class="bazi-header-cell data-v-13c364a5">年柱</text>
+                <text class="bazi-header-cell data-v-13c364a5">月柱</text>
+                <text class="bazi-header-cell data-v-13c364a5">日柱</text>
+                <text class="bazi-header-cell data-v-13c364a5">时柱</text>
+            </view>
+            <view class="bazi-row data-v-13c364a5">
+                <view class="bazi-cell data-v-13c364a5">
+                    <text class="{{[g, 'bazi-ganzhi', 'data-v-13c364a5']}}">{{f}}{{h}}</text>
+                </view>
+                <view class="bazi-cell data-v-13c364a5">
+                    <text class="{{[k, 'bazi-ganzhi', 'data-v-13c364a5']}}">{{j}}{{l}}</text>
+                </view>
+                <view class="bazi-cell data-v-13c364a5">
+                    <text class="{{[o, 'bazi-ganzhi', 'data-v-13c364a5']}}">{{n}}{{p}}</text>
+                </view>
+                <view class="bazi-cell data-v-13c364a5">
+                    <text class="{{[s, 'bazi-ganzhi', 'data-v-13c364a5']}}">{{r}}{{t}}</text>
+                </view>
+            </view>
+            <view class="bazi-label-row data-v-13c364a5">
+                <text class="bazi-label data-v-13c364a5">天干</text>
+            </view>
+            <view class="bazi-row data-v-13c364a5">
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[g, 'bazi-wuxing', 'data-v-13c364a5']}}">{{f}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[k, 'bazi-wuxing', 'data-v-13c364a5']}}">{{j}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[o, 'bazi-wuxing', 'data-v-13c364a5']}}">{{n}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[s, 'bazi-wuxing', 'data-v-13c364a5']}}">{{r}}</text>
+                </view>
+            </view>
+            <view class="bazi-label-row data-v-13c364a5">
+                <text class="bazi-label data-v-13c364a5">地支</text>
+            </view>
+            <view class="bazi-row data-v-13c364a5">
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[i, 'bazi-wuxing', 'data-v-13c364a5']}}">{{h}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[m, 'bazi-wuxing', 'data-v-13c364a5']}}">{{l}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[q, 'bazi-wuxing', 'data-v-13c364a5']}}">{{p}}</text>
+                </view>
+                <view class="bazi-cell-sub data-v-13c364a5">
+                    <text class="{{[v, 'bazi-wuxing', 'data-v-13c364a5']}}">{{t}}</text>
+                </view>
             </view>
         </view>
         
-        <view class="row data-v-13c364a5" wx:if="{{w}}">
-            <text class="label data-v-13c364a5" style="width:220rpx">五行属什么</text>
-            <view class="values data-v-13c364a5">
-                <text class="{{['data-v-13c364a5', y]}}">{{x}}</text>
+        <view class="section-title data-v-13c364a5">五行分析</view>
+        <view class="xiyong-box data-v-13c364a5">
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">日主五行</text>
+                <text class="data-v-13c364a5 value">{{x}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">五行分析</text>
+                <text class="data-v-13c364a5 value">{{A}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">身强身弱</text>
+                <text class="data-v-13c364a5 value">{{N}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">喜用神</text>
+                <view class="data-v-13c364a5">
+                    <text class="data-v-13c364a5 xi-color">喜{{O}}</text>
+                    <text class="data-v-13c364a5 yong-color">用{{P}}</text>
+                </view>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">最强五行</text>
+                <text class="data-v-13c364a5 value">{{Q}}</text>
+            </view>
+            <view class="xiyong-row data-v-13c364a5">
+                <text class="data-v-13c364a5 label">最弱五行</text>
+                <text class="data-v-13c364a5 value">{{U}}</text>
             </view>
         </view>
         
-        <view class="row data-v-13c364a5">
-            <text class="label data-v-13c364a5" style="width:220rpx">五行缺什么</text>
-            <view class="values data-v-13c364a5">{{A}}</view>
-        </view>
-        
-        <view class="section-title data-v-13c364a5">纳音五行</view>
+        <view class="section-title data-v-13c364a5">四柱纳音</view>
         <view class="nayin-grid data-v-13c364a5">
             <view class="nayin-item data-v-13c364a5">
                 <text class="data-v-13c364a5">年柱</text>
@@ -57,43 +121,20 @@
         <view class="section-title data-v-13c364a5">十神分析</view>
         <view class="tenstar-grid data-v-13c364a5">
             <view class="tenstar-item data-v-13c364a5">
-                <text class="data-v-13c364a5">年干</text>
+                <text class="data-v-13c364a5">年干十神</text>
                 <text class="data-v-13c364a5 tenstar-value">{{I}}</text>
             </view>
             <view class="tenstar-item data-v-13c364a5">
-                <text class="data-v-13c364a5">月干</text>
+                <text class="data-v-13c364a5">月干十神</text>
                 <text class="data-v-13c364a5 tenstar-value">{{J}}</text>
             </view>
             <view class="tenstar-item data-v-13c364a5">
-                <text class="data-v-13c364a5">日干</text>
+                <text class="data-v-13c364a5">日主</text>
                 <text class="data-v-13c364a5 tenstar-value">{{K}}</text>
             </view>
             <view class="tenstar-item data-v-13c364a5">
-                <text class="data-v-13c364a5">时干</text>
+                <text class="data-v-13c364a5">时干十神</text>
                 <text class="data-v-13c364a5 tenstar-value">{{L}}</text>
-            </view>
-        </view>
-        
-        <view class="section-title data-v-13c364a5">喜用神分析</view>
-        <view class="xiyong-box data-v-13c364a5">
-            <view class="xiyong-row data-v-13c364a5">
-                <text class="data-v-13c364a5 label">身强身弱</text>
-                <text class="data-v-13c364a5 value">{{N}}</text>
-            </view>
-            <view class="xiyong-row data-v-13c364a5">
-                <text class="data-v-13c364a5 label">喜用神</text>
-                <view class="data-v-13c364a5">
-                    <text class="data-v-13c364a5 xi-color">喜{{O}}</text>
-                    <text class="data-v-13c364a5 yong-color">用{{P}}</text>
-                </view>
-            </view>
-            <view class="xiyong-row data-v-13c364a5">
-                <text class="data-v-13c364a5 label">最强五行</text>
-                <text class="data-v-13c364a5 value">{{Q}}</text>
-            </view>
-            <view class="xiyong-row data-v-13c364a5">
-                <text class="data-v-13c364a5 label">最弱五行</text>
-                <text class="data-v-13c364a5 value">{{U}}</text>
             </view>
         </view>
         

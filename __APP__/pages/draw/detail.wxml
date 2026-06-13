@@ -32,10 +32,7 @@
         </view>
 
         <view class="action-section">
-            <button class="action-btn primary" bindtap="drawAgain" style="background-color: #242122; color: #f3d49b;">
-                再抽一签
-            </button>
-            <button class="action-btn secondary" bindtap="goBackHome" style="border: 2rpx solid #242122; color: #242122;">
+            <button class="action-btn primary" bindtap="goBackHome" style="background-color: #242122; color: #f3d49b;">
                 返回首页
             </button>
         </view>
