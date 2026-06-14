@@ -149,6 +149,9 @@
                     </view>
                 </view>
             </view>
+            <view class="ad-section data-v-286e3247">
+                <ad-custom unit-id="adunit-fc58687f5b171baa" bindload="{{ba}}" binderror="{{bb}}" bindclose="{{bc}}"></ad-custom>
+            </view>
             <view class="data-v-286e3247" style="height:100rpx"></view>
         </scroll-view>
     </view>

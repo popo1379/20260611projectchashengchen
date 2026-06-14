@@ -160,8 +160,36 @@ var i = function() {
                 "火": n + "huo",
                 "土": n + "tu"
             }[a];
-        }, l = function() {
-            f.showInterpretation = !0;
+        },
+
+        // ===== 插屏广告初始化 =====
+        interstitialAd = null;
+
+        if (wx.createInterstitialAd) {
+            interstitialAd = wx.createInterstitialAd({
+                adUnitId: 'adunit-c379e822cc83fd65'
+            });
+            interstitialAd.onLoad(function() {});
+            interstitialAd.onError(function(err) {
+                console.error('插屏广告加载失败', err);
+            });
+            interstitialAd.onClose(function() {
+                // 广告关闭后展示解读弹窗
+                f.showInterpretation = !0;
+            });
+        }
+
+        l = function() {
+            // 优先展示广告，广告关闭后在 onClose 回调中打开弹窗；
+            // 若广告不可用或展示失败，则直接打开弹窗
+            if (interstitialAd) {
+                interstitialAd.show().catch(function(err) {
+                    console.error('插屏广告显示失败', err);
+                    f.showInterpretation = !0;
+                });
+            } else {
+                f.showInterpretation = !0;
+            }
         }, g = function() {
             f.showInterpretation = !1;
         };

@@ -107,7 +107,17 @@ var n = function() {
                 })
             } : {}, {
                 I: u.value.twelveStar && !1
-            }, (u.value.twelveStar, {}), {});
+            }, (u.value.twelveStar, {}), {
+                ba: e.o(function() {
+                    console.log("原生模板广告加载成功");
+                }),
+                bb: e.o(function(a) {
+                    console.error("原生模板广告加载失败", a);
+                }),
+                bc: e.o(function() {
+                    console.log("原生模板广告关闭");
+                })
+            });
         };
     }
 }, u = e._export_sfc(r, [ [ "__scopeId", "data-v-286e3247" ] ]);

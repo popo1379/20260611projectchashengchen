@@ -257,7 +257,7 @@ Page({
     }
 
     var qianStr = encodeURIComponent(JSON.stringify(qian));
-    
+
     wx.navigateTo({
       url: '/pages/draw/detail?qian=' + qianStr + '&scene=' + scene
     });

@@ -2,7 +2,8 @@ Page({
   data: {
     qian: null,
     scene: '',
-    sceneName: ''
+    sceneName: '',
+    _interstitialAd: null
   },
 
   onLoad: function(options) {
@@ -33,6 +34,26 @@ Page({
       wx.setNavigationBarTitle({
         title: qian.title + ' - 签文详情'
       });
+
+      // ===== 进入页面后展示插屏广告 =====
+      var that = this;
+      if (wx.createInterstitialAd) {
+        var ad = wx.createInterstitialAd({
+          adUnitId: 'adunit-c379e822cc83fd65'
+        });
+        ad.onLoad(function() {});
+        ad.onError(function(err) {
+          console.error('插屏广告加载失败', err);
+        });
+        ad.onClose(function() {});
+        this.data._interstitialAd = ad;
+        // 页面渲染完成后延迟一小段时间再展示，体验更自然
+        setTimeout(function() {
+          ad.show().catch(function(err) {
+            console.error('插屏广告显示失败', err);
+          });
+        }, 300);
+      }
     } catch (e) {
       wx.showToast({
         title: '数据解析失败',

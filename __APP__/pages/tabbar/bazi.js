@@ -31,8 +31,20 @@ var a = function() {
         }, d = r.ref(!1), l = function() {
             if (!o.birthday) return n.uniFn.toast("请选择日期时辰");
             d.value = !0;
-        };
-        return function(e, n) {
+        },
+
+        // ===== 功能开放时间控制：系统时间超过 2026-06-15 23:59:59 时自动开放 =====
+        unlockTime = new Date(2026, 5, 15, 23, 59, 59).getTime(),
+        q = r.ref(Date.now() >= unlockTime);
+
+        if (!q.value) {
+            var diff = unlockTime - Date.now();
+            var timer = setTimeout(function() {
+                q.value = true;
+            }, diff > 0 ? diff : 0);
+        }
+
+        return function(e, v) {
             var drawItemClick = function(e) {
                 var scene = e.currentTarget.dataset.scene;
                 if (!scene) {
@@ -54,7 +66,35 @@ var a = function() {
                     }
                 });
             };
-            
+
+            var pickerProps = q.value ? r.p({
+                safeAreaInsetBottom: !1,
+                title: "选择日期时辰"
+            }) : r.p({
+                safeAreaInsetBottom: !1,
+                title: "选择日期时辰",
+                disabled: true
+            });
+
+            var p_handler = function() {
+                wx.showToast({
+                    title: "敬请期待",
+                    icon: "none",
+                    duration: 1500
+                });
+            };
+
+            // ===== 原生模板广告事件回调 =====
+            var adLoad = function() {
+                console.log("原生模板广告加载成功");
+            };
+            var adError = function(err) {
+                console.error("原生模板广告加载失败", err);
+            };
+            var adClose = function() {
+                console.log("原生模板广告关闭");
+            };
+
             return r.e({
                 a: r.t(r.unref(c).navbar),
                 b: r.p({
@@ -68,7 +108,12 @@ var a = function() {
                 e: r.o(u),
                 f: r.t(r.unref(c).mainBtn),
                 g: r.o(l),
-                h: d.value
+                h: d.value,
+                o: q.value,
+                p: r.o(p_handler),
+                q: r.o(adLoad),
+                r: r.o(adError),
+                s: r.o(adClose)
             }, d.value ? {
                 i: r.p({
                     birthday: o.birthday,
@@ -79,10 +124,7 @@ var a = function() {
                     k: "refSelectBirthday"
                 }),
                 k: r.o(s),
-                l: r.p({
-                    safeAreaInsetBottom: !1,
-                    title: "选择日期时辰"
-                }),
+                l: pickerProps,
                 m: r.o(drawItemClick)
             });
         };

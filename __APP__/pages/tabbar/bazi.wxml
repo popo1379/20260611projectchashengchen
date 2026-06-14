@@ -39,6 +39,15 @@
                     </view>
                 </view>
             </view>
+            <view class="ad-section data-v-47582f5c">
+                <ad-custom unit-id="adunit-fc58687f5b171baa" bindload="{{q}}" binderror="{{r}}" bindclose="{{s}}"></ad-custom>
+            </view>
+            <view class="lock-overlay data-v-47582f5c" wx:if="{{!o}}" catchtap="{{p}}">
+                <view class="lock-content data-v-47582f5c">
+                    <view class="lock-title data-v-47582f5c">功能正在开发</view>
+                    <view class="lock-subtitle data-v-47582f5c">敬请期待</view>
+                </view>
+            </view>
         </scroll-view>
     </view>
     <ui-date-time-picker bind:__l="__l" bindselect="{{k}}" class="r data-v-47582f5c" uI="47582f5c-2" uP="{{l}}" uR="refSelectBirthday" wx:if="{{l}}"></ui-date-time-picker>
