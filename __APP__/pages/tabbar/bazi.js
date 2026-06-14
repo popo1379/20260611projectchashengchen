@@ -67,23 +67,6 @@ var a = function() {
                 });
             };
 
-            var pickerProps = q.value ? r.p({
-                safeAreaInsetBottom: !1,
-                title: "选择日期时辰"
-            }) : r.p({
-                safeAreaInsetBottom: !1,
-                title: "选择日期时辰",
-                disabled: true
-            });
-
-            var p_handler = function() {
-                wx.showToast({
-                    title: "敬请期待",
-                    icon: "none",
-                    duration: 1500
-                });
-            };
-
             // ===== 原生模板广告事件回调 =====
             var adLoad = function() {
                 console.log("原生模板广告加载成功");
@@ -110,7 +93,6 @@ var a = function() {
                 g: r.o(l),
                 h: d.value,
                 o: q.value,
-                p: r.o(p_handler),
                 q: r.o(adLoad),
                 r: r.o(adError),
                 s: r.o(adClose)
@@ -124,7 +106,10 @@ var a = function() {
                     k: "refSelectBirthday"
                 }),
                 k: r.o(s),
-                l: pickerProps,
+                l: r.p({
+                    safeAreaInsetBottom: !1,
+                    title: "选择日期时辰"
+                }),
                 m: r.o(drawItemClick)
             });
         };
