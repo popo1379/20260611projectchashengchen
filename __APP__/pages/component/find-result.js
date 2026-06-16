@@ -151,6 +151,24 @@ var i = function() {
         }, s, {
             immediate: !0
         });
+
+        // ===== 查命理内容版本控制：根据版本号决定是否显示八字四柱、五行分析、四柱纳音、十神分析、大运走势、查看详细解读按钮 =====
+        var baziResultEnabled = e.ref(true); // 默认显示
+        var app = getApp();
+        if (app && app.isFeatureEnabled) {
+            baziResultEnabled.value = app.isFeatureEnabled("bazi_result");
+            // 注册全局监听器（多个页面可同时注册，互不影响）
+            app.registerFeatureConfigListener(function() {
+                baziResultEnabled.value = app.isFeatureEnabled("bazi_result");
+                console.log("结果页面 bazi_result 状态更新:", baziResultEnabled.value);
+            });
+            // 延迟再检查一次
+            setTimeout(function() {
+                baziResultEnabled.value = app.isFeatureEnabled("bazi_result");
+                console.log("结果页面 bazi_result 延迟检查:", baziResultEnabled.value);
+            }, 3000);
+        }
+
         var c = function(a) {
             var n = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : "";
             return {
@@ -253,7 +271,8 @@ var i = function() {
                 jj: d.interpretation.lucky.luckyNumber,
                 kk: d.interpretation.lucky.luckyDirection,
                 ll: e.o(l),
-                mm: e.o(g)
+                mm: e.o(g),
+                pp: baziResultEnabled.value
             }, d.dayun ? {
                 nn: e.t(d.dayun.childLimit.year),
                 oo: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {

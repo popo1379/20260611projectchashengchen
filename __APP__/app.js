@@ -128,12 +128,17 @@ var o = {
                 });
             });
         },
-        loadFeatureConfig: function() {
+        loadFeatureConfig: function(callback) {
             var self = this;
-            // 云环境完全不可用时，直接默认开放所有功能
+            // 云环境不可用时，直接默认开放所有功能，不再尝试查询云数据库
             if (!cloudReady || typeof wx.cloud === "undefined") {
                 self.globalData.featureConfig = {};
                 console.log("云环境不可用，使用本地默认配置（所有功能开放）");
+                if (typeof callback === "function") callback();
+                // 通知所有注册的监听器
+                if (self._featureConfigListeners) {
+                    self._featureConfigListeners.forEach(function(fn) { try { fn(); } catch(e) {} });
+                }
                 return;
             }
 
@@ -162,6 +167,10 @@ var o = {
             if (!db) {
                 self.globalData.featureConfig = {};
                 console.log("数据库句柄获取失败，使用本地默认配置（所有功能开放）");
+                if (typeof callback === "function") callback();
+                if (self._featureConfigListeners) {
+                    self._featureConfigListeners.forEach(function(fn) { try { fn(); } catch(e) {} });
+                }
                 return;
             }
 
@@ -178,23 +187,41 @@ var o = {
                         self.globalData.featureConfig = {};
                         console.log("云端功能配置为空，默认全部开放");
                     }
+                    if (typeof callback === "function") callback();
+                    // 通知所有注册的监听器
+                    if (self._featureConfigListeners) {
+                        self._featureConfigListeners.forEach(function(fn) { try { fn(); } catch(e) {} });
+                    }
                 }).catch(function(err) {
                     console.error("云端功能配置加载失败（" + sourceLabel + "）", err);
                     // 加载失败时默认全部开放（降级保护）
                     self.globalData.featureConfig = {};
+                    if (typeof callback === "function") callback();
+                    if (self._featureConfigListeners) {
+                        self._featureConfigListeners.forEach(function(fn) { try { fn(); } catch(e) {} });
+                    }
                 });
             } catch (err) {
                 console.error("云端功能配置调用失败", err);
                 self.globalData.featureConfig = {};
+                if (typeof callback === "function") callback();
+                if (self._featureConfigListeners) {
+                    self._featureConfigListeners.forEach(function(fn) { try { fn(); } catch(e) {} });
+                }
             }
+        },
+        // 注册功能配置监听器（多个页面可同时注册）
+        registerFeatureConfigListener: function(fn) {
+            if (!this._featureConfigListeners) this._featureConfigListeners = [];
+            this._featureConfigListeners.push(fn);
         },
         isFeatureEnabled: function(featureName) {
             var config = this.globalData.featureConfig || {};
             var feature = config[featureName];
-            // 如果云数据库中没有配置该功能，则默认隐藏
+            // 如果云数据库中没有配置该功能，则默认显示
             if (!feature) {
-                console.log("isFeatureEnabled:", featureName, "- 未配置，默认隐藏");
-                return false; // 未配置则默认隐藏
+                console.log("isFeatureEnabled:", featureName, "- 未配置，默认显示");
+                return true; // 未配置则默认显示
             }
             // 支持两种字段名：hideVersion（用户描述）和 minVersion（代码中）
             var hideVersion = feature.hideVersion || feature.minVersion || "";

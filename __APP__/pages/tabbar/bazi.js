@@ -34,28 +34,22 @@ var a = function() {
         };
 
         // ===== 云开发功能开关控制：读取 cloudDB feature_config 配置判断功能是否开放 =====
-        var q = r.ref(false); // 默认隐藏，云端配置加载后更新
+        var q = r.ref(true); // 默认显示
 
-        // 获取 app 实例，监听云配置加载完成
+        // 获取 app 实例，注册监听器：云端配置加载完成后更新开关状态
         var app = getApp();
-        if (app && app.globalData) {
-            // 云配置已加载，直接读取
-            var isEnabled = app.isFeatureEnabled ? app.isFeatureEnabled("daily_draw") : true;
-            q.value = isEnabled;
-
-            // 注册 watcher，云配置异步加载完成后刷新
-            Object.defineProperty(app.globalData, "featureConfig", {
-                configurable: true,
-                set: function(val) {
-                    this._featureConfig = val;
-                    if (app.isFeatureEnabled) {
-                        q.value = app.isFeatureEnabled("daily_draw");
-                    }
-                },
-                get: function() {
-                    return this._featureConfig;
-                }
+        if (app && app.isFeatureEnabled) {
+            q.value = app.isFeatureEnabled("daily_draw");
+            // 注册全局监听器（多个页面可同时注册，互不影响）
+            app.registerFeatureConfigListener(function() {
+                q.value = app.isFeatureEnabled("daily_draw");
+                console.log("bazi页面 daily_draw 状态更新:", q.value);
             });
+            // 延迟再检查一次（确保云配置加载完成后状态正确）
+            setTimeout(function() {
+                q.value = app.isFeatureEnabled("daily_draw");
+                console.log("bazi页面 daily_draw 延迟检查:", q.value);
+            }, 3000);
         }
 
         return function(e, v) {

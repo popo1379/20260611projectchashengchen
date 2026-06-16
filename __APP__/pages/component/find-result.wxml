@@ -9,6 +9,7 @@
             <view class="values data-v-13c364a5">{{d}} · {{e}}</view>
         </view>
         
+        <block wx:if="{{pp}}">
         <view class="section-title data-v-13c364a5">八字四柱</view>
         <view class="bazi-grid data-v-13c364a5">
             <view class="bazi-header-row data-v-13c364a5">
@@ -159,6 +160,7 @@
         <view class="interpret-btn-box data-v-13c364a5" bindtap="{{ll}}">
             <view class="interpret-btn data-v-13c364a5">查看详细解读</view>
         </view>
+        </block>
     </view>
     
     <view class="interpret-modal-mask data-v-13c364a5" wx:if="{{z}}" bindtap="{{mm}}"></view>
