@@ -31,17 +31,31 @@ var a = function() {
         }, d = r.ref(!1), l = function() {
             if (!o.birthday) return n.uniFn.toast("请选择日期时辰");
             d.value = !0;
-        },
+        };
 
-        // ===== 功能开放时间控制：系统时间超过 2026-06-15 23:59:59 时自动开放 =====
-        unlockTime = new Date(2026, 5, 15, 23, 59, 59).getTime(),
-        q = r.ref(Date.now() >= unlockTime);
+        // ===== 云开发功能开关控制：读取 cloudDB feature_config 配置判断功能是否开放 =====
+        var q = r.ref(false); // 默认隐藏，云端配置加载后更新
 
-        if (!q.value) {
-            var diff = unlockTime - Date.now();
-            var timer = setTimeout(function() {
-                q.value = true;
-            }, diff > 0 ? diff : 0);
+        // 获取 app 实例，监听云配置加载完成
+        var app = getApp();
+        if (app && app.globalData) {
+            // 云配置已加载，直接读取
+            var isEnabled = app.isFeatureEnabled ? app.isFeatureEnabled("daily_draw") : true;
+            q.value = isEnabled;
+
+            // 注册 watcher，云配置异步加载完成后刷新
+            Object.defineProperty(app.globalData, "featureConfig", {
+                configurable: true,
+                set: function(val) {
+                    this._featureConfig = val;
+                    if (app.isFeatureEnabled) {
+                        q.value = app.isFeatureEnabled("daily_draw");
+                    }
+                },
+                get: function() {
+                    return this._featureConfig;
+                }
+            });
         }
 
         return function(e, v) {

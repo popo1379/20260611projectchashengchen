@@ -24,6 +24,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
+  "cloudbaseTemplateVersion": "1.0.0",
   "simulatorPluginLibVersion": {},
   "packOptions": {
     "ignore": [],
