@@ -34,7 +34,7 @@ var a = function() {
         };
 
         // ===== 云开发功能开关控制：读取 cloudDB feature_config 配置判断功能是否开放 =====
-        var q = r.ref(true); // 默认显示
+        var q = r.ref(false); // 默认隐藏
 
         // 获取 app 实例，注册监听器：云端配置加载完成后更新开关状态
         var app = getApp();

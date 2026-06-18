@@ -153,7 +153,7 @@ var i = function() {
         });
 
         // ===== 查命理内容版本控制：根据版本号决定是否显示八字四柱、五行分析、四柱纳音、十神分析、大运走势、查看详细解读按钮 =====
-        var baziResultEnabled = e.ref(true); // 默认显示
+        var baziResultEnabled = e.ref(false); // 默认隐藏
         var app = getApp();
         if (app && app.isFeatureEnabled) {
             baziResultEnabled.value = app.isFeatureEnabled("bazi_result");

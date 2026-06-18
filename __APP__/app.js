@@ -95,10 +95,31 @@ var o = {
         this.globalData = this.globalData || {};
         this.globalData.appVersion = appVersion;
         this.globalData.featureConfig = {};
+        // 显示加载动画（云数据库配置加载中）
+        try {
+            wx.showLoading({
+                title: "加载中...",
+                mask: true
+            });
+        } catch (err) {
+            console.warn("显示加载动画失败", err);
+        }
+        // 超时保护：5 秒后强制关闭加载动画
+        var loadingTimeout = setTimeout(function() {
+            try { wx.hideLoading(); } catch (err) {}
+            console.log("加载动画超时（5 秒），已强制关闭");
+        }, 5000);
         // 异步初始化云环境，等待完成后再加载配置
         initCloudEnv().then(function() {
-            // 加载云端功能配置
-            this.loadFeatureConfig();
+            // 加载云端功能配置，完成后关闭加载动画
+            this.loadFeatureConfig(function() {
+                try {
+                    clearTimeout(loadingTimeout);
+                    wx.hideLoading();
+                } catch (err) {
+                    console.warn("隐藏加载动画失败", err);
+                }
+            });
         }.bind(this));
     },
     onShow: function() {
@@ -218,10 +239,10 @@ var o = {
         isFeatureEnabled: function(featureName) {
             var config = this.globalData.featureConfig || {};
             var feature = config[featureName];
-            // 如果云数据库中没有配置该功能，则默认显示
+            // 如果云数据库中没有配置该功能，则默认隐藏
             if (!feature) {
-                console.log("isFeatureEnabled:", featureName, "- 未配置，默认显示");
-                return true; // 未配置则默认显示
+                console.log("isFeatureEnabled:", featureName, "- 未配置，默认隐藏");
+                return false;
             }
             // 支持两种字段名：hideVersion（用户描述）和 minVersion（代码中）
             var hideVersion = feature.hideVersion || feature.minVersion || "";
