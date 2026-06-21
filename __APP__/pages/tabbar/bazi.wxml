@@ -39,6 +39,16 @@
                     </view>
                 </view>
             </view>
+            <view class="astrology-section data-v-47582f5c" wx:if="{{p}}">
+                <view class="astrology-card data-v-47582f5c" bindtap="{{v}}">
+                    <view class="astrology-icon data-v-47582f5c">✦</view>
+                    <view class="astrology-content data-v-47582f5c">
+                        <view class="astrology-title data-v-47582f5c">本命星盘</view>
+                        <view class="astrology-subtitle data-v-47582f5c">探索你的太阳/月亮/上升星座</view>
+                    </view>
+                    <view class="astrology-arrow data-v-47582f5c">›</view>
+                </view>
+            </view>
             <view class="ad-section data-v-47582f5c" wx:if="{{o}}">
                 <ad-custom unit-id="adunit-fc58687f5b171baa" bindload="{{q}}" binderror="{{r}}" bindclose="{{s}}"></ad-custom>
             </view>

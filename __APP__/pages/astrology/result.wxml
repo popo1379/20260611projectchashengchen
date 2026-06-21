@@ -1,0 +1,154 @@
+<view class="page">
+    <!-- 顶部信息 -->
+    <view class="header">
+        <text class="title">你的本命星盘</text>
+        <view class="birth-info">
+            <text class="info-line">{{birthInfo.year}}年{{birthInfo.month}}月{{birthInfo.day}}日 {{birthInfo.hour < 10 ? '0' : ''}}{{birthInfo.hour}}:{{birthInfo.minute < 10 ? '0' : ''}}{{birthInfo.minute}}</text>
+            <text class="info-line">{{birthInfo.cityName}}（经度{{birthInfo.longitude}}°，纬度{{birthInfo.latitude}}°）</text>
+            <text class="info-line warning" wx:if="{{!birthInfo.hasExactTime}}">※ 未提供精确出生时间，上升星座仅供参考</text>
+        </view>
+    </view>
+
+    <!-- 行运时间轴 -->
+    <view class="timeline-section">
+        <view class="timeline-header">
+            <text class="timeline-title">行运时间轴</text>
+            <text class="timeline-hint">点击切换日期查看行运影响</text>
+        </view>
+        <scroll-view class="timeline-scroll" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+            <view class="timeline-track">
+                <view wx:for="{{timelineDays}}" wx:key="dateKey" class="timeline-item {{item.isSelected ? 'selected' : ''}}" bindtap="selectDate" data-index="{{index}}">
+                    <text class="timeline-day">{{item.day}}</text>
+                    <text class="timeline-month">{{item.monthText}}</text>
+                    <text class="timeline-weekday">{{item.weekdayText}}</text>
+                </view>
+            </view>
+        </scroll-view>
+    </view>
+
+    <!-- 当日运势 -->
+    <view class="fortune-section">
+        <view class="section-title">
+            <text>{{currentDateText}} 运势</text>
+        </view>
+
+        <view class="fortune-card">
+            <view class="score-row">
+                <view class="score-display">
+                    <text class="score-value">{{fortune.score}}</text>
+                    <text class="score-label">运势分</text>
+                </view>
+                <view class="stars-display">
+                    <text class="star {{index < fortune.starRating ? 'active' : ''}}" wx:for="{{5}}" wx:key="*this">★</text>
+                    <text class="star-label">{{starText}}</text>
+                </view>
+            </view>
+
+            <view class="lucky-info">
+                <view class="lucky-item">
+                    <text class="lucky-label">幸运数字</text>
+                    <text class="lucky-value">{{fortune.luckyNumber}}</text>
+                </view>
+                <view class="lucky-item">
+                    <text class="lucky-label">幸运色</text>
+                    <text class="lucky-value">{{fortune.luckyColor}}</text>
+                </view>
+                <view class="lucky-item">
+                    <text class="lucky-label">主相位</text>
+                    <text class="lucky-value">{{dominantTitle || '今日无'}}</text>
+                </view>
+            </view>
+
+            <view class="horoscope-content">
+                <view wx:for="{{horoscopeParagraphs}}" wx:key="*this" class="horoscope-paragraph">
+                    <text>{{item}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 三大核心要素 -->
+    <view class="core-section">
+        <view class="core-title">三大核心要素</view>
+        <view class="core-cards">
+            <view class="core-card sun-card" bindtap="showPlanetDetail" data-planet="太阳">
+                <text class="core-symbol">{{chart.sun.symbol}}</text>
+                <text class="core-name">太阳星座</text>
+                <text class="core-sign">{{chart.sun.signName}}</text>
+                <text class="core-degree">{{chart.sun.degreeInSign}}°{{chart.sun.minuteInSign}}'</text>
+                <text class="core-keywords">{{sunKeywords}}</text>
+            </view>
+
+            <view class="core-card moon-card" bindtap="showPlanetDetail" data-planet="月亮">
+                <text class="core-symbol">{{chart.moon.symbol}}</text>
+                <text class="core-name">月亮星座</text>
+                <text class="core-sign">{{chart.moon.signName}}</text>
+                <text class="core-degree">{{chart.moon.degreeInSign}}°{{chart.moon.minuteInSign}}'</text>
+                <text class="core-keywords">{{moonKeywords}}</text>
+            </view>
+
+            <view class="core-card asc-card" bindtap="showPlanetDetail" data-planet="上升" wx:if="{{chart.ascendant}}">
+                <text class="core-symbol">{{chart.ascendant.symbol}}</text>
+                <text class="core-name">上升星座</text>
+                <text class="core-sign">{{chart.ascendant.signName}}</text>
+                <text class="core-degree">{{chart.ascendant.degreeInSign}}°{{chart.ascendant.minuteInSign}}'</text>
+                <text class="core-keywords">{{ascKeywords}}</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 圆形星盘图 -->
+    <view class="chart-section">
+        <view class="chart-title">星盘图</view>
+        <view class="chart-container">
+            <canvas canvas-id="natalChart" class="chart-canvas" style="width:340px;height:340px;"></canvas>
+            <view class="chart-legend">
+                <text class="legend-item" wx:for="{{legendItems}}" wx:key="name">{{item.symbol}} {{item.name}}</text>
+            </view>
+        </view>
+    </view>
+
+    <!-- 逐行星解读 -->
+    <view class="planet-section">
+        <view class="section-title">行星解读</view>
+        <view class="planet-list">
+            <view wx:for="{{planetDisplay}}" wx:key="name" class="planet-card">
+                <view class="planet-header" bindtap="togglePlanet" data-index="{{index}}">
+                    <text class="planet-symbol">{{item.symbol}}</text>
+                    <view class="planet-info">
+                        <text class="planet-name">{{item.name}}</text>
+                        <text class="planet-sign">
+                            {{item.signName}} {{item.degreeInSign}}°
+                            <text wx:if="{{item.house}}" class="planet-house"> · 第{{item.house}}宫</text>
+                        </text>
+                    </view>
+                    <text class="expand-arrow {{item.expanded ? 'expanded' : ''}}">›</text>
+                </view>
+                <view class="planet-detail" wx:if="{{item.expanded}}">
+                    <text class="interpretation">{{item.interpretation}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="bottom-actions">
+        <button class="action-btn" bindtap="goBack">重新输入</button>
+        <button class="action-btn primary" bindtap="goHome">返回首页</button>
+    </view>
+
+    <!-- 行星详情弹窗 -->
+    <view class="modal-mask" wx:if="{{showPlanetModal}}" bindtap="closePlanetDetail">
+        <view class="planet-modal" catchtap="">
+            <view class="modal-header">
+                <text class="modal-symbol">{{selectedPlanetDetail.symbol}}</text>
+                <text class="modal-title">{{selectedPlanetDetail.name}}在{{selectedPlanetDetail.signName}}</text>
+                <text class="modal-close" bindtap="closePlanetDetail">✕</text>
+            </view>
+            <view class="modal-body">
+                <text class="modal-position">位置：{{selectedPlanetDetail.signName}} {{selectedPlanetDetail.degreeInSign}}°{{selectedPlanetDetail.minuteInSign}}'</text>
+                <text class="modal-interpretation">{{selectedPlanetDetail.interpretation}}</text>
+            </view>
+        </view>
+    </view>
+</view>

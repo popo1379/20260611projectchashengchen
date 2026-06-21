@@ -1,0 +1,543 @@
+.page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding-bottom: 60rpx;
+}
+
+.header {
+    padding: 40rpx 30rpx;
+    text-align: center;
+}
+
+.title {
+    display: block;
+    font-size: 40rpx;
+    font-weight: bold;
+    color: #f4d35e;
+    margin-bottom: 20rpx;
+}
+
+.birth-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.info-line {
+    font-size: 24rpx;
+    color: #c9c9d6;
+    line-height: 1.8;
+}
+
+.info-line.warning {
+    color: #ee964b;
+    margin-top: 8rpx;
+}
+
+.core-section {
+    padding: 20rpx 30rpx;
+}
+
+.core-title {
+    font-size: 30rpx;
+    color: #f4d35e;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.core-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 16rpx;
+}
+
+.core-card {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20rpx;
+    padding: 24rpx 16rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.sun-card {
+    border: 2rpx solid rgba(244, 211, 94, 0.5);
+}
+
+.moon-card {
+    border: 2rpx solid rgba(201, 201, 214, 0.5);
+}
+
+.asc-card {
+    border: 2rpx solid rgba(238, 150, 75, 0.5);
+}
+
+.core-symbol {
+    font-size: 44rpx;
+    color: #f4d35e;
+    margin-bottom: 8rpx;
+}
+
+.core-name {
+    font-size: 22rpx;
+    color: #c9c9d6;
+    margin-bottom: 8rpx;
+}
+
+.core-sign {
+    font-size: 28rpx;
+    color: #ffffff;
+    font-weight: bold;
+    margin-bottom: 4rpx;
+}
+
+.core-degree {
+    font-size: 22rpx;
+    color: #f4d35e;
+    margin-bottom: 12rpx;
+}
+
+.core-keywords {
+    font-size: 20rpx;
+    color: #7d7d8a;
+    line-height: 1.5;
+}
+
+/* 星盘图 */
+.chart-section {
+    padding: 30rpx;
+}
+
+.chart-title {
+    font-size: 30rpx;
+    color: #f4d35e;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.chart-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20rpx;
+    padding: 30rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-canvas {
+    display: block;
+    margin: 0 auto;
+}
+
+.chart-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 24rpx;
+    gap: 16rpx;
+}
+
+.legend-item {
+    font-size: 22rpx;
+    color: #c9c9d6;
+    padding: 8rpx 16rpx;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20rpx;
+}
+
+/* 行星解读 */
+.planet-section {
+    padding: 20rpx 30rpx;
+}
+
+.section-title {
+    font-size: 30rpx;
+    color: #f4d35e;
+    font-weight: bold;
+    margin-bottom: 20rpx;
+    text-align: center;
+}
+
+.planet-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16rpx;
+}
+
+.planet-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16rpx;
+    overflow: hidden;
+}
+
+.planet-header {
+    display: flex;
+    align-items: center;
+    padding: 24rpx 30rpx;
+}
+
+.planet-symbol {
+    font-size: 40rpx;
+    color: #f4d35e;
+    width: 60rpx;
+    text-align: center;
+}
+
+.planet-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 20rpx;
+}
+
+.planet-name {
+    font-size: 28rpx;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.planet-sign {
+    font-size: 24rpx;
+    color: #c9c9d6;
+    margin-top: 4rpx;
+}
+
+.planet-house {
+    font-size: 22rpx;
+    color: #ee964b;
+    margin-left: 6rpx;
+}
+
+.expand-arrow {
+    font-size: 32rpx;
+    color: #7d7d8a;
+    transform: rotate(90deg);
+    transition: transform 0.3s;
+}
+
+.expand-arrow.expanded {
+    transform: rotate(-90deg);
+}
+
+.planet-detail {
+    padding: 0 30rpx 24rpx 110rpx;
+}
+
+.interpretation {
+    font-size: 26rpx;
+    color: #c9c9d6;
+    line-height: 1.8;
+}
+
+/* 运势 */
+.fortune-section {
+    padding: 20rpx 30rpx;
+}
+
+.fortune-card {
+    background: linear-gradient(135deg, rgba(244, 211, 94, 0.1) 0%, rgba(238, 150, 75, 0.1) 100%);
+    border: 2rpx solid rgba(244, 211, 94, 0.3);
+    border-radius: 20rpx;
+    padding: 30rpx;
+}
+
+.score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24rpx;
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.score-display {
+    display: flex;
+    flex-direction: column;
+}
+
+.score-value {
+    font-size: 60rpx;
+    font-weight: bold;
+    color: #f4d35e;
+    line-height: 1;
+}
+
+.score-label {
+    font-size: 22rpx;
+    color: #c9c9d6;
+    margin-top: 8rpx;
+}
+
+.stars-display {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.star {
+    font-size: 36rpx;
+    color: #3a3a5c;
+    display: inline-block;
+}
+
+.star.active {
+    color: #f4d35e;
+}
+
+.star-label {
+    font-size: 22rpx;
+    color: #c9c9d6;
+    margin-top: 8rpx;
+}
+
+.lucky-info {
+    display: flex;
+    justify-content: space-around;
+    padding: 24rpx 0;
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.lucky-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lucky-label {
+    font-size: 22rpx;
+    color: #7d7d8a;
+    margin-bottom: 6rpx;
+}
+
+.lucky-value {
+    font-size: 26rpx;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.suggestions {
+    padding-top: 24rpx;
+}
+
+.suggestion-title {
+    font-size: 26rpx;
+    color: #f4d35e;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 16rpx;
+}
+
+.suggestion-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12rpx;
+}
+
+.suggestion-bullet {
+    color: #f4d35e;
+    font-size: 26rpx;
+    margin-right: 12rpx;
+    flex-shrink: 0;
+}
+
+.suggestion-text {
+    font-size: 26rpx;
+    color: #c9c9d6;
+    line-height: 1.7;
+    flex: 1;
+}
+
+/* Co-Star 风格运势段落 */
+.horoscope-content {
+    padding-top: 28rpx;
+}
+
+.horoscope-paragraph {
+    margin-bottom: 24rpx;
+    padding-bottom: 24rpx;
+    border-bottom: 1rpx dashed rgba(255, 255, 255, 0.08);
+}
+
+.horoscope-paragraph:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.horoscope-paragraph text {
+    font-size: 28rpx;
+    color: #d9d9e5;
+    line-height: 1.9;
+    letter-spacing: 0.5rpx;
+    display: block;
+}
+
+/* 时间轴 */
+.timeline-section {
+    padding: 20rpx 30rpx 30rpx 30rpx;
+    background: rgba(244, 211, 94, 0.05);
+}
+
+.timeline-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16rpx;
+}
+
+.timeline-title {
+    font-size: 26rpx;
+    color: #f4d35e;
+    font-weight: bold;
+}
+
+.timeline-hint {
+    font-size: 22rpx;
+    color: #7d7d8a;
+}
+
+.timeline-scroll {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.timeline-track {
+    display: inline-flex;
+    padding: 10rpx 0;
+    gap: 14rpx;
+}
+
+.timeline-item {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16rpx 20rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 16rpx;
+    min-width: 100rpx;
+    flex-shrink: 0;
+}
+
+.timeline-item.selected {
+    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
+}
+
+.timeline-item.selected .timeline-day,
+.timeline-item.selected .timeline-month,
+.timeline-item.selected .timeline-weekday {
+    color: #1a1a2e;
+    font-weight: bold;
+}
+
+.timeline-day {
+    font-size: 30rpx;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.timeline-month {
+    font-size: 20rpx;
+    color: #c9c9d6;
+    margin-top: 2rpx;
+}
+
+.timeline-weekday {
+    font-size: 20rpx;
+    color: #7d7d8a;
+    margin-top: 2rpx;
+}
+
+/* 底部按钮 */
+.bottom-actions {
+    padding: 30rpx;
+    display: flex;
+    gap: 20rpx;
+}
+
+.action-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 28rpx;
+    border-radius: 44rpx;
+    border: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.action-btn.primary {
+    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
+    color: #1a1a2e;
+    font-weight: bold;
+    border: none;
+}
+
+/* 弹窗 */
+.modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40rpx;
+}
+
+.planet-modal {
+    width: 100%;
+    background: #1a1a2e;
+    border-radius: 24rpx;
+    overflow: hidden;
+    border: 2rpx solid rgba(244, 211, 94, 0.3);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    padding: 30rpx;
+    background: linear-gradient(135deg, rgba(244, 211, 94, 0.15) 0%, rgba(238, 150, 75, 0.15) 100%);
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-symbol {
+    font-size: 48rpx;
+    color: #f4d35e;
+    margin-right: 16rpx;
+}
+
+.modal-title {
+    flex: 1;
+    font-size: 30rpx;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.modal-close {
+    font-size: 32rpx;
+    color: #7d7d8a;
+}
+
+.modal-body {
+    padding: 30rpx;
+}
+
+.modal-position {
+    display: block;
+    font-size: 24rpx;
+    color: #f4d35e;
+    margin-bottom: 20rpx;
+}
+
+.modal-interpretation {
+    display: block;
+    font-size: 28rpx;
+    color: #c9c9d6;
+    line-height: 2;
+}

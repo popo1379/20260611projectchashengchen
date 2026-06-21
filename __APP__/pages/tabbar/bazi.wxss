@@ -129,3 +129,58 @@
     font-weight: 500;
     text-align: center;
 }
+
+/* 本命星盘入口卡片 */
+.astrology-section.data-v-47582f5c {
+    margin-top: 40rpx;
+    padding: 0 30rpx;
+}
+
+.astrology-card.data-v-47582f5c {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #2a2a4a 0%, #3d2a4a 100%);
+    border-radius: 16rpx;
+    padding: 28rpx 24rpx;
+}
+
+.astrology-card.data-v-47582f5c:active {
+    opacity: 0.85;
+}
+
+.astrology-icon.data-v-47582f5c {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 32rpx;
+    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
+    color: #1a1a2e;
+    font-size: 36rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20rpx;
+    flex-shrink: 0;
+}
+
+.astrology-content.data-v-47582f5c {
+    flex: 1;
+}
+
+.astrology-title.data-v-47582f5c {
+    font-size: 30rpx;
+    color: #f4d35e;
+    font-weight: bold;
+    margin-bottom: 6rpx;
+}
+
+.astrology-subtitle.data-v-47582f5c {
+    font-size: 22rpx;
+    color: #c9c9d6;
+}
+
+.astrology-arrow.data-v-47582f5c {
+    font-size: 36rpx;
+    color: #c9c9d6;
+    margin-left: 10rpx;
+}

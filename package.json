@@ -1,0 +1,24 @@
+{
+  "name": "ceshengchenmingli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/popo1379/20260611projectchashengchen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/popo1379/20260611projectchashengchen/issues"
+  },
+  "homepage": "https://github.com/popo1379/20260611projectchashengchen#readme",
+  "dependencies": {
+    "lottie-miniapp": "^1.9.1"
+  }
+}

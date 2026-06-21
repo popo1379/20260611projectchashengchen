@@ -1,0 +1,256 @@
+.page {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    padding: 0 0 40rpx 0;
+}
+
+.header {
+    padding: 60rpx 40rpx 40rpx;
+    text-align: center;
+}
+
+.title {
+    display: block;
+    font-size: 44rpx;
+    font-weight: bold;
+    color: #f4d35e;
+    margin-bottom: 12rpx;
+}
+
+.subtitle {
+    display: block;
+    font-size: 26rpx;
+    color: #c9c9d6;
+}
+
+.form-card {
+    margin: 20rpx 30rpx;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.form-item {
+    display: flex;
+    align-items: center;
+    padding: 32rpx 30rpx;
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.form-item:last-child {
+    border-bottom: none;
+}
+
+.form-label {
+    font-size: 28rpx;
+    color: #f4d35e;
+    width: 180rpx;
+    flex-shrink: 0;
+}
+
+.form-value {
+    flex: 1;
+    font-size: 28rpx;
+    color: #ffffff;
+}
+
+.form-value .placeholder {
+    color: #7d7d8a;
+}
+
+.arrow {
+    font-size: 36rpx;
+    color: #7d7d8a;
+    margin-left: 10rpx;
+}
+
+.toggle-item {
+    justify-content: space-between;
+}
+
+.toggle {
+    width: 80rpx;
+    height: 44rpx;
+    background: #3a3a5c;
+    border-radius: 22rpx;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.toggle.active {
+    background: #f4d35e;
+}
+
+.toggle-circle {
+    width: 36rpx;
+    height: 36rpx;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 4rpx;
+    left: 4rpx;
+    transition: left 0.3s;
+}
+
+.toggle.active .toggle-circle {
+    left: 40rpx;
+}
+
+.submit-section {
+    padding: 40rpx 30rpx;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 96rpx;
+    line-height: 96rpx;
+    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
+    color: #1a1a2e;
+    font-size: 32rpx;
+    font-weight: bold;
+    border-radius: 48rpx;
+    border: none;
+}
+
+.tip {
+    margin-top: 20rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: #c9c9d6;
+}
+
+.modal-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30rpx 40rpx;
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title {
+    font-size: 32rpx;
+    color: #f4d35e;
+    font-weight: bold;
+}
+
+.modal-close {
+    font-size: 32rpx;
+    color: #7d7d8a;
+}
+
+.time-picker-modal {
+    width: 100%;
+    background: #1a1a2e;
+    border-radius: 30rpx 30rpx 0 0;
+}
+
+.time-picker-view {
+    width: 100%;
+    height: 400rpx;
+}
+
+.picker-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 30rpx;
+    color: #ffffff;
+}
+
+.modal-footer {
+    padding: 20rpx 40rpx 40rpx;
+    display: flex;
+    gap: 20rpx;
+}
+
+.clear-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: rgba(255, 255, 255, 0.1);
+    color: #c9c9d6;
+    font-size: 28rpx;
+    border-radius: 44rpx;
+    border: none;
+}
+
+.confirm-btn {
+    flex: 1;
+    height: 88rpx;
+    line-height: 88rpx;
+    background: #f4d35e;
+    color: #1a1a2e;
+    font-size: 30rpx;
+    font-weight: bold;
+    border-radius: 44rpx;
+    border: none;
+}
+
+.city-search-modal {
+    width: 100%;
+    height: 80vh;
+    background: #1a1a2e;
+    border-radius: 30rpx 30rpx 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-input-wrap {
+    padding: 20rpx 30rpx;
+}
+
+.search-input {
+    width: 100%;
+    height: 72rpx;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 36rpx;
+    padding: 0 30rpx;
+    font-size: 28rpx;
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+.city-list {
+    flex: 1;
+    height: 50vh;
+    padding: 10rpx 0 40rpx;
+    overflow: hidden;
+}
+
+.city-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 28rpx 40rpx;
+    border-bottom: 1rpx solid rgba(255, 255, 255, 0.05);
+}
+
+.city-name {
+    font-size: 30rpx;
+    color: #ffffff;
+}
+
+.city-coord {
+    font-size: 22rpx;
+    color: #7d7d8a;
+}
+
+.no-result {
+    padding: 60rpx 40rpx;
+    text-align: center;
+    color: #7d7d8a;
+    font-size: 26rpx;
+}

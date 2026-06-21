@@ -33,22 +33,48 @@ var a = function() {
             d.value = !0;
         };
 
-        // ===== 云开发功能开关控制：读取 cloudDB feature_config 配置判断功能是否开放 =====
-        var q = r.ref(false); // 默认隐藏
+        // ===== 云开发功能开关控制 =====
+        var q = r.ref(false);
+        var p = r.ref(true); // 本命星盘：默认显示，只有云端版本号匹配时才隐藏
 
-        // 获取 app 实例，注册监听器：云端配置加载完成后更新开关状态
         var app = getApp();
         if (app && app.isFeatureEnabled) {
             q.value = app.isFeatureEnabled("daily_draw");
-            // 注册全局监听器（多个页面可同时注册，互不影响）
+            // 本命星盘：未配置时默认显示；配置了但版本号不匹配时显示；只有版本号完全匹配时才隐藏
+            var config = app.globalData.featureConfig || {};
+            var feature = config["astrology"];
+            if (!feature) {
+                p.value = true; // 未配置 → 显示
+            } else {
+                var hideVersion = feature.hideVersion || feature.minVersion || "";
+                p.value = hideVersion !== "1.2"; // 版本号匹配时才隐藏
+            }
             app.registerFeatureConfigListener(function() {
                 q.value = app.isFeatureEnabled("daily_draw");
+                // 本命星盘：重新评估
+                var cfg = app.globalData.featureConfig || {};
+                var feat = cfg["astrology"];
+                if (!feat) {
+                    p.value = true;
+                } else {
+                    var hv = feat.hideVersion || feat.minVersion || "";
+                    p.value = hv !== "1.2";
+                }
                 console.log("bazi页面 daily_draw 状态更新:", q.value);
+                console.log("bazi页面 astrology 状态更新:", p.value);
             });
-            // 延迟再检查一次（确保云配置加载完成后状态正确）
             setTimeout(function() {
                 q.value = app.isFeatureEnabled("daily_draw");
+                var cfg = app.globalData.featureConfig || {};
+                var feat = cfg["astrology"];
+                if (!feat) {
+                    p.value = true;
+                } else {
+                    var hv = feat.hideVersion || feat.minVersion || "";
+                    p.value = hv !== "1.2";
+                }
                 console.log("bazi页面 daily_draw 延迟检查:", q.value);
+                console.log("bazi页面 astrology 延迟检查:", p.value);
             }, 3000);
         }
 
@@ -62,7 +88,6 @@ var a = function() {
                     });
                     return;
                 }
-                // 保存场景到 globalData
                 getApp().globalData.drawScene = scene;
                 wx.navigateTo({
                     url: '/pages/draw/draw',
@@ -75,7 +100,18 @@ var a = function() {
                 });
             };
 
-            // ===== 原生模板广告事件回调 =====
+            var astrologyClick = function() {
+                wx.navigateTo({
+                    url: '/pages/astrology/input',
+                    fail: function(err) {
+                        wx.showToast({
+                            title: '页面跳转失败',
+                            icon: 'none'
+                        });
+                    }
+                });
+            };
+
             var adLoad = function() {
                 console.log("原生模板广告加载成功");
             };
@@ -101,6 +137,7 @@ var a = function() {
                 g: r.o(l),
                 h: d.value,
                 o: q.value,
+                p: p.value,
                 q: r.o(adLoad),
                 r: r.o(adError),
                 s: r.o(adClose)
@@ -118,7 +155,8 @@ var a = function() {
                     safeAreaInsetBottom: !1,
                     title: "选择日期时辰"
                 }),
-                m: r.o(drawItemClick)
+                m: r.o(drawItemClick),
+                v: r.o(astrologyClick)
             });
         };
     }

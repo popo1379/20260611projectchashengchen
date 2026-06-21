@@ -5,7 +5,9 @@
         "pages/tabbar/calendar",
         "pages/tabbar/almanac",
         "pages/draw/draw",
-        "pages/draw/detail"
+        "pages/draw/detail",
+        "pages/astrology/input",
+        "pages/astrology/result"
     ],
     "window": {
         "navigationBarTextStyle": "black",

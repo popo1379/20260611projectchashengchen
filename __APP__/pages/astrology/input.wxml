@@ -1,0 +1,92 @@
+<view class="page">
+    <view class="header">
+        <text class="title">本命星盘</text>
+        <text class="subtitle">探索你的宇宙密码</text>
+    </view>
+
+    <view class="form-card">
+        <!-- 出生日期 -->
+        <picker mode="date" value="{{birthDate}}" start="1900-01-01" end="2100-12-31" bindchange="onDateChange">
+            <view class="form-item">
+                <view class="form-label">出生日期</view>
+                <view class="form-value">
+                    <text wx:if="{{birthDate}}">{{birthDate}}</text>
+                    <text wx:else class="placeholder">请选择出生日期</text>
+                </view>
+                <text class="arrow">›</text>
+            </view>
+        </picker>
+
+        <!-- 出生时间（可留空） -->
+        <view class="form-item" bindtap="toggleTimePicker">
+            <view class="form-label">出生时间</view>
+            <view class="form-value">
+                <text wx:if="{{birthTime}}">{{birthTime}}</text>
+                <text wx:else class="placeholder">可留空（将无法精确计算上升星座）</text>
+            </view>
+            <text class="arrow">›</text>
+        </view>
+
+        <!-- 出生城市 -->
+        <view class="form-item" bindtap="showCitySearch">
+            <view class="form-label">出生城市</view>
+            <view class="form-value">
+                <text wx:if="{{selectedCity}}">{{selectedCity.name}}</text>
+                <text wx:else class="placeholder">请选择出生城市</text>
+            </view>
+            <text class="arrow">›</text>
+        </view>
+    </view>
+
+    <!-- 时间选择弹窗 -->
+    <view class="modal-mask" wx:if="{{showTimePicker}}" bindtap="hideTimePicker">
+        <view class="time-picker-modal" catchtap="">
+            <view class="modal-header">
+                <text class="modal-title">选择出生时间</text>
+                <text class="modal-close" bindtap="hideTimePicker">✕</text>
+            </view>
+            <picker-view indicator-style="height: 50px;" class="time-picker-view" value="{{timePickerValue}}" bindchange="onTimeChange">
+                <picker-view-column>
+                    <view wx:for="{{hours}}" wx:key="*this" class="picker-item">{{item}}时</view>
+                </picker-view-column>
+                <picker-view-column>
+                    <view wx:for="{{minutes}}" wx:key="*this" class="picker-item">{{item}}分</view>
+                </picker-view-column>
+            </picker-view>
+            <view class="modal-footer">
+                <button class="clear-btn" bindtap="clearTime">未知时间</button>
+                <button class="confirm-btn" bindtap="confirmTime">确定</button>
+            </view>
+        </view>
+    </view>
+
+    <!-- 城市搜索弹窗 -->
+    <view class="modal-mask" wx:if="{{showCityModal}}" bindtap="hideCitySearch">
+        <view class="city-search-modal" catchtap="">
+            <view class="modal-header">
+                <text class="modal-title">选择出生城市</text>
+                <text class="modal-close" bindtap="hideCitySearch">✕</text>
+            </view>
+            <view class="search-input-wrap">
+                <input class="search-input" placeholder="输入城市名或拼音" value="{{searchKeyword}}" bindinput="onSearchInput" focus="{{citySearchFocus}}" />
+            </view>
+            <scroll-view class="city-list" scroll-y="{{true}}">
+                <view wx:if="{{cityResults.length === 0}}" class="no-result">
+                    <text>未找到相关城市，请尝试其他关键词</text>
+                </view>
+                <view wx:for="{{cityResults}}" wx:key="name" class="city-item" bindtap="selectCity" data-city="{{item}}">
+                    <text class="city-name">{{item.name}}</text>
+                    <text class="city-coord">{{item.lng}}, {{item.lat}}</text>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+    <!-- 查看星盘按钮 -->
+    <view class="submit-section">
+        <button class="submit-btn" bindtap="generateChart">查看我的星盘</button>
+        <view class="tip" wx:if="{{!birthTime}}">
+            <text>※ 未填写出生时间将无法精确计算上升星座，仅作参考</text>
+        </view>
+    </view>
+</view>
