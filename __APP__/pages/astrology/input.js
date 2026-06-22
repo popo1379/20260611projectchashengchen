@@ -3,22 +3,13 @@ Page({
         birthDate: '',
         birthTime: '',
         selectedCity: null,
-        showTimePicker: false,
         showCityModal: false,
         citySearchFocus: false,
         searchKeyword: '',
-        hours: [],
-        minutes: [],
-        timePickerValue: [12, 0],
         cityResults: []
     },
 
     onLoad: function() {
-        var hours = [];
-        var minutes = [];
-        for (var i = 0; i < 24; i++) hours.push(i);
-        for (var i = 0; i < 60; i++) minutes.push(i);
-
         // 默认显示热门城市
         var cityData = require('../../data/cityCoordinates.js');
         var hotCities = [];
@@ -30,8 +21,6 @@ Page({
         }
 
         this.setData({
-            hours: hours,
-            minutes: minutes,
             cityResults: hotCities
         });
     },
@@ -43,33 +32,10 @@ Page({
         });
     },
 
-    // 切换时间选择
-    toggleTimePicker: function() {
-        this.setData({ showTimePicker: true });
-    },
-
-    hideTimePicker: function() {
-        this.setData({ showTimePicker: false });
-    },
-
+    // 时间变更
     onTimeChange: function(e) {
-        this.setData({ timePickerValue: e.detail.value });
-    },
-
-    confirmTime: function() {
-        var val = this.data.timePickerValue;
-        var h = val[0] < 10 ? '0' + val[0] : val[0];
-        var m = val[1] < 10 ? '0' + val[1] : val[1];
         this.setData({
-            birthTime: h + ':' + m,
-            showTimePicker: false
-        });
-    },
-
-    clearTime: function() {
-        this.setData({
-            birthTime: '',
-            showTimePicker: false
+            birthTime: e.detail.value
         });
     },
 

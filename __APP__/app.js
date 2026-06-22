@@ -27,8 +27,12 @@ function initCloudEnv() {
                 return;
             }
 
-            // 第一步：启用云 API 系统。不传 env，仅启用系统
-            wx.cloud.init({ traceUser: true });
+            // 第一步：启用云 API 系统，同时指定默认环境
+            var defaultEnvId = 'mortgagecalculator-9d0fqf0fbb151';
+            wx.cloud.init({ 
+                env: defaultEnvId,
+                traceUser: true 
+            });
 
             // 第二步：创建共享环境实例
             if (typeof wx.cloud.Cloud !== "function") {
@@ -50,8 +54,15 @@ function initCloudEnv() {
             });
 
             // 第三步：调用 init() 方法（官方文档要求必须调用）
+            var appInstance = this;
+            console.log('开始初始化共享云实例...');
             sharedCloud.init().then(function() {
                 cloudReady = true;
+                // 保存到 globalData，供其他模块使用（如云函数调用）
+                if (appInstance.globalData) {
+                    appInstance.globalData.sharedCloud = sharedCloud;
+                    console.log('✓ sharedCloud 已保存到 globalData');
+                }
                 console.log("共享云环境初始化成功", resourceEnv);
                 resolve(true);
             }).catch(function(err) {

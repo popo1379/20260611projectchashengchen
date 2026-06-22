@@ -211,6 +211,37 @@ var i = function() {
         }, g = function() {
             f.showInterpretation = !1;
         };
+        
+        // ===== AI 深度分析按钮处理 =====
+        var goAIAnalysis = function() {
+            // 构建八字数据传递给 AI 分析页面
+            var baziAIData = {
+                yearPillar: d.year.name,
+                yearWuxing: d.year.heavenStem.wuxing + '/' + d.year.earthBranch.wuxing,
+                monthPillar: d.month.name,
+                monthWuxing: d.month.heavenStem.wuxing + '/' + d.month.earthBranch.wuxing,
+                dayPillar: d.day.name,
+                dayWuxing: d.day.heavenStem.wuxing + '/' + d.day.earthBranch.wuxing,
+                dayMaster: d.day.heavenStem.name,
+                hourPillar: d.hour.name,
+                hourWuxing: d.hour.heavenStem.wuxing + '/' + d.hour.earthBranch.wuxing,
+                wuxingDistribution: d.wuxingRemark,
+                strengthStatus: d.xiyongWuxing.state,
+                xiElement: d.xiyongWuxing.xi,
+                yongElement: d.xiyongWuxing.yong,
+                zodiac: f.zodiac,
+                gender: ''
+            };
+            
+            // 保存到全局数据
+            getApp().globalData.baziAIData = baziAIData;
+            
+            // 跳转到 AI 分析页面
+            wx.navigateTo({
+                url: '/pages/bazi-ai/bazi-ai'
+            });
+        };
+        
         return function(a, n) {
             return e.e({
                 a: d.year.heavenStem
@@ -272,17 +303,17 @@ var i = function() {
                 kk: d.interpretation.lucky.luckyDirection,
                 ll: e.o(l),
                 mm: e.o(g),
-                pp: baziResultEnabled.value
-            }, d.dayun ? {
-                nn: e.t(d.dayun.childLimit.year),
-                oo: e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
+                nn: e.t(d.dayun ? d.dayun.childLimit.year : ''),
+                oo: d.dayun ? e.f(d.dayun.dayun.slice(0, 5), function(a, n, r) {
                     return {
                         a: e.t(a.age),
                         b: e.t(a.sixtyCycle),
                         c: e.t(a.year)
                     };
-                })
-            } : {}) : {});
+                }) : [],
+                pp: baziResultEnabled.value,
+                qq: e.o(goAIAnalysis)
+            }, {}) : {});
             var R;
         };
     }

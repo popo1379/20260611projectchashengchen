@@ -1,0 +1,110 @@
+<view class="page">
+    <!-- 顶部标题 -->
+    <view class="header">
+        <text class="title">AI 命理深度分析</text>
+        <text class="subtitle">基于八字数据的智能解读</text>
+    </view>
+
+    <!-- 八字信息卡片 -->
+    <view class="bazi-card" wx:if="{{baziData}}">
+        <view class="bazi-row">
+            <view class="bazi-item">
+                <text class="bazi-label">年柱</text>
+                <text class="bazi-value">{{baziData.yearPillar}}</text>
+            </view>
+            <view class="bazi-item">
+                <text class="bazi-label">月柱</text>
+                <text class="bazi-value">{{baziData.monthPillar}}</text>
+            </view>
+            <view class="bazi-item">
+                <text class="bazi-label">日柱</text>
+                <text class="bazi-value highlight">{{baziData.dayPillar}}</text>
+            </view>
+            <view class="bazi-item">
+                <text class="bazi-label">时柱</text>
+                <text class="bazi-value">{{baziData.hourPillar}}</text>
+            </view>
+        </view>
+        <view class="bazi-summary">
+            <text>日主：{{baziData.dayMaster}} | 身{{baziData.strengthStatus}} | 喜{{baziData.xiElement}}用{{baziData.yongElement}}</text>
+        </view>
+    </view>
+
+    <!-- 加载状态 -->
+    <view class="loading-section" wx:if="{{loading}}">
+        <view class="loading-icon">
+            <text class="loading-text">🤖</text>
+        </view>
+        <text class="loading-tip">AI 正在分析您的命理数据...</text>
+        <text class="loading-subtip">预计需要 5-10 秒</text>
+    </view>
+
+    <!-- 错误状态 -->
+    <view class="error-section" wx:if="{{error}}">
+        <text class="error-icon">⚠️</text>
+        <text class="error-text">{{error}}</text>
+        <button class="retry-btn" bindtap="retryAnalysis">重新分析</button>
+    </view>
+
+    <!-- 分析结果 -->
+    <view class="result-section" wx:if="{{!loading && !error && aiResult}}">
+        <!-- 标签切换 -->
+        <view class="tab-bar">
+            <view class="tab-item {{activeTab === 'wealth' ? 'active' : ''}}" bindtap="switchTab" data-tab="wealth">
+                <text class="tab-icon">💰</text>
+                <text class="tab-name">财富分析</text>
+            </view>
+            <view class="tab-item {{activeTab === 'career' ? 'active' : ''}}" bindtap="switchTab" data-tab="career">
+                <text class="tab-icon">📈</text>
+                <text class="tab-name">事业分析</text>
+            </view>
+            <view class="tab-item {{activeTab === 'love' ? 'active' : ''}}" bindtap="switchTab" data-tab="love">
+                <text class="tab-icon">💕</text>
+                <text class="tab-name">感情分析</text>
+            </view>
+            <view class="tab-item {{activeTab === 'health' ? 'active' : ''}}" bindtap="switchTab" data-tab="health">
+                <text class="tab-icon">🌿</text>
+                <text class="tab-name">健康提示</text>
+            </view>
+        </view>
+
+        <!-- 内容区域 -->
+        <view class="content-area">
+            <!-- 财富分析 -->
+            <view class="content-card" wx:if="{{activeTab === 'wealth' && parsedResult.wealth}}">
+                <view class="content-text">{{parsedResult.wealth}}</view>
+            </view>
+
+            <!-- 事业分析 -->
+            <view class="content-card" wx:if="{{activeTab === 'career' && parsedResult.career}}">
+                <view class="content-text">{{parsedResult.career}}</view>
+            </view>
+
+            <!-- 感情分析 -->
+            <view class="content-card" wx:if="{{activeTab === 'love' && parsedResult.love}}">
+                <view class="content-text">{{parsedResult.love}}</view>
+            </view>
+
+            <!-- 健康提示 -->
+            <view class="content-card" wx:if="{{activeTab === 'health' && parsedResult.health}}">
+                <view class="content-text">{{parsedResult.health}}</view>
+            </view>
+
+            <!-- 如果解析失败，显示原始内容 -->
+            <view class="content-card" wx:if="{{!parsedResult.wealth && !parsedResult.career && !parsedResult.love && !parsedResult.health}}">
+                <view class="content-text">{{aiResult}}</view>
+            </view>
+        </view>
+
+        <!-- 提示信息 -->
+        <view class="tip-section">
+            <text class="tip-text">※ AI 分析仅供参考，请理性看待命理预测</text>
+        </view>
+    </view>
+
+    <!-- 底部按钮 -->
+    <view class="bottom-actions">
+        <button class="action-btn secondary" bindtap="goBack">返回首页</button>
+        <button class="action-btn primary" bindtap="retryAnalysis" wx:if="{{!loading}}">重新分析</button>
+    </view>
+</view>

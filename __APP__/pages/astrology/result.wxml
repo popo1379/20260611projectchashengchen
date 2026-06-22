@@ -15,9 +15,9 @@
             <text class="timeline-title">行运时间轴</text>
             <text class="timeline-hint">点击切换日期查看行运影响</text>
         </view>
-        <scroll-view class="timeline-scroll" scroll-x="{{true}}" enhanced="{{true}}" show-scrollbar="{{false}}">
+        <scroll-view class="timeline-scroll" scroll-x="{{true}}" show-scrollbar="{{false}}" scroll-left="{{scrollLeft}}" scroll-with-animation="{{true}}">
             <view class="timeline-track">
-                <view wx:for="{{timelineDays}}" wx:key="dateKey" class="timeline-item {{item.isSelected ? 'selected' : ''}}" bindtap="selectDate" data-index="{{index}}">
+                <view wx:for="{{timelineDays}}" wx:key="dateKey" id="item-{{index}}" class="timeline-item {{item.isSelected ? 'selected' : ''}}" bindtap="selectDate" data-index="{{index}}">
                     <text class="timeline-day">{{item.day}}</text>
                     <text class="timeline-month">{{item.monthText}}</text>
                     <text class="timeline-weekday">{{item.weekdayText}}</text>
@@ -33,17 +33,6 @@
         </view>
 
         <view class="fortune-card">
-            <view class="score-row">
-                <view class="score-display">
-                    <text class="score-value">{{fortune.score}}</text>
-                    <text class="score-label">运势分</text>
-                </view>
-                <view class="stars-display">
-                    <text class="star {{index < fortune.starRating ? 'active' : ''}}" wx:for="{{5}}" wx:key="*this">★</text>
-                    <text class="star-label">{{starText}}</text>
-                </view>
-            </view>
-
             <view class="lucky-info">
                 <view class="lucky-item">
                     <text class="lucky-label">幸运数字</text>

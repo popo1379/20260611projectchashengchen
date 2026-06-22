@@ -160,6 +160,14 @@
         <view class="interpret-btn-box data-v-13c364a5" bindtap="{{ll}}">
             <view class="interpret-btn data-v-13c364a5">查看详细解读</view>
         </view>
+        
+        <!-- AI深度分析按钮 -->
+        <view class="ai-btn-box data-v-13c364a5" bindtap="{{qq}}">
+            <view class="ai-btn data-v-13c364a5">
+                <text class="ai-icon data-v-13c364a5">🤖</text>
+                <text class="ai-text data-v-13c364a5">AI深度分析</text>
+            </view>
+        </view>
         </block>
     </view>
     

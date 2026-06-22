@@ -74,60 +74,79 @@
     width: 606rpx;
 }
 
-/* 每日抽签横向排列样式 */
+/* 每日抽签卡片样式 */
 .draw-section.data-v-47582f5c {
-    margin-top: 80rpx;
+    margin-top: 40rpx;
     padding: 0 30rpx;
 }
 
-.draw-title.data-v-47582f5c {
-    text-align: center;
-    color: #666;
-    font-size: 28rpx;
-    font-weight: 500;
-    margin-bottom: 20rpx;
+.draw-card.data-v-47582f5c {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    border-radius: 16rpx;
+    padding: 30rpx;
 }
 
-.draw-row.data-v-47582f5c {
+.draw-header.data-v-47582f5c {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24rpx;
+}
+
+.draw-icon-large.data-v-47582f5c {
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: 28rpx;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    color: #fff;
+    font-size: 26rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16rpx;
+    flex-shrink: 0;
+}
+
+.draw-title.data-v-47582f5c {
+    font-size: 32rpx;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 0 2rpx 4rpx rgba(0,0,0,0.1);
+}
+
+.draw-grid.data-v-47582f5c {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #fff;
-    border-radius: 16rpx;
-    padding: 24rpx 16rpx;
-    box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+    gap: 16rpx;
 }
 
-.draw-item.data-v-47582f5c {
-    flex: 1;
+.draw-grid-item.data-v-47582f5c {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 10rpx 8rpx;
+    flex: 1;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12rpx;
+    padding: 24rpx 12rpx;
 }
 
-.draw-item.data-v-47582f5c:active {
-    opacity: 0.6;
+.draw-grid-item.data-v-47582f5c:active {
+    background: rgba(255, 255, 255, 0.2);
 }
 
-.draw-divider.data-v-47582f5c {
-    width: 1rpx;
-    height: 60rpx;
-    background-color: #eee;
-}
-
-.draw-icon.data-v-47582f5c {
-    font-size: 40rpx;
+.draw-grid-icon.data-v-47582f5c {
+    font-size: 36rpx;
     margin-bottom: 10rpx;
 }
 
-.draw-name.data-v-47582f5c {
-    color: #242122;
-    font-size: 24rpx;
+.draw-grid-name.data-v-47582f5c {
+    font-size: 22rpx;
+    color: #ffffff;
     font-weight: 500;
     text-align: center;
+    text-shadow: 0 1rpx 2rpx rgba(0,0,0,0.15);
 }
 
 /* 本命星盘入口卡片 */
@@ -141,7 +160,7 @@
     align-items: center;
     background: linear-gradient(135deg, #2a2a4a 0%, #3d2a4a 100%);
     border-radius: 16rpx;
-    padding: 28rpx 24rpx;
+    padding: 40rpx 30rpx;
 }
 
 .astrology-card.data-v-47582f5c:active {
@@ -149,17 +168,17 @@
 }
 
 .astrology-icon.data-v-47582f5c {
-    width: 64rpx;
-    height: 64rpx;
-    border-radius: 32rpx;
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 40rpx;
     background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
     color: #1a1a2e;
-    font-size: 36rpx;
+    font-size: 44rpx;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 20rpx;
+    margin-right: 24rpx;
     flex-shrink: 0;
 }
 
@@ -168,19 +187,19 @@
 }
 
 .astrology-title.data-v-47582f5c {
-    font-size: 30rpx;
+    font-size: 34rpx;
     color: #f4d35e;
     font-weight: bold;
-    margin-bottom: 6rpx;
+    margin-bottom: 8rpx;
 }
 
 .astrology-subtitle.data-v-47582f5c {
-    font-size: 22rpx;
+    font-size: 24rpx;
     color: #c9c9d6;
 }
 
 .astrology-arrow.data-v-47582f5c {
-    font-size: 36rpx;
+    font-size: 40rpx;
     color: #c9c9d6;
     margin-left: 10rpx;
 }

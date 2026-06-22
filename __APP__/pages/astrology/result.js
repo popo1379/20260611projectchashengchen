@@ -15,7 +15,8 @@ Page({
         timelineDays: [],
         selectedDateIndex: 7,
         horoscopeParagraphs: [],
-        dominantTitle: ''
+        dominantTitle: '',
+        scrollLeft: 0
     },
 
     onLoad: function() {
@@ -46,8 +47,8 @@ Page({
     },
 
     onReady: function() {
-        // 延迟绘制星盘图，确保canvas已渲染
         var self = this;
+        // 延迟绘制星盘图，确保canvas已渲染
         setTimeout(function() {
             self.drawNatalChart();
         }, 200);
@@ -362,9 +363,15 @@ Page({
             });
         }
 
+        // 计算滚动位置：让今日（索引7）显示在中间位置
+        // 每个日期项约 114rpx (100宽度+14gap)，今日前有7项
+        // 约滚动 7 * 114 = 798rpx，转换为 px (约除以2) = 399px
+        var scrollLeft = 7 * 114 * (wx.getSystemInfoSync().windowWidth / 750);
+
         this.setData({
             timelineDays: days,
-            selectedDateIndex: 7
+            selectedDateIndex: 7,
+            scrollLeft: scrollLeft
         });
     },
 

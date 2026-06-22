@@ -1,0 +1,9 @@
+{
+  "name": "bazi-ai-analysis",
+  "version": "1.0.0",
+  "description": "AI命理分析云函数",
+  "main": "index.js",
+  "dependencies": {
+    "@cloudbase/node-sdk": "^3.16.0"
+  }
+}
