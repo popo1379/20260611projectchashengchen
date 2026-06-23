@@ -1,234 +1,309 @@
 .page {
     min-height: 100vh;
     background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-    padding-bottom: 120rpx;
+    display: flex;
+    flex-direction: column;
 }
 
+/* 顶部导航 */
 .header {
-    padding: 40rpx 30rpx 30rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40rpx 30rpx 20rpx;
+    background: rgba(26, 26, 46, 0.9);
+}
+
+.header-left {
+    width: 80rpx;
+}
+
+.back-icon {
+    font-size: 40rpx;
+    color: #f4d35e;
+}
+
+.header-title {
+    flex: 1;
     text-align: center;
 }
 
 .title {
-    display: block;
-    font-size: 40rpx;
+    font-size: 36rpx;
     font-weight: bold;
     color: #f4d35e;
-    margin-bottom: 10rpx;
 }
 
-.subtitle {
-    display: block;
-    font-size: 24rpx;
-    color: #c9c9d6;
+.header-right {
+    width: 80rpx;
+    text-align: right;
 }
 
-/* 八字信息卡片 */
-.bazi-card {
-    margin: 20rpx 30rpx;
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16rpx;
-    padding: 24rpx;
+.clear-btn {
+    font-size: 26rpx;
+    color: #7d7d8a;
 }
 
-.bazi-row {
+/* 八字信息条 */
+.bazi-bar {
+    padding: 16rpx 30rpx;
+    background: rgba(255, 255, 255, 0.05);
     display: flex;
-    justify-content: space-around;
-}
-
-.bazi-item {
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 20rpx;
 }
 
-.bazi-label {
+.bazi-text {
+    font-size: 26rpx;
+    color: #c9c9d6;
+    letter-spacing: 4rpx;
+}
+
+.bazi-desc {
     font-size: 22rpx;
     color: #7d7d8a;
-    margin-bottom: 8rpx;
 }
 
-.bazi-value {
-    font-size: 32rpx;
-    color: #ffffff;
-    font-weight: bold;
+/* 对话区域 */
+.chat-area {
+    flex: 1;
+    padding: 20rpx 30rpx;
 }
 
-.bazi-value.highlight {
-    color: #f4d35e;
+/* 推荐问题区域 */
+.suggestions-section {
+    padding: 30rpx 0;
 }
 
-.bazi-summary {
-    margin-top: 16rpx;
-    text-align: center;
-    font-size: 24rpx;
-    color: #c9c9d6;
+.suggestions-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 24rpx;
 }
 
-/* 加载状态 */
-.loading-section {
+.suggestions-header .ai-avatar {
+    font-size: 48rpx;
+    margin-right: 16rpx;
+}
+
+.ai-intro {
+    font-size: 28rpx;
+    color: #d9d9e5;
+    line-height: 1.6;
+    flex: 1;
+}
+
+.suggestions-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 80rpx 30rpx;
+    gap: 16rpx;
 }
 
-.loading-icon {
-    width: 120rpx;
-    height: 120rpx;
+.suggestion-item {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1rpx solid rgba(255, 255, 255, 0.15);
+    border-radius: 24rpx;
+    padding: 24rpx 30rpx;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.suggestion-item:active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(0.98);
+}
+
+.suggestion-item.small {
+    padding: 18rpx 24rpx;
+}
+
+.suggestion-icon {
+    font-size: 36rpx;
+    margin-right: 20rpx;
+}
+
+.suggestion-item.small .suggestion-icon {
+    font-size: 28rpx;
+    margin-right: 14rpx;
+}
+
+.suggestion-text {
+    font-size: 30rpx;
+    color: #ffffff;
+}
+
+.suggestion-item.small .suggestion-text {
+    font-size: 26rpx;
+}
+
+/* 消息列表 */
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24rpx;
+}
+
+/* 消息项 */
+.message-item {
+    display: flex;
+    align-items: flex-start;
+    max-width: 85%;
+}
+
+.message-item.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-item.ai {
+    align-self: flex-start;
+}
+
+/* 消息气泡 */
+.message-content {
+    padding: 20rpx 28rpx;
+    border-radius: 24rpx;
+    position: relative;
+}
+
+.user .message-content {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border-bottom-right-radius: 8rpx;
+    margin-right: 16rpx;
+}
+
+.ai-content {
+    background: rgba(255, 255, 255, 0.12);
+    color: #d9d9e5;
+    border-bottom-left-radius: 8rpx;
+    margin-left: 16rpx;
+}
+
+.message-text {
+    font-size: 28rpx;
+    line-height: 1.7;
+    word-break: break-all;
+}
+
+/* 头像 */
+.message-avatar {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 30rpx;
+    font-size: 36rpx;
+    flex-shrink: 0;
 }
 
-.loading-text {
-    font-size: 80rpx;
+.message-avatar text {
+    font-size: 40rpx;
+}
+
+/* 加载指示器 */
+.loading-indicator {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 0;
+    margin-left: 88rpx;
+}
+
+.loading-dots {
+    font-size: 26rpx;
+    color: #7d7d8a;
     animation: pulse 1.5s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.6; transform: scale(0.95); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
-.loading-tip {
-    font-size: 28rpx;
-    color: #f4d35e;
-    margin-bottom: 16rpx;
+/* 内联推荐问题 */
+.inline-suggestions {
+    margin-top: 30rpx;
+    padding-top: 30rpx;
+    border-top: 1rpx solid rgba(255, 255, 255, 0.1);
 }
 
-.loading-subtip {
+.suggestions-label {
     font-size: 24rpx;
     color: #7d7d8a;
-}
-
-/* 错误状态 */
-.error-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60rpx 30rpx;
-}
-
-.error-icon {
-    font-size: 60rpx;
     margin-bottom: 20rpx;
+}
+
+.inline-suggestions .suggestions-list {
+    gap: 12rpx;
+}
+
+/* 底部占位 */
+.bottom-placeholder {
+    height: 120rpx;
+}
+
+/* 错误提示 */
+.error-section {
+    padding: 30rpx;
+    text-align: center;
 }
 
 .error-text {
     font-size: 26rpx;
     color: #ee964b;
-    margin-bottom: 30rpx;
-    text-align: center;
 }
 
-.retry-btn {
-    width: 200rpx;
-    height: 72rpx;
-    line-height: 72rpx;
-    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
-    color: #1a1a2e;
-    font-size: 28rpx;
-    font-weight: bold;
-    border-radius: 36rpx;
-    border: none;
-}
-
-/* 标签栏 */
-.tab-bar {
-    display: flex;
-    justify-content: space-around;
-    margin: 20rpx 30rpx;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 12rpx;
-    padding: 16rpx;
-}
-
-.tab-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 12rpx 20rpx;
-    border-radius: 8rpx;
-}
-
-.tab-item.active {
-    background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
-}
-
-.tab-icon {
-    font-size: 32rpx;
-    margin-bottom: 6rpx;
-}
-
-.tab-name {
-    font-size: 22rpx;
-    color: #c9c9d6;
-}
-
-.tab-item.active .tab-name {
-    color: #1a1a2e;
-    font-weight: bold;
-}
-
-/* 内容区域 */
-.content-area {
-    margin: 20rpx 30rpx;
-}
-
-.content-card {
-    background: rgba(255, 255, 255, 0.08);
-    border-radius: 16rpx;
-    padding: 30rpx;
-}
-
-.content-text {
-    font-size: 28rpx;
-    color: #d9d9e5;
-    line-height: 1.9;
-    letter-spacing: 0.5rpx;
-}
-
-/* 提示信息 */
-.tip-section {
-    margin: 30rpx;
-    text-align: center;
-}
-
-.tip-text {
-    font-size: 22rpx;
-    color: #7d7d8a;
-}
-
-/* 底部按钮 */
-.bottom-actions {
+/* 输入区域 */
+.input-area {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 20rpx 30rpx;
+    padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
     background: rgba(26, 26, 46, 0.95);
     display: flex;
+    align-items: center;
     gap: 20rpx;
 }
 
-.action-btn {
+.input-field {
     flex: 1;
-    height: 88rpx;
-    line-height: 88rpx;
-    font-size: 28rpx;
-    border-radius: 44rpx;
-    border: none;
-}
-
-.action-btn.secondary {
+    height: 80rpx;
     background: rgba(255, 255, 255, 0.1);
+    border-radius: 40rpx;
+    padding: 0 30rpx;
+    font-size: 28rpx;
     color: #ffffff;
 }
 
-.action-btn.primary {
+.input-field::placeholder {
+    color: #7d7d8a;
+}
+
+.send-btn {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.send-btn.active {
     background: linear-gradient(135deg, #f4d35e 0%, #ee964b 100%);
+}
+
+.send-icon {
+    font-size: 32rpx;
+    color: #7d7d8a;
+}
+
+.send-btn.active .send-icon {
     color: #1a1a2e;
-    font-weight: bold;
 }

@@ -51,6 +51,42 @@ function buildBaziPrompt(baziData) {
     return prompt;
 }
 
+// 构建问答 Prompt（用于智能问答模式）
+function buildQAChatPrompt(baziData, userQuestion) {
+    var prompt = '你是专业命理师，基于用户八字信息回答问题。\n\n';
+    
+    // 八字信息
+    prompt += '【用户八字信息】\n';
+    prompt += '- 年柱：' + baziData.yearPillar + '\n';
+    prompt += '- 月柱：' + baziData.monthPillar + '\n';
+    prompt += '- 日柱：' + baziData.dayPillar + '（日主：' + baziData.dayMaster + '）\n';
+    prompt += '- 时柱：' + baziData.hourPillar + '\n';
+    if (baziData.strengthStatus) {
+        prompt += '- 身强/身弱：' + baziData.strengthStatus + '\n';
+    }
+    if (baziData.xiElement && baziData.yongElement) {
+        prompt += '- 喜用神：喜' + baziData.xiElement + '、用' + baziData.yongElement + '\n';
+    }
+    prompt += '\n';
+    
+    // 用户问题
+    prompt += '【用户问题】\n';
+    prompt += userQuestion + '\n\n';
+    
+    // 回答规则
+    prompt += '【回答规则】\n';
+    prompt += '1. 回答字数控制在 100-200 字\n';
+    prompt += '2. 结合用户具体八字分析，不要泛泛而谈\n';
+    prompt += '3. 语气专业有温度，像资深命理师在交谈\n';
+    prompt += '4. 涉及财富时，区分正财、偏财、理财建议等维度\n';
+    prompt += '5. 适当给出建议，但不做绝对化预测\n';
+    prompt += '6. 直接回答问题，不要多余的开场白\n\n';
+    
+    prompt += '请直接输出回答内容：';
+    
+    return prompt;
+}
+
 // 调用 AI 分析（使用云函数方式）
 function callAIAnalysis(baziData, callback) {
     var prompt = buildBaziPrompt(baziData);
@@ -249,9 +285,109 @@ function parseAIContent(content) {
     return result;
 }
 
+// 调用 AI 问答（用于智能问答模式）
+function callAIForQA(baziData, userQuestion, callback) {
+    var prompt = buildQAChatPrompt(baziData, userQuestion);
+    
+    console.log('=== AI问答请求开始 ===');
+    console.log('使用模型:', AI_MODEL);
+    console.log('用户问题:', userQuestion);
+    
+    // 获取云函数调用器
+    var cloud = null;
+    var app = getApp();
+    
+    // 优先使用共享云实例
+    if (app && app.globalData && app.globalData.sharedCloud) {
+        cloud = app.globalData.sharedCloud;
+        console.log('✓ 使用共享云实例调用云函数');
+    } else {
+        // 如果没有共享实例，直接创建新的云实例
+        console.log('创建新的云实例...');
+        if (typeof wx.cloud !== 'undefined' && typeof wx.cloud.Cloud === 'function') {
+            try {
+                var resourceAppid = "wx02933187189c34ad";
+                var resourceEnv = "mortgagecalculator-9d0fqf0fbb151";
+                
+                cloud = new wx.cloud.Cloud({
+                    resourceAppid: resourceAppid,
+                    resourceEnv: resourceEnv,
+                    traceUser: true
+                });
+                
+                console.log('✓ 使用新创建的云实例');
+                
+                // 异步初始化
+                cloud.init().then(function() {
+                    console.log('✓ 云实例初始化成功');
+                    doCallCloudFunctionQA(cloud, baziData, prompt, callback);
+                }).catch(function(err) {
+                    console.error('✗ 云实例初始化失败:', err);
+                    callback('云环境初始化失败：' + err.message, null);
+                });
+                return; // 异步执行
+                
+            } catch (e) {
+                console.error('✗ 创建云实例失败:', e);
+                callback('云开发环境不可用：' + e.message, null);
+                return;
+            }
+        } else {
+            console.error('✗ 无法获取云开发实例');
+            callback('云开发环境不可用', null);
+            return;
+        }
+    }
+    
+    // 直接调用云函数
+    doCallCloudFunctionQA(cloud, baziData, prompt, callback);
+}
+
+// 执行云函数调用（问答模式）
+function doCallCloudFunctionQA(cloud, baziData, prompt, callback) {
+    console.log('调用云函数: bazi-ai-analysis');
+    
+    cloud.callFunction({
+        name: 'bazi-ai-analysis',
+        data: {
+            baziData: baziData,
+            prompt: prompt,
+            model: AI_MODEL
+        },
+        timeout: 60000,
+        success: function(res) {
+            console.log('=== 云函数调用成功 ===');
+            
+            if (res.errMsg && res.errMsg.indexOf('ok') !== -1) {
+                var result = res.result;
+                if (result && result.success && result.content) {
+                    console.log('AI返回内容长度:', result.content.length);
+                    callback(null, result.content);
+                } else if (result && result.error) {
+                    console.error('AI执行错误:', result.error);
+                    callback('AI分析失败：' + result.error, null);
+                } else {
+                    console.error('云函数返回格式异常:', JSON.stringify(result));
+                    callback('云函数返回数据异常', null);
+                }
+            } else {
+                console.error('云函数调用失败:', res.errMsg);
+                callback('云函数调用失败：' + res.errMsg, null);
+            }
+        },
+        fail: function(err) {
+            console.error('=== 云函数调用失败 ===');
+            console.error('错误信息:', err);
+            callback('云函数调用失败：' + (err.errMsg || JSON.stringify(err)), null);
+        }
+    });
+}
+
 module.exports = {
     callAIAnalysis: callAIAnalysis,
     callAIAnalysisStream: callAIAnalysisStream,
+    callAIForQA: callAIForQA,
     parseAIContent: parseAIContent,
-    buildBaziPrompt: buildBaziPrompt
+    buildBaziPrompt: buildBaziPrompt,
+    buildQAChatPrompt: buildQAChatPrompt
 };
