@@ -165,7 +165,10 @@
         <view class="ai-btn-box data-v-13c364a5" bindtap="{{qq}}">
             <view class="ai-btn data-v-13c364a5">
                 <image class="ai-icon data-v-13c364a5" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
-                <text class="ai-text data-v-13c364a5">AI深度分析</text>
+                <view class="ai-text-wrapper data-v-13c364a5">
+                    <text class="ai-title data-v-13c364a5">AI智能命理解析</text>
+                    <text class="ai-subtitle data-v-13c364a5">腾讯混元大模型技术支持</text>
+                </view>
             </view>
         </view>
         </block>
