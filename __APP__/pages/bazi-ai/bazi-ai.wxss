@@ -154,7 +154,7 @@
 .message-item {
     display: flex;
     align-items: flex-start;
-    max-width: 80%;
+    max-width: 88%;
 }
 
 .message-item.user {
@@ -169,35 +169,35 @@
 
 /* 消息气泡 */
 .message-content {
-    padding: 16rpx 20rpx;
-    border-radius: 16rpx;
+    padding: 14rpx 18rpx;
+    border-radius: 14rpx;
     position: relative;
 }
 
 .user .message-content {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #ffffff;
-    border-radius: 16rpx 16rpx 4rpx 16rpx;
-    margin-right: 12rpx;
+    border-radius: 14rpx 14rpx 4rpx 14rpx;
+    margin-right: 8rpx;
 }
 
 .ai-content {
     background: rgba(255, 255, 255, 0.12);
     color: #d9d9e5;
-    border-radius: 16rpx 16rpx 16rpx 4rpx;
-    margin-left: 12rpx;
+    border-radius: 14rpx 14rpx 14rpx 4rpx;
+    margin-left: 8rpx;
 }
 
 .message-text {
     font-size: 26rpx;
-    line-height: 1.6;
+    line-height: 1.5;
     word-break: break-word;
 }
 
 /* 头像 */
 .message-avatar {
-    width: 56rpx;
-    height: 56rpx;
+    width: 48rpx;
+    height: 48rpx;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -206,15 +206,15 @@
 }
 
 .message-avatar text {
-    font-size: 32rpx;
+    font-size: 28rpx;
 }
 
 /* 加载指示器 */
 .loading-indicator {
     display: flex;
     align-items: center;
-    padding: 16rpx 0;
-    margin-left: 68rpx;
+    padding: 12rpx 0;
+    margin-left: 56rpx;
 }
 
 .loading-dots {
