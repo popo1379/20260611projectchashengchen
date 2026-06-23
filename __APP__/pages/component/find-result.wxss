@@ -339,7 +339,7 @@
     font-weight: bold;
     text-align: center;
     padding: 28rpx 40rpx;
-    border-radius: 50rpx;
+    border-radius: 16rpx;
     box-shadow: 0 4rpx 12rpx rgba(102, 126, 234, 0.4);
     display: flex;
     align-items: center;
