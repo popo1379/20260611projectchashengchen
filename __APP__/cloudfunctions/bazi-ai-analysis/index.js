@@ -29,7 +29,7 @@ exports.main = async (event, context) => {
                     content: prompt
                 }
             ],
-            timeout: 30000 // 30秒超时
+            timeout: 60000 // 60秒超时
         });
         
         console.log('=== AI调用成功 ===');
