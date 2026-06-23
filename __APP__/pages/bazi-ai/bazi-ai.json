@@ -1,5 +1,6 @@
 {
-    "navigationBarTitleText": "AI命理分析",
+    "navigationBarTitleText": "AI命理问答",
     "navigationBarBackgroundColor": "#1a1a2e",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "default"
 }

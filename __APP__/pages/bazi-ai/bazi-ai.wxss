@@ -3,72 +3,67 @@
     background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
     display: flex;
     flex-direction: column;
+    padding-top: 0;
 }
 
-/* 顶部导航 */
-.header {
+/* 八字信息卡片 */
+.bazi-card {
+    margin: 20rpx 30rpx;
+    padding: 24rpx;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+    border-radius: 20rpx;
+    border: 1rpx solid rgba(255, 255, 255, 0.15);
+}
+
+.bazi-pillars {
     display: flex;
+    justify-content: space-around;
+    margin-bottom: 16rpx;
+}
+
+.pillar-item {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 40rpx 30rpx 20rpx;
-    background: rgba(26, 26, 46, 0.9);
 }
 
-.header-left {
-    width: 80rpx;
+.pillar-label {
+    font-size: 22rpx;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 8rpx;
 }
 
-.back-icon {
-    font-size: 40rpx;
-    color: #f4d35e;
-}
-
-.header-title {
-    flex: 1;
-    text-align: center;
-}
-
-.title {
-    font-size: 36rpx;
+.pillar-value {
+    font-size: 32rpx;
     font-weight: bold;
     color: #f4d35e;
+    letter-spacing: 2rpx;
 }
 
-.header-right {
-    width: 80rpx;
-    text-align: right;
-}
-
-.clear-btn {
-    font-size: 26rpx;
-    color: #7d7d8a;
-}
-
-/* 八字信息条 */
-.bazi-bar {
-    padding: 16rpx 30rpx;
-    background: rgba(255, 255, 255, 0.05);
+.bazi-info {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20rpx;
+    padding-top: 12rpx;
+    border-top: 1rpx solid rgba(255, 255, 255, 0.1);
 }
 
-.bazi-text {
-    font-size: 26rpx;
+.info-item {
+    font-size: 24rpx;
     color: #c9c9d6;
-    letter-spacing: 4rpx;
 }
 
-.bazi-desc {
-    font-size: 22rpx;
-    color: #7d7d8a;
+.info-divider {
+    font-size: 24rpx;
+    color: rgba(255, 255, 255, 0.3);
+    margin: 0 16rpx;
 }
 
 /* 对话区域 */
 .chat-area {
     flex: 1;
     padding: 20rpx 30rpx;
+    overflow: hidden;
 }
 
 /* 推荐问题区域 */
@@ -115,8 +110,19 @@
     transform: scale(0.98);
 }
 
-.suggestion-item.small {
-    padding: 18rpx 24rpx;
+/* 主要问题样式（完整命理分析报告） */
+.suggestion-item.main-question {
+    background: linear-gradient(135deg, rgba(244, 211, 94, 0.2) 0%, rgba(238, 150, 75, 0.2) 100%);
+    border: 1rpx solid rgba(244, 211, 94, 0.4);
+}
+
+.suggestion-item.main-question .suggestion-icon {
+    font-size: 40rpx;
+}
+
+.suggestion-item.main-question .suggestion-text {
+    color: #f4d35e;
+    font-weight: 500;
 }
 
 .suggestion-icon {
@@ -124,18 +130,9 @@
     margin-right: 20rpx;
 }
 
-.suggestion-item.small .suggestion-icon {
-    font-size: 28rpx;
-    margin-right: 14rpx;
-}
-
 .suggestion-text {
     font-size: 30rpx;
     color: #ffffff;
-}
-
-.suggestion-item.small .suggestion-text {
-    font-size: 26rpx;
 }
 
 /* 消息列表 */
@@ -233,16 +230,47 @@
 .suggestions-label {
     font-size: 24rpx;
     color: #7d7d8a;
-    margin-bottom: 20rpx;
+    margin-bottom: 16rpx;
 }
 
-.inline-suggestions .suggestions-list {
+.inline-suggestions-scroll {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.inline-suggestions-list {
+    display: inline-flex;
     gap: 12rpx;
+    padding-right: 30rpx;
+}
+
+.suggestion-tag {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20rpx;
+    padding: 14rpx 20rpx;
+    flex-shrink: 0;
+}
+
+.suggestion-tag:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.tag-icon {
+    font-size: 24rpx;
+    margin-right: 10rpx;
+}
+
+.tag-text {
+    font-size: 24rpx;
+    color: #ffffff;
+    white-space: nowrap;
 }
 
 /* 底部占位 */
 .bottom-placeholder {
-    height: 120rpx;
+    height: 140rpx;
 }
 
 /* 错误提示 */
@@ -268,6 +296,7 @@
     display: flex;
     align-items: center;
     gap: 20rpx;
+    border-top: 1rpx solid rgba(255, 255, 255, 0.1);
 }
 
 .input-field {

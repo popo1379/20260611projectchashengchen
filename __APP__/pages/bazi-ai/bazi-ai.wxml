@@ -1,21 +1,31 @@
 <view class="page">
-    <!-- 顶部导航 -->
-    <view class="header">
-        <view class="header-left" bindtap="goBack">
-            <text class="back-icon">←</text>
+    <!-- 八字信息卡片 -->
+    <view class="bazi-card" wx:if="{{baziData}}">
+        <view class="bazi-pillars">
+            <view class="pillar-item">
+                <text class="pillar-label">年柱</text>
+                <text class="pillar-value">{{baziData.yearPillar}}</text>
+            </view>
+            <view class="pillar-item">
+                <text class="pillar-label">月柱</text>
+                <text class="pillar-value">{{baziData.monthPillar}}</text>
+            </view>
+            <view class="pillar-item">
+                <text class="pillar-label">日柱</text>
+                <text class="pillar-value">{{baziData.dayPillar}}</text>
+            </view>
+            <view class="pillar-item">
+                <text class="pillar-label">时柱</text>
+                <text class="pillar-value">{{baziData.hourPillar}}</text>
+            </view>
         </view>
-        <view class="header-title">
-            <text class="title">AI 命理问答</text>
+        <view class="bazi-info">
+            <text class="info-item">日主 {{baziData.dayMaster}}</text>
+            <text class="info-divider">|</text>
+            <text class="info-item">{{baziData.strengthStatus}}</text>
+            <text class="info-divider">|</text>
+            <text class="info-item">喜{{baziData.xiElement}} 用{{baziData.yongElement}}</text>
         </view>
-        <view class="header-right" bindtap="clearChat">
-            <text class="clear-btn" wx:if="{{messages.length > 0}}">清空</text>
-        </view>
-    </view>
-
-    <!-- 八字信息条 -->
-    <view class="bazi-bar" wx:if="{{baziData}}">
-        <text class="bazi-text">{{baziData.yearPillar}} {{baziData.monthPillar}} {{baziData.dayPillar}} {{baziData.hourPillar}}</text>
-        <text class="bazi-desc">日主{{baziData.dayMaster}}{{baziData.strengthStatus}}</text>
     </view>
 
     <!-- 错误提示 -->
@@ -28,8 +38,7 @@
         class="chat-area" 
         scroll-y 
         scroll-with-animation 
-        scroll-top="{{scrollTop}}"
-        bindscroll="onScroll">
+        scroll-top="{{scrollTop}}">
         
         <!-- 推荐问题（初始状态） -->
         <view class="suggestions-section" wx:if="{{suggestions.length > 0 && messages.length === 0}}">
@@ -38,8 +47,8 @@
                 <text class="ai-intro">根据您的八字，为您推荐以下问题：</text>
             </view>
             <view class="suggestions-list">
-                <block wx:for="{{suggestions}}" wx:key="text">
-                    <view class="suggestion-item" bindtap="clickSuggestion" data-question="{{item}}">
+                <block wx:for="{{suggestions}}" wx:key="id">
+                    <view class="suggestion-item {{item.isMain ? 'main-question' : ''}}" bindtap="clickSuggestion" data-question="{{item}}">
                         <text class="suggestion-icon">{{item.icon}}</text>
                         <text class="suggestion-text">{{item.text}}</text>
                     </view>
@@ -73,7 +82,7 @@
 
             <!-- 加载中 -->
             <view class="loading-indicator" wx:if="{{isLoading}}">
-                <text class="loading-dots">🤖 正在思考</text>
+                <text class="loading-dots">🤖 正在思考...</text>
             </view>
 
             <!-- 对话中的推荐问题 -->
@@ -81,12 +90,16 @@
                 <view class="suggestions-label">
                     <text>💡 您还可以问：</text>
                 </view>
-                <block wx:for="{{suggestions}}" wx:key="text">
-                    <view class="suggestion-item small" bindtap="clickSuggestion" data-question="{{item}}">
-                        <text class="suggestion-icon">{{item.icon}}</text>
-                        <text class="suggestion-text">{{item.text}}</text>
+                <scroll-view class="inline-suggestions-scroll" scroll-x>
+                    <view class="inline-suggestions-list">
+                        <block wx:for="{{suggestions}}" wx:key="id">
+                            <view class="suggestion-tag" bindtap="clickSuggestion" data-question="{{item}}">
+                                <text class="tag-icon">{{item.icon}}</text>
+                                <text class="tag-text">{{item.text}}</text>
+                            </view>
+                        </block>
                     </view>
-                </block>
+                </scroll-view>
             </view>
         </view>
 

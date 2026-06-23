@@ -64,18 +64,27 @@ Page({
         this.initSuggestions();
     },
 
-    // 初始化推荐问题
+    // 初始化推荐问题（第一个问题固定为完整命理分析报告）
     initSuggestions: function() {
         var pool = this.questionPool;
         var categories = ['love', 'career', 'wealth', 'health', 'destiny'];
         
-        // 从每个维度随机选1个，共5个
-        var suggestions = [];
+        // 第一个问题固定为完整命理分析报告
+        var suggestions = [{
+            icon: '📜',
+            text: '请为我形成完整命理分析报告',
+            category: 'report',
+            id: 'full-report',
+            isMain: true // 标记为主要问题
+        }];
+        
+        // 从其他维度随机选3个
+        var otherSuggestions = [];
         categories.forEach(function(cat) {
             var items = pool[cat];
             if (items && items.length > 0) {
                 var randomIndex = Math.floor(Math.random() * items.length);
-                suggestions.push({
+                otherSuggestions.push({
                     icon: items[randomIndex].icon,
                     text: items[randomIndex].text,
                     category: cat,
@@ -85,12 +94,15 @@ Page({
         });
 
         // 打乱顺序
-        suggestions.sort(function() {
+        otherSuggestions.sort(function() {
             return 0.5 - Math.random();
         });
 
+        // 合并：第一个是完整报告，后面是3个随机问题
+        suggestions = suggestions.concat(otherSuggestions.slice(0, 3));
+
         this.setData({
-            suggestions: suggestions.slice(0, 4) // 只显示4个
+            suggestions: suggestions
         });
     },
 
@@ -261,13 +273,6 @@ Page({
         var hour = date.getHours();
         var minute = date.getMinutes();
         return (hour < 10 ? '0' : '') + hour + ':' + (minute < 10 ? '0' : '') + minute;
-    },
-
-    // 返回
-    goBack: function() {
-        wx.navigateBack({
-            delta: 2
-        });
     },
 
     // 分享

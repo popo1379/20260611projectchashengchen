@@ -287,11 +287,14 @@ function parseAIContent(content) {
 
 // 调用 AI 问答（用于智能问答模式）
 function callAIForQA(baziData, userQuestion, callback) {
-    var prompt = buildQAChatPrompt(baziData, userQuestion);
+    // 如果是完整命理分析报告请求，使用完整Prompt
+    var isFullReport = userQuestion.indexOf('完整命理分析报告') !== -1 || userQuestion.indexOf('命理分析报告') !== -1;
+    var prompt = isFullReport ? buildBaziPrompt(baziData) : buildQAChatPrompt(baziData, userQuestion);
     
     console.log('=== AI问答请求开始 ===');
     console.log('使用模型:', AI_MODEL);
     console.log('用户问题:', userQuestion);
+    console.log('是否完整报告:', isFullReport);
     
     // 获取云函数调用器
     var cloud = null;
