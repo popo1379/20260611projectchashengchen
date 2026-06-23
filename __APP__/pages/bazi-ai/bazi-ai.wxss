@@ -349,6 +349,11 @@
     color: rgba(255, 255, 255, 0.5);
 }
 
+.remaining-count {
+    font-size: 22rpx;
+    color: rgba(244, 211, 94, 0.7);
+}
+
 /* 输入区域 */
 .input-area {
     position: fixed;

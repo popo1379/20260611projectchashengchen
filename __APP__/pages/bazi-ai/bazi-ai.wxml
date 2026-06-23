@@ -112,6 +112,7 @@
     <view class="tech-label">
         <image class="tech-icon" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
         <text class="tech-text">腾讯混元大模型技术支持</text>
+        <text class="remaining-count" wx:if="{{remainingCount > 0}}"> · 今日剩余{{remainingCount}}次</text>
     </view>
 
     <!-- 输入区域 -->

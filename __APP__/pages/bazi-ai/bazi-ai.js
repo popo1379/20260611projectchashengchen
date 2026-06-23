@@ -1,6 +1,10 @@
 // AI 命理智能问答页面
 var aiService = require('../../utils/aiService.js');
 
+// 每日提问次数限制
+var DAILY_LIMIT = 5;
+var STORAGE_KEY = 'ai_question_limit';
+
 Page({
     data: {
         baziData: null,
@@ -11,7 +15,9 @@ Page({
         isLoading: false,
         error: null,
         scrollToView: '',
-        askedQuestions: [] // 已问过的问题
+        askedQuestions: [], // 已问过的问题
+        remainingCount: DAILY_LIMIT, // 今日剩余次数
+        showLimitTip: false // 是否显示次数提示
     },
 
     // 问题池
@@ -60,8 +66,66 @@ Page({
             baziData: baziData
         });
 
+        // 检查今日剩余次数
+        this.checkDailyLimit();
+
         // 初始化推荐问题
         this.initSuggestions();
+    },
+
+    // 检查每日提问次数限制
+    checkDailyLimit: function() {
+        var today = this.getTodayDate();
+        var limitData = wx.getStorageSync(STORAGE_KEY) || {};
+        
+        // 如果是新的一天，重置次数
+        if (limitData.date !== today) {
+            limitData = {
+                date: today,
+                count: 0
+            };
+            wx.setStorageSync(STORAGE_KEY, limitData);
+        }
+        
+        var remaining = DAILY_LIMIT - limitData.count;
+        this.setData({
+            remainingCount: remaining,
+            showLimitTip: remaining <= 2 && remaining > 0 // 剩余2次时显示提示
+        });
+        
+        console.log('今日已提问次数:', limitData.count, '剩余次数:', remaining);
+    },
+
+    // 获取今日日期字符串
+    getTodayDate: function() {
+        var now = new Date();
+        return now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    },
+
+    // 记录一次提问
+    recordQuestion: function() {
+        var today = this.getTodayDate();
+        var limitData = wx.getStorageSync(STORAGE_KEY) || {
+            date: today,
+            count: 0
+        };
+        
+        // 确保是当天的数据
+        if (limitData.date !== today) {
+            limitData.date = today;
+            limitData.count = 0;
+        }
+        
+        limitData.count++;
+        wx.setStorageSync(STORAGE_KEY, limitData);
+        
+        var remaining = DAILY_LIMIT - limitData.count;
+        this.setData({
+            remainingCount: remaining,
+            showLimitTip: remaining <= 2 && remaining > 0
+        });
+        
+        console.log('记录提问，当前次数:', limitData.count);
     },
 
     // 初始化推荐问题（第一个问题固定为完整命理分析报告）
@@ -133,6 +197,16 @@ Page({
             return;
         }
 
+        // 检查次数限制
+        if (this.data.remainingCount <= 0) {
+            wx.showToast({
+                title: '今天的提问次数已用光',
+                icon: 'none',
+                duration: 2000
+            });
+            return;
+        }
+
         // 添加用户消息
         var messages = this.data.messages;
         messages.push({
@@ -152,6 +226,9 @@ Page({
             askedQuestions: askedQuestions,
             scrollToView: 'msg-' + (messages.length - 1)
         });
+
+        // 记录提问次数
+        this.recordQuestion();
 
         // 调用 AI
         this.callAI(text);
