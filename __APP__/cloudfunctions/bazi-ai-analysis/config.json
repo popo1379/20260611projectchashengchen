@@ -1,5 +1,10 @@
 {
   "permissions": {
     "openapi": []
+  },
+  "functionRoot": "bazi-ai-analysis",
+  "functionConfig": {
+    "memorySize": 128,
+    "timeout": 60
   }
 }
