@@ -43,7 +43,7 @@
         <!-- 推荐问题（初始状态） -->
         <view class="suggestions-section" wx:if="{{suggestions.length > 0 && messages.length === 0}}">
             <view class="suggestions-header">
-                <text class="ai-avatar">🤖</text>
+                <image class="ai-avatar-img" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
                 <text class="ai-intro">根据您的八字，为您推荐以下问题：</text>
             </view>
             <view class="suggestions-list">
@@ -72,7 +72,7 @@
                 <!-- AI回复 -->
                 <view class="message-item ai" id="msg-{{index}}" wx:if="{{item.role === 'assistant'}}">
                     <view class="message-avatar ai-avatar">
-                        <text>🤖</text>
+                        <image class="avatar-img" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
                     </view>
                     <view class="message-content ai-content">
                         <text class="message-text">{{item.content}}</text>
@@ -82,7 +82,8 @@
 
             <!-- 加载中 -->
             <view class="loading-indicator" wx:if="{{isLoading}}">
-                <text class="loading-dots">🤖 正在思考...</text>
+                <image class="loading-avatar" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
+                <text class="loading-dots">正在思考...</text>
             </view>
 
             <!-- 对话中的推荐问题 -->
@@ -106,6 +107,12 @@
         <!-- 底部占位 -->
         <view class="bottom-placeholder"></view>
     </scroll-view>
+
+    <!-- 技术支持标注 -->
+    <view class="tech-label">
+        <image class="tech-icon" src="/static/images/icons/hunyuan-logo.svg" mode="aspectFit"/>
+        <text class="tech-text">腾讯混元大模型技术支持</text>
+    </view>
 
     <!-- 输入区域 -->
     <view class="input-area">

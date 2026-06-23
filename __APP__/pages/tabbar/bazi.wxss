@@ -81,7 +81,7 @@
 }
 
 .draw-card.data-v-47582f5c {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 50%, rgba(240, 147, 251, 0.5) 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 50%, rgba(240, 147, 251, 0.8) 100%);
     border-radius: 16rpx;
     padding: 30rpx;
 }
@@ -177,7 +177,7 @@
 .astrology-card.data-v-47582f5c {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, rgba(42, 42, 74, 0.5) 0%, rgba(61, 42, 74, 0.5) 100%);
+    background: linear-gradient(135deg, rgba(42, 42, 74, 0.8) 0%, rgba(61, 42, 74, 0.8) 100%);
     border-radius: 16rpx;
     padding: 40rpx 30rpx;
 }
@@ -221,4 +221,10 @@
     font-size: 40rpx;
     color: #c9c9d6;
     margin-left: 10rpx;
+}
+
+/* 广告区域 */
+.ad-section.data-v-47582f5c {
+    margin-top: 40rpx;
+    padding: 0 30rpx;
 }
