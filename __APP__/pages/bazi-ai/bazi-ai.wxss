@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 0;
+    overflow: hidden;
 }
 
 /* 八字信息卡片 */
@@ -63,43 +64,46 @@
 .chat-area {
     flex: 1;
     padding: 20rpx 30rpx;
+    padding-bottom: 0;
     overflow: hidden;
+    box-sizing: border-box;
 }
 
 /* 推荐问题区域 */
 .suggestions-section {
-    padding: 30rpx 0;
+    padding: 20rpx 0;
+    overflow: hidden;
 }
 
 .suggestions-header {
     display: flex;
     align-items: flex-start;
-    margin-bottom: 24rpx;
+    margin-bottom: 20rpx;
 }
 
 .suggestions-header .ai-avatar {
-    font-size: 48rpx;
-    margin-right: 16rpx;
+    font-size: 44rpx;
+    margin-right: 12rpx;
 }
 
 .ai-intro {
-    font-size: 28rpx;
+    font-size: 26rpx;
     color: #d9d9e5;
-    line-height: 1.6;
+    line-height: 1.5;
     flex: 1;
 }
 
 .suggestions-list {
     display: flex;
     flex-direction: column;
-    gap: 16rpx;
+    gap: 12rpx;
 }
 
 .suggestion-item {
     background: rgba(255, 255, 255, 0.08);
     border: 1rpx solid rgba(255, 255, 255, 0.15);
-    border-radius: 24rpx;
-    padding: 24rpx 30rpx;
+    border-radius: 20rpx;
+    padding: 20rpx 24rpx;
     display: flex;
     align-items: center;
     transition: all 0.3s ease;
@@ -117,7 +121,7 @@
 }
 
 .suggestion-item.main-question .suggestion-icon {
-    font-size: 40rpx;
+    font-size: 36rpx;
 }
 
 .suggestion-item.main-question .suggestion-text {
@@ -126,91 +130,95 @@
 }
 
 .suggestion-icon {
-    font-size: 36rpx;
-    margin-right: 20rpx;
+    font-size: 32rpx;
+    margin-right: 16rpx;
 }
 
 .suggestion-text {
-    font-size: 30rpx;
+    font-size: 28rpx;
     color: #ffffff;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 消息列表 */
 .messages-list {
     display: flex;
     flex-direction: column;
-    gap: 24rpx;
+    gap: 16rpx;
+    padding-bottom: 20rpx;
 }
 
 /* 消息项 */
 .message-item {
     display: flex;
     align-items: flex-start;
-    max-width: 85%;
+    max-width: 80%;
 }
 
 .message-item.user {
     align-self: flex-end;
-    flex-direction: row-reverse;
+    flex-direction: row;
 }
 
 .message-item.ai {
     align-self: flex-start;
+    flex-direction: row;
 }
 
 /* 消息气泡 */
 .message-content {
-    padding: 20rpx 28rpx;
-    border-radius: 24rpx;
+    padding: 16rpx 20rpx;
+    border-radius: 16rpx;
     position: relative;
 }
 
 .user .message-content {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #ffffff;
-    border-bottom-right-radius: 8rpx;
-    margin-right: 16rpx;
+    border-radius: 16rpx 16rpx 4rpx 16rpx;
+    margin-right: 12rpx;
 }
 
 .ai-content {
     background: rgba(255, 255, 255, 0.12);
     color: #d9d9e5;
-    border-bottom-left-radius: 8rpx;
-    margin-left: 16rpx;
+    border-radius: 16rpx 16rpx 16rpx 4rpx;
+    margin-left: 12rpx;
 }
 
 .message-text {
-    font-size: 28rpx;
-    line-height: 1.7;
-    word-break: break-all;
+    font-size: 26rpx;
+    line-height: 1.6;
+    word-break: break-word;
 }
 
 /* 头像 */
 .message-avatar {
-    width: 72rpx;
-    height: 72rpx;
+    width: 56rpx;
+    height: 56rpx;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 36rpx;
     flex-shrink: 0;
 }
 
 .message-avatar text {
-    font-size: 40rpx;
+    font-size: 32rpx;
 }
 
 /* 加载指示器 */
 .loading-indicator {
     display: flex;
     align-items: center;
-    padding: 20rpx 0;
-    margin-left: 88rpx;
+    padding: 16rpx 0;
+    margin-left: 68rpx;
 }
 
 .loading-dots {
-    font-size: 26rpx;
+    font-size: 24rpx;
     color: #7d7d8a;
     animation: pulse 1.5s ease-in-out infinite;
 }
@@ -222,35 +230,38 @@
 
 /* 内联推荐问题 */
 .inline-suggestions {
-    margin-top: 30rpx;
-    padding-top: 30rpx;
+    margin-top: 20rpx;
+    padding: 20rpx 0;
+    padding-bottom: 180rpx; /* 为输入栏留出足够空间 */
     border-top: 1rpx solid rgba(255, 255, 255, 0.1);
 }
 
 .suggestions-label {
-    font-size: 24rpx;
+    font-size: 22rpx;
     color: #7d7d8a;
-    margin-bottom: 16rpx;
+    margin-bottom: 12rpx;
 }
 
 .inline-suggestions-scroll {
     width: 100%;
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .inline-suggestions-list {
     display: inline-flex;
-    gap: 12rpx;
-    padding-right: 30rpx;
+    gap: 10rpx;
+    padding-right: 20rpx;
 }
 
 .suggestion-tag {
     display: inline-flex;
     align-items: center;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 20rpx;
-    padding: 14rpx 20rpx;
+    border-radius: 16rpx;
+    padding: 12rpx 16rpx;
     flex-shrink: 0;
+    max-width: 280rpx;
 }
 
 .suggestion-tag:active {
@@ -258,19 +269,21 @@
 }
 
 .tag-icon {
-    font-size: 24rpx;
-    margin-right: 10rpx;
+    font-size: 22rpx;
+    margin-right: 8rpx;
 }
 
 .tag-text {
-    font-size: 24rpx;
+    font-size: 22rpx;
     color: #ffffff;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* 底部占位 */
+/* 底部占位 - 增加高度确保不被输入栏遮挡 */
 .bottom-placeholder {
-    height: 140rpx;
+    height: 200rpx;
 }
 
 /* 错误提示 */
@@ -290,22 +303,23 @@
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 20rpx 30rpx;
-    padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+    padding: 16rpx 30rpx;
+    padding-bottom: calc(16rpx + env(safe-area-inset-bottom));
     background: rgba(26, 26, 46, 0.95);
     display: flex;
     align-items: center;
-    gap: 20rpx;
+    gap: 16rpx;
     border-top: 1rpx solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
 }
 
 .input-field {
     flex: 1;
-    height: 80rpx;
+    height: 72rpx;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 40rpx;
-    padding: 0 30rpx;
-    font-size: 28rpx;
+    border-radius: 36rpx;
+    padding: 0 24rpx;
+    font-size: 26rpx;
     color: #ffffff;
 }
 
@@ -314,8 +328,8 @@
 }
 
 .send-btn {
-    width: 80rpx;
-    height: 80rpx;
+    width: 72rpx;
+    height: 72rpx;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     display: flex;
@@ -329,7 +343,7 @@
 }
 
 .send-icon {
-    font-size: 32rpx;
+    font-size: 28rpx;
     color: #7d7d8a;
 }
 
