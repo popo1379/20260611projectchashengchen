@@ -60,7 +60,7 @@
         <view class="messages-list">
             <block wx:for="{{messages}}" wx:key="index">
                 <!-- 用户消息 -->
-                <view class="message-item user" id="msg-{{index}}">
+                <view class="message-item user" id="msg-{{index}}" wx:if="{{item.role === 'user'}}">
                     <view class="message-content">
                         <text class="message-text">{{item.content}}</text>
                     </view>
@@ -70,7 +70,7 @@
                 </view>
 
                 <!-- AI回复 -->
-                <view class="message-item ai" id="msg-{{index + 1}}" wx:if="{{item.role === 'assistant'}}">
+                <view class="message-item ai" id="msg-{{index}}" wx:if="{{item.role === 'assistant'}}">
                     <view class="message-avatar ai-avatar">
                         <text>🤖</text>
                     </view>
