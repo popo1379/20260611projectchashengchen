@@ -81,7 +81,7 @@
 }
 
 .draw-card.data-v-47582f5c {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 50%, rgba(240, 147, 251, 0.5) 100%);
     border-radius: 16rpx;
     padding: 30rpx;
 }
@@ -149,16 +149,35 @@
     text-shadow: 0 1rpx 2rpx rgba(0,0,0,0.15);
 }
 
+/* 更多功能分割线 */
+.more-divider.data-v-47582f5c {
+    display: flex;
+    align-items: center;
+    margin: 50rpx 30rpx 10rpx;
+}
+
+.divider-line.data-v-47582f5c {
+    flex: 1;
+    height: 1rpx;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.divider-text.data-v-47582f5c {
+    font-size: 24rpx;
+    color: #999;
+    margin: 0 24rpx;
+}
+
 /* 本命星盘入口卡片 */
 .astrology-section.data-v-47582f5c {
-    margin-top: 40rpx;
+    margin-top: 20rpx;
     padding: 0 30rpx;
 }
 
 .astrology-card.data-v-47582f5c {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #2a2a4a 0%, #3d2a4a 100%);
+    background: linear-gradient(135deg, rgba(42, 42, 74, 0.5) 0%, rgba(61, 42, 74, 0.5) 100%);
     border-radius: 16rpx;
     padding: 40rpx 30rpx;
 }

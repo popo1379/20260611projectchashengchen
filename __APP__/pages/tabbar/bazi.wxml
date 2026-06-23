@@ -15,6 +15,11 @@
                 <view class="title data-v-47582f5c"></view>
                 <find-result bind:__l="__l" class="data-v-47582f5c" uI="47582f5c-1" uP="{{i}}" wx:if="{{i}}"></find-result>
             </view>
+            <view class="more-divider data-v-47582f5c" wx:if="{{p}}">
+                <view class="divider-line data-v-47582f5c"></view>
+                <view class="divider-text data-v-47582f5c">更多功能</view>
+                <view class="divider-line data-v-47582f5c"></view>
+            </view>
             <view class="astrology-section data-v-47582f5c" wx:if="{{p}}">
                 <view class="astrology-card data-v-47582f5c" bindtap="{{v}}">
                     <view class="astrology-icon data-v-47582f5c">✦</view>
